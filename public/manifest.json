@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "FFR Tracker",
+  "name": "Final Fantasy Randomizer Tracker",
   "icons": [
     {
       "src": "favicon.ico",

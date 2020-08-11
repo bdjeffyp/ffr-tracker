@@ -1,7 +1,8 @@
 # Yet Another Final Fantasy Randomizer Tracker
-Found online at [https://bdjeffyp.github.io/yaffr-Tracker](https://bdjeffyp.github.io/yaffr-Tracker)
+Found online at [https://bdjeffyp.github.io/ffr-Tracker](https://bdjeffyp.github.io/ffr-Tracker)
 
 This tracker is based on ItsSupercar's A Link to the Past tracker, using the base design to create a tracker for Final Fantasy Randomizer.
+Major changes include the use of React and TypeScript for development.
 
 # TODO - Update the text below!!!
 
