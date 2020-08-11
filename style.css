@@ -1,0 +1,1127 @@
+div {
+  box-sizing:border-box;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+}
+
+body {
+  background-color:#000;
+  font-family:Oswald;
+  color:#fff;
+  overflow:hidden;
+}
+
+#totalCover {
+  display:none;
+  position:absolute;
+  left:0px;
+  top:0px;
+  background-color:#a00;
+  opacity:0.3;
+  margin:0;
+}
+
+#trackerBox {
+  position:absolute;
+  left:0px;
+  top:0px;
+  display:none;
+}
+
+/* Windows with default values for Square layout */
+.tracker {
+  position:absolute;
+  border: solid 20px transparent;
+}
+.trackerTitle {
+  position:absolute;
+  left:12px;
+  top:-16px;
+  width:136px;
+  height:20px;
+  background-image:url('images/title.png');
+  background-repeat:no-repeat;
+}
+
+#items {
+  left:8px;
+  top:8px;
+  border-image: url(images/borderThick.png) 20 round;
+  width:372px;
+  height:312px;
+}
+#items .trackerTitle { background-position: 0px 0px; }
+
+#npcs {
+  left: 8px;
+  top: 324px;
+  border-image: url(images/borderThick.png) 20 round;
+  width: 552px;
+  height: 192px;
+}
+#npcs .trackerTitle { background-position: 0px -20px; }
+
+#crystals { /* TODO: Put crystals/shards here */
+  left:384px;
+  top:8px;
+  border-image: url(images/borderThick.png) 20 round;
+  width:176px;
+  height:312px;
+}
+#crystals .trackerTitle.crystal { background-position: 0px -80px; }
+#crystals .trackerTitle.orb { background-position: 0px -100px; }
+#crystals .trackerTitle.shard { background-position: 0px -120px; }
+
+/* Icon is the parent class that represents clickable objects within windows, such as Items and NPCs */
+.icon {
+  position:absolute;
+  left:0px;
+  top:0px;
+  background-image:url(images/grid.png);
+  cursor:pointer;
+  margin:8px 8px;
+}
+
+/* Items: row 1 */
+#bridge {
+  left: 0px;
+  top: 0px;
+  width: 64px;
+  height: 64px;
+}
+#bridge.state0 {
+  background-position: 0px -320px;
+}
+#bridge.state1 {
+  background-position: 0px -256px;
+}
+
+#lute {
+  left: 64px;
+  top: 0px;
+  width: 64px;
+  height: 64px;
+}
+#lute.state0 {
+  background-position: 0px -448px;
+}
+#lute.state1 {
+  background-position: 0px -384px;
+}
+
+#crown {
+  left: 128px;
+  top: 0px;
+  width: 64px;
+  height: 64px;
+}
+#crown.state0 {
+  background-position: -64px -448px;
+}
+#crown.state1 {
+  background-position: -64px -384px;
+}
+
+#crystal {
+  left: 192px;
+  top: 0px;
+  width: 64px;
+  height: 64px;
+}
+#crystal.state0 {
+  background-position: -128px -448px;
+}
+#crystal.state1 {
+  background-position: -128px -384px;
+}
+
+#herb {
+  left: 256px;
+  top: 0px;
+  width: 64px;
+  height: 64px;
+}
+#herb.state0 {
+  background-position: -192px -448px;
+}
+#herb.state1 {
+  background-position: -192px -384px;
+}
+
+/* Items: row 2 */
+#ship {
+  left: 0px;
+  top: 64px;
+  width: 64px;
+  height: 64px;
+}
+#ship.state0 {
+  background-position: -128px -320px;
+}
+#ship.state1 {
+  background-position: -128px -256px;
+}
+
+#key {
+  left: 64px;
+  top: 64px;
+  width: 64px;
+  height: 64px;
+}
+#key.state0 {
+  background-position: 0px -576px;
+}
+#key.state1 {
+  background-position: 0px -512px;
+}
+
+#tnt {
+  left: 128px;
+  top: 64px;
+  width: 64px;
+  height: 64px;
+}
+#tnt.state0 {
+  background-position: -64px -576px;
+}
+#tnt.state1 {
+  background-position: -64px -512px;
+}
+
+#ruby {
+  left: 192px;
+  top: 64px;
+  width: 64px;
+  height: 64px;
+}
+#ruby.state0 {
+  background-position: -128px -576px;
+}
+#ruby.state1 {
+  background-position: -128px -512px;
+}
+
+#rod {
+  left: 256px;
+  top: 64px;
+  width: 64px;
+  height: 64px;
+}
+#rod.state0 {
+  background-position: -192px -576px;
+}
+#rod.state1 {
+  background-position: -192px -512px;
+}
+
+/* Items: row 3 */
+#canal {
+  left: 0px;
+  top: 128px;
+  width: 64px;
+  height: 64px;
+}
+#canal.state0 {
+  background-position: -64px -320px;
+}
+#canal.state1 {
+  background-position: -64px -256px;
+}
+
+#floater {
+  left: 64px;
+  top: 128px;
+  width: 64px;
+  height: 64px;
+}
+#floater.state0 {
+  background-position: 0px -704px;
+}
+#floater.state1 {
+  background-position: 0px -640px;
+}
+
+#tail {
+  left: 128px;
+  top: 128px;
+  width: 64px;
+  height: 64px;
+}
+#tail.state0 {
+  background-position: -64px -704px;
+}
+#tail.state1 {
+  background-position: -64px -640px;
+}
+
+#bottle {
+  left: 192px;
+  top: 128px;
+  width: 64px;
+  height: 64px;
+}
+#bottle.state0 {
+  background-position: -128px -704px;
+}
+#bottle.state1 {
+  background-position: -128px -640px;
+}
+
+#oxyale {
+  left: 256px;
+  top: 128px;
+  width: 64px;
+  height: 64px;
+}
+#oxyale.state0 {
+  background-position: -192px -704px;
+}
+#oxyale.state1 {
+  background-position: -192px -640px;
+}
+
+/* Items: row 4 */
+#canoe {
+  left: 0px;
+  top: 192px;
+  width: 64px;
+  height: 64px;
+}
+#canoe.state0 {
+  background-position: -192px -320px;
+}
+#canoe.state1 {
+  background-position: -192px -256px;
+}
+
+#slab {
+  left: 64px;
+  top: 192px;
+  width: 64px;
+  height: 64px;
+}
+#slab.state0 {
+  background-position: 0px -832px;
+}
+#slab.state1 {
+  background-position: 0px -768px;
+}
+
+#chime {
+  left: 128px;
+  top: 192px;
+  width: 64px;
+  height: 64px;
+}
+#chime.state0 {
+  background-position: -64px -832px;
+}
+#chime.state1 {
+  background-position: -64px -768px;
+}
+
+#cube {
+  left: 192px;
+  top: 192px;
+  width: 64px;
+  height: 64px;
+}
+#cube.state0 {
+  background-position: -128px -832px;
+}
+#cube.state1 {
+  background-position: -128px -768px;
+}
+
+#adamant {
+  left: 256px;
+  top: 192px;
+  width: 64px;
+  height: 64px;
+}
+#adamant.state0 {
+  background-position: -192px -832px;
+}
+#adamant.state1 {
+  background-position: -192px -768px;
+}
+
+/* Main quest NPCs */
+#king {
+  left: 0px;
+  top: 0px;
+  width: 64px;
+  height: 64px;
+}
+#king.state0 {
+  background-position: 0px -64px;
+}
+#king.state1 {
+  background-position: 0px 0px;
+}
+
+#sara {
+  left: 64px;
+  top: 0px;
+  width: 64px;
+  height: 64px;
+}
+#sara.state0 {
+  background-position: -64px -64px;
+}
+#sara.state1 {
+  background-position: -64px 0px;
+}
+
+#bikke {
+  left: 128px;
+  top: 0px;
+  width: 64px;
+  height: 64px;
+}
+#bikke.state0 {
+  background-position: -128px -64px;
+}
+#bikke.state1 {
+  background-position: -128px 0px;
+}
+
+#sarda {
+  left: 192px;
+  top: 0px;
+  width: 64px;
+  height: 64px;
+}
+#sarda.state0 {
+  background-position: -192px -64px;
+}
+#sarda.state1 {
+  background-position: -192px 0px;
+}
+
+#sages {
+  left: 256px;
+  top: 0px;
+  width: 64px;
+  height: 64px;
+}
+#sages.state0 {
+  background-position: -256px -64px;
+}
+#sages.state1 {
+  background-position: -256px 0px;
+}
+
+#robot {
+  left: 320px;
+  top: 0px;
+  width: 64px;
+  height: 64px;
+}
+#robot.state0 {
+  background-position: -320px -64px;
+}
+#robot.state1 {
+  background-position: -320px 0px;
+}
+
+/* Fetch quest NPCs */
+#astos {
+  left: 0px;
+  top: 72px;
+  width: 64px;
+  height: 64px;
+}
+#astos.state0 {
+  background-position: -448px -64px;
+}
+#astos.state1 {
+  background-position: -448px 0px;
+}
+#astos.stateEvil0 {
+  background-position: 0px -192px;
+}
+#astos.stateEvil1 {
+  background-position: 0px -128px;
+}
+
+#matoya {
+  left: 64px;
+  top: 72px;
+  width: 64px;
+  height: 64px;
+}
+#matoya.state0 {
+  background-position: -64px -192px;
+}
+#matoya.state1 {
+  background-position: -64px -128px;
+}
+
+#elf {
+  left: 128px;
+  top: 72px;
+  width: 64px;
+  height: 64px;
+}
+#elf.state0 {
+  background-position: -128px -192px;
+}
+#elf.state1 {
+  background-position: -128px -128px;
+}
+
+#nerrick {
+  left: 192px;
+  top: 72px;
+  width: 64px;
+  height: 64px;
+}
+#nerrick.state0 {
+  background-position: -192px -192px;
+}
+#nerrick.state1 {
+  background-position: -192px -128px;
+}
+
+#smyth {
+  left: 256px;
+  top: 72px;
+  width: 64px;
+  height: 64px;
+}
+#smyth.state0 {
+  background-position: -256px -192px;
+}
+#smyth.state1 {
+  background-position: -256px -128px;
+}
+
+#lufeinian {
+  left: 320px;
+  top: 72px;
+  width: 64px;
+  height: 64px;
+}
+#lufeinian.state0 {
+  background-position: -320px -192px;
+}
+#lufeinian.state1 {
+  background-position: -320px -128px;
+}
+
+/* Shopkeeper and fairy */
+#shopkeeper {
+  left: 424px;
+  top: 0px;
+  width: 64px;
+  height: 64px;
+}
+#shopkeeper.state0 {
+  background-position: -384px -64px;
+}
+#shopkeeper.state1 {
+  background-position: -384px 0px;
+}
+
+#fairy {
+  left: 424px;
+  top: 72px;
+  width: 64px;
+  height: 64px;
+}
+#fairy.state0 {
+  background-position: -384px -192px;
+}
+#fairy.state1 {
+  background-position: -384px -128px;
+}
+
+/* Crystals */
+.state0.crystal {
+  background-position: 0px -896px;
+}
+.state0.orb {
+  background-position: 0px -960px;
+}
+
+#earth {
+  left: -4px;
+  top: 32px;
+  width: 64px;
+  height: 64px;
+}
+#earth.state1.crystal {
+  background-position: -64px -896px;
+}
+#earth.state1.orb {
+  background-position: -64px -960px;
+}
+
+#fire {
+  left: 64px;
+  top: 32px;
+  width: 64px;
+  height: 64px;
+}
+#fire.state1.crystal {
+  background-position: -128px -896px;
+}
+#fire.state1.orb {
+  background-position: -128px -960px;
+}
+
+#water {
+  left: -4px;
+  top: 160px;
+  width: 64px;
+  height: 64px;
+}
+#water.state1.crystal {
+  background-position: -192px -896px;
+}
+#water.state1.orb {
+  background-position: -192px -960px;
+}
+
+#air {
+  left: 64px;
+  top: 160px;
+  width: 64px;
+  height: 64px;
+}
+#air.state1.crystal {
+  background-position: -256px -896px;
+}
+#air.state1.orb {
+  background-position: -256px -960px;
+}
+
+/* Gear: row 1 */
+#sword { left:0px; top:0px; width:64px; height:64px; }
+#sword.state0 { background-position:-120px -512px }
+#sword.state1 { background-position:-184px -512px }
+#sword.state2 { background-position:-248px -512px }
+#sword.state3 { background-position:-312px -512px }
+#sword.state4 { background-position:-376px -512px }
+
+#shield { left:64px; top:0px; width:64px; height:64px; }
+#shield.state0 { background-position:-320px -64px}
+#shield.state1 { background-position:-320px 0px}
+#shield.state2 { background-position:-320px -128px}
+#shield.state3 { background-position:-320px -192px }
+
+/* Gear: row 2 */
+#pearl { left:0px; top:64px; width:64px; height:64px; }
+#pearl.state0 { background-position:-384px -64px}
+#pearl.state1 { background-position:-384px 0px}
+
+#net { left:62px; top:64px; width:68px; height:64px; }
+#net.state0 {background-position:-184px -320px}
+#net.state1 {background-position:-184px -256px}
+
+/* Gear: row 3 */
+#boots { left:0px; top:128px; width:64px; height:64px; }
+#boots.state0 { background-position:-320px -320px}
+#boots.state1 { background-position:-320px -256px}
+
+#glove { left:64px; top:128px; width:64px; height:64px;}
+#glove.state0 { background-position:-384px -128px}
+#glove.state1 { background-position:-384px -192px}
+#glove.state2 { background-position:-384px -256px}
+
+/* Gear: row 4 */
+#flippers { left:0px; top:196px; width:64px; height:64px; }
+#flippers.state0 { background-position:-320px -448px }
+#flippers.state1 { background-position:-320px -384px }
+
+#halfmagic { left:64px; top:196px; width:64px; height:64px; }
+#halfmagic.state0 { background-position:-384px -320px  }
+#halfmagic.state1 { background-position:-384px -384px  }
+#halfmagic.state2 { background-position:-384px -448px  }
+
+
+#boss0 { width:72px; height:72px;}
+#boss0.state0 { background-position:4px -776px}
+#boss0.state1 { background-position:4px -704px}
+#prize0 { left:36px; top:0px; }
+
+#boss1 { width:68px; height:72px; left:4px}
+#boss1.state0 { background-position:-68px -776px}
+#boss1.state1 { background-position:-68px -704px}
+#prize1 { left:36px; top:0px; }
+
+#boss2 { width:68px; height:72px; left:4px}
+#boss2.state0 { background-position:-136px -776px}
+#boss2.state1 { background-position:-136px -704px}
+#prize2 { left:36px; top:0px; }
+
+#boss3 { width:72px; height:72px;}
+#boss3.state0 { background-position:0px -920px}
+#boss3.state1 { background-position:0px -848px}
+#prize3 { left:36px; top:0px; }
+
+#boss4 { width:64px; height:72px; left:4px}
+#boss4.state0 { background-position:-72px -920px}
+#boss4.state1 { background-position:-72px -848px}
+#prize4 { left:36px; top:0px; }
+
+#boss5 { width:72px; height:72px;}
+#boss5.state0 { background-position:-136px -920px}
+#boss5.state1 { background-position:-136px -848px}
+#prize5 { left:36px; top:0px; }
+
+#boss6 { width:72px; height:72px;}
+#boss6.state0 { background-position:-204px -920px}
+#boss6.state1 { background-position:-204px -848px}
+#prize6 { left:36px; top:0px; }
+
+#boss7 { width:72px; height:72px;}
+#boss7.state0 { background-position:-272px -920px}
+#boss7.state1 { background-position:-272px -848px}
+#prize7 { left:36px; top:0px; }
+
+#boss8 { width:68px; height:72px;}
+#boss8.state0 { background-position:-340px -920px}
+#boss8.state1 { background-position:-340px -848px}
+#prize8 { left:36px; top:0px; }
+#medal8 { left:36px; top:36px; }
+
+#boss9 { width:72px; height:72px;}
+#boss9.state0 { background-position:-408px -920px}
+#boss9.state1 { background-position:-408px -848px}
+#prize9 { left:36px; top:0px; }
+#medal9 { left:36px; top:36px; }
+
+#boss10 { width:72px; height:60px;}
+#boss10.state0 { background-position:-268px -784px}
+#boss10.state1 { background-position:-268px -712px}
+
+#boss11 { width:64px; height:72px; left:4px;}
+#boss11.state0 { background-position:-204px -776px}
+#boss11.state1 { background-position:-204px -704px}
+
+.prize {	width: 40px; height: 40px;}
+.prize.state0 { background-position:-340px -640px;}
+.prize.state1 { background-position:-340px -720px;}
+.prize.state2 { background-position:-340px -680px;}
+.prize.state3 { background-position:-340px -760px;}
+.prize.state4 { background-position:-340px -800px;}
+
+.bigPrize {left:4px;	top:0px;	width:64px;	height:72px;}
+.bigPrize.state0{background-position:0px -1064px}
+.bigPrize.state1{background-position:-128px -1064px}
+.bigPrize.state2{background-position:-64px -1064px}
+.bigPrize.state3{background-position:-192px -1064px}
+.bigPrize.state4{background-position:-256px -1064px}
+.bigPrize.state0.complete{background-position:0px -992px}
+.bigPrize.state1.complete{background-position:-128px -992px}
+.bigPrize.state2.complete{background-position:-64px -992px}
+.bigPrize.state3.complete{background-position:-192px -992px}
+.bigPrize.state4.complete{background-position:-256px -992px}
+
+.abbr{left:36px;top:4px;width:48px;height:32px;}
+#abbr0 {background-position:-320px -992px}
+#abbr1 {background-position:-368px -992px}
+#abbr2 {background-position:-416px -992px}
+#abbr3 {background-position:-464px -992px}
+#abbr4 {background-position:-320px -1024px}
+#abbr5 {background-position:-368px -1024px}
+#abbr6 {background-position:-416px -1024px}
+#abbr7 {background-position:-464px -1024px}
+#abbr8 {background-position:-320px -1056px}
+#abbr9 {background-position:-368px -1056px}
+
+.medal {width:40px; height:40px}
+.medal.state0 {  background-position: -380px -640px; }
+.medal.state1 {  background-position: -380px -680px; }
+.medal.state2 {  background-position: -380px -720px; }
+.medal.state3 {  background-position: -380px -760px; }
+
+.key {width:44px;height:36px;top:72px}
+.key.state0 {background-position:-516px -0px}
+.key.state1 {background-position:-516px -36px}
+.key.state2 {background-position:-516px -72px}
+.key.state3 {background-position:-516px -108px}
+.key.state4 {background-position:-516px -144px}
+.key.state5 {background-position:-516px -180px}
+.key.state6 {background-position:-516px -216px}
+.key.state7 {background-position:-516px -252px}
+.key.state8 {background-position:-516px -288px}
+.key.state9 {background-position:-516px -324px}
+.key.state10 {background-position:-516px -360px;width:68px;margin-left:-4px}
+.key.state11 {background-position:-516px -396px;width:68px;margin-left:-4px}
+.key.state12 {background-position:-516px -432px;width:68px;margin-left:-4px}
+.key.state13 {background-position:-516px -468px;width:68px;margin-left:-4px}
+.key.state14 {background-position:-516px -504px;width:68px;margin-left:-4px}
+.key.state15 {background-position:-516px -540px;width:68px;margin-left:-4px}
+.key.state16 {background-position:-516px -576px;width:68px;margin-left:-4px}
+.key.state17 {background-position:-516px -612px;width:68px;margin-left:-4px}
+.key.state18 {background-position:-516px -648px;width:68px;margin-left:-4px}
+.key.state19 {background-position:-516px -684px;width:68px;margin-left:-4px}
+.key.state20 {background-position:-516px  -720px;width:68px;margin-left:-4px}
+.key.state21 {background-position:-516px -756px;width:68px;margin-left:-4px}
+.key.state22 {background-position:-516px -792px;width:68px;margin-left:-4px}
+.key.state23 {background-position:-516px -828px;width:68px;margin-left:-4px}
+.key.state24 {background-position:-516px -864px;width:68px;margin-left:-4px}
+.key.state25 {background-position:-516px -900px;width:68px;margin-left:-4px}
+.key.state26 {background-position:-516px -936px;width:68px;margin-left:-4px}
+.key.state27 {background-position:-516px -972px;width:68px;margin-left:-4px}
+.key.state28 {background-position:-516px -1008px;width:68px;margin-left:-4px}
+.key.state29 {background-position:-516px -1044px;width:68px;margin-left:-4px}
+.key.infinite {background-position:-516px -1080px;width:68px;margin-left:-4px}
+#key11 { left:36px }
+#key12 { left:-4px }
+
+.bigKey {width:36px;height:36px;top:72px;left:36px}
+.bigKey.state0 {background-position:-300px -640px}
+.bigKey.state1 {background-position:-264px -640px}
+#bigKey0 { left:18px }
+
+#mapBox {
+  position:absolute;
+  right:0px;
+  bottom:0px;
+}
+
+.map {
+  position:absolute;
+  background-image:url(images/map.png);
+  background-size: 650px 1300px;
+  width:650px;
+  height:650px;
+  background-color:rgba(0, 0, 0, 0.1);
+  background-blend-mode:multiply;
+}
+
+#mapLW {background-position:0px    0px;}
+#mapDW {background-position:0px -650px;}
+
+.chest {
+  width: 32px;
+  height: 32px;
+  margin-left: -16px;
+  margin-top: -16px;
+  position: absolute;
+  background-size: 100% 100%;
+  cursor:pointer;
+  border-radius:50%;
+  border: solid 3px #000;
+  background-color:#7f7f7f;
+
+  color:#000;
+  text-align:center;
+  font-family:Oswald,Sans-Serif;
+  font-weight: 600;
+  font-size:19px;
+  padding:1px 0px 0px 0px;
+  line-height:23px;
+}
+
+.chest:hover {
+  border-color:#fff;
+}
+
+.dungeonChest {
+  margin-left:4px;
+  margin-top:4px;
+}
+
+.chestPip {
+  position:absolute;
+  width:8px;
+  height: 8px;
+  margin-left:16px;
+  margin-top:16px;
+  border-radius:4px;
+  border: solid 1px #000;
+  z-index:100;
+}
+
+.dungeon {
+  width: 48px;
+  height: 48px;
+  margin-left: -24px;
+  margin-top: -24px;
+  position: absolute;
+  background-repeat: no-repeat;
+  z-index: 2;
+  cursor:pointer;
+  border: solid 3px #000;
+  border-radius:50%;
+  background-color:#7f7f7f;
+  background-image:url(images/prizes1.png);
+  background-size:48px 240px;
+  background-position:-2px -2px;
+  color:#000;
+  text-align:center;
+  font-weight:800;
+  font-size:20px;
+  line-height:41px;
+}
+
+.dungeon.state0 { background-position:-2px -2px; }
+.dungeon.state2 { background-position:-2px -50px; }
+.dungeon.state1 { background-position:-2px -98px; }
+.dungeon.state3 { background-position:-2px -146px; }
+.dungeon.state4 { background-position:-2px -194px; }
+
+.dungeon:hover {
+  border-color:#fff;
+}
+
+.takeAny {
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  margin-top: -8px;
+  position: absolute;
+  background-size: 100% 100%;
+  cursor:pointer;
+  border-radius:50%;
+  border: solid 2px #000;
+  background-color:#7f7f7f;
+
+  color:#000;
+  text-align:center;
+  font-family:Oswald,Sans-Serif;
+  font-weight: 600;
+  font-size:19px;
+  padding:1px 0px 0px 0px;
+  line-height:23px;
+}
+
+.takeAny:hover {
+  border-color:#fff;
+}
+
+.unavail { background-color: #cb0b26; }
+.avail { background-color: #0cd46f; }
+.dark { background-color: #006999; }
+.maybe { background-color: #f4d800; }
+.visible { background-color: #e26d00; }
+.opened { background-color:#7f7f7f; color:#7f7f7f; }
+
+
+.keyShop {
+  position:absolute;
+  background-color:#222;
+  width:20px;
+  height:20px;
+  border:solid 1px #000;
+  border-radius:4px;
+  transform:scaleX(-1) rotate(135deg);
+  cursor:pointer;
+  color:#555;
+  line-height:11px;
+  font-size:10px;
+  text-align:center;
+}
+
+.keyShop.unavail {
+  background-color: #cb0b26;
+  color:#cb0b26;
+}
+
+.keyShop.unavail .keyCirc {
+  background-color: #cb0b26;
+  border-color:#cb0b26;
+}
+
+.keyShop.dark {
+  background-color: #006999;
+  color:#1fa874;
+}
+
+.keyShop.dark .keyCirc {
+  background-color: #006999;
+  border-color:#1fa874;
+}
+
+.keyShop.active {
+  background-color: #775700;
+  color:#e0a800
+}
+
+.keyCirc{
+  position:absolute;
+  left:6px;
+  bottom:2px;
+  width:6px;
+  height:6px;
+  background-color:#222;
+  border:solid 1px #555;
+  border-radius:100%
+}
+
+.keyShop.active .keyCirc {
+  background-color: #775700;
+  border-color:#e0a800
+}
+
+.keyShop:hover {
+  border-color:#fff;
+}
+
+input {cursor:pointer;}
+
+/* Settings menu */
+/* TODO: Modify menu width once options are firmed up */
+#settingsTab {
+  position:absolute;
+  bottom:-495px;
+  left:0px;
+  width:680px;
+  height:530px;
+  background-color:rgba(17,17,17,0);
+  border-radius:0px 10px 0px 0px;
+  color:#fff;
+  font-family:Oswald,sans-serif;
+  font-size:17px;
+  z-index:99998;
+}
+
+#tabIcon {
+  position:absolute;
+  left:5px;
+  top:0px;
+  color:#fff;
+  width:30px;
+  height: 30px;
+  text-align:center;
+  line-height:30px;
+  font-size:18px;
+  cursor:pointer;
+  Z-INDEX:99999;
+  background-color:#111;
+  border-radius:25%;
+}
+
+.selection {
+  position:absolute;
+  height: 30px;
+  line-height:20px;
+  text-align:left;
+}
+
+#caption {
+  position:absolute;
+  left:80px;
+  top:4px;
+  width:500px;
+  color: #fff;
+  font-size: 17px;
+  text-align: left;
+  overflow:hidden;
+}
+
+.captionState0 { color: #cb0b26; font-weight:700;}
+.captionState1 { color: #0cd46f; font-weight:700;}
+.captionState2 { color: #006999; font-weight:700;}
+.captionState3 { color: #f4d800; font-weight:700;}
+.captionState4 { color: #e26d00; font-weight:700;}
+
+/* Timer */
+#timer {
+  left:8px;
+  top:8px;
+  border-image: url(images/borderThick.png) 20 round;
+  width:552px;
+  height:128px;
+  position: absolute;
+  font-size: 70px;
+  font-weight: 700;
+  text-align: center;
+  cursor:pointer;
+}
+#timer .trackerTitle{
+  background-position: 0px -60px;
+}
+
+#timerWrap {
+  position:absolute;
+  width:100%;
+  height:98px;
+  left:72px;
+  top:-6px;
+  overflow:hidden;
+  transform-origin:180px 48px;
+}
+
+.timerDigit {
+  position: absolute;
+  top: 0px;
+  width: 60px;
+  height: 100px;
+  line-height: 100px;
+  overflow: hidden;
+  text-align:center;
+  transform:translateX(-86.5px);
+}
+
+.digits {
+  width:40px;
+  position: absolute;
+  left: 10px;
+  top:-5px;
+  text-align:center;
+}
+
+#digit7 {
+  left: 0px;
+  opacity:0;
+}
+
+#colon7 {
+  opacity:0;
+}
+
+#digit6 {
+  left: 60px;
+  opacity:0;
+}
+
+#digit5 {
+  left: 100px;
+  opacity:0;
+}
+
+#colon5 {
+  opacity:0;
+}
+
+#digit4 {
+  left: 160px;
+  opacity:0;
+}
+
+#digit3 {
+  left: 200px;
+}
+
+#digit2 {
+  left: 260px;
+  font-size:50px;
+}
+
+#digit1 {
+  left: 290px;
+  font-size:50px;
+}
+
+#digit2 .digits, #digit1 .digits {
+  top:4px;
+}
+
+.colon {
+  position: absolute;
+  top:0px;
+  height: 96px;
+  width: 20px;
+  line-height: 96px;
+  font-size: 45px;
+  font-weight: 700;
+  text-align: center;
+  transform:translateY(8px) translateX(-86.5px);
+}
