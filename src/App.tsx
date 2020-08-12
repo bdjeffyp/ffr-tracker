@@ -2,6 +2,7 @@ import React from 'react';
 import * as Styles from './App.style';
 import { Settings } from './components/Settings/Settings';
 import { applyCookie } from './utils';
+import { TrackerContainer } from './components/TrackerContainer/TrackerContainer';
 
 class App extends React.Component {
   public componentDidMount() {
@@ -13,6 +14,7 @@ class App extends React.Component {
     return (
       <div className="app" style={Styles.appContainerStyle}>
         <div className="totalCover" style={Styles.totalCoverStyle}></div>
+        <TrackerContainer />
         <Settings />
       </div>
     );
