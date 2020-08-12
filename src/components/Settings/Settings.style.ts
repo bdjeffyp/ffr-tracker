@@ -22,7 +22,7 @@ export const tabIconStyle: React.CSSProperties = {
   width: "30px",
   height: "30px",
   textAlign: "center",
-  lineHeight: "30px",
+  lineHeight: "28px",
   fontSize: "18px",
   cursor: "pointer",
   zIndex: 99999,
