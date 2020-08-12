@@ -12,7 +12,7 @@ export class Icon extends React.Component<IIconProps> {
     const currentStyle = this.props.state === Toggle.on ? this.props.onStateStyle : this.props.offStateStyle;
 
     return (
-      <div id="icon" style={mergeStyles(Styles.iconStyle)}></div>
+      <div id="icon" style={mergeStyles(Styles.iconStyle, currentStyle)}></div>
     )
   }
 }

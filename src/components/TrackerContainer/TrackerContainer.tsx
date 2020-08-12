@@ -1,25 +1,15 @@
 import * as React from 'react';
 import * as Styles from './TrackerContainer.style';
 import { TrackerBox } from '../TrackerBox/TrackerBox';
-import { ITrackerBoxProps, Borders } from '../../models';
+import { ITrackerBoxProps, ITrackerContainerProps } from '../../models';
 
-export class TrackerContainer extends React.Component {
+export class TrackerContainer extends React.Component<ITrackerContainerProps> {
   public render() {
-    const testBox: ITrackerBoxProps = {
-      state: Borders.thick,
-      boxPositionX: 8,
-      boxPositionY: 8,
-      boxWidth: 372,
-      boxHeight: 312,
-      titleImagePositionX: 0,
-      titleImagePositionY: 0,
-      titlePositionAdjustmentX: 0,
-      titlePositionAdjustmentY: 0,
-    };
+    const boxes = this.props.boxes;
 
     return (
       <div id="trackerContainer" style={Styles.trackerContainerStyle}>
-        <TrackerBox {...testBox} />
+        {boxes && boxes.map((box: ITrackerBoxProps, index: number) => <TrackerBox key={index} {...box} />)}
       </div>
     );
   }

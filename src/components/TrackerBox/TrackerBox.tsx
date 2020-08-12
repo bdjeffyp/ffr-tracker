@@ -6,6 +6,8 @@ import thickBorderImage from '../../images/borderThick.png';
 import thinBorderImage from '../../images/borderThin.png';
 
 export class TrackerBox extends React.Component<ITrackerBoxProps> {
+  private _name = "tracker";
+
   public render() {
     // Build the extended style information from the props
     let borderImage = "";
@@ -33,14 +35,14 @@ export class TrackerBox extends React.Component<ITrackerBoxProps> {
       borderWidth: borderWidth,
     };
 
-    const xImagePosition = this.props.titleImagePositionX === 0 ? "0px" : "-" + this.props.titleImagePositionX + "px";
-    const yImagePosition = this.props.titleImagePositionY === 0 ? "0px" : "-" + this.props.titleImagePositionY + "px";
+    const xImagePosition = this.props.titleImageLocationX === 0 ? "0px" : "-" + this.props.titleImageLocationX + "px";
+    const yImagePosition = this.props.titleImageLocationY === 0 ? "0px" : "-" + this.props.titleImageLocationY + "px";
     const currentTitleStyle: React.CSSProperties = {
       backgroundPosition: xImagePosition + " " + yImagePosition,
     }
 
     return (
-      <div id="tracker" style={mergeStyles(Styles.trackerBoxSquareStyle, currentTrackerBoxStyle)}>
+      <div id={this._name + this.props.id} style={mergeStyles(Styles.trackerBoxSquareStyle, currentTrackerBoxStyle)}>
         <div id="trackerTitle" style={mergeStyles(Styles.trackerTitleStyle, currentTitleStyle)}></div>
       </div>
     );
