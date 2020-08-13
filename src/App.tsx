@@ -3,7 +3,6 @@ import * as Styles from './App.style';
 import { Settings } from './components/Settings/Settings';
 import { applyCookie } from './utils';
 import { TrackerContainer } from './components/TrackerContainer/TrackerContainer';
-import { ITrackerBoxProps, Borders, IIconProps, Toggle } from './models';
 import { ffrTracker } from './trackerProperties';
 
 class App extends React.Component {

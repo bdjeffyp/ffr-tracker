@@ -2,8 +2,8 @@
  * trackerProperties -
  * Add/remove tracker boxes here to populate the app's tracker container.
  */
-import { ITitle, ITrackerBoxProps, ITrackerContainerProps, Borders } from "./models"
-import { bridgeIcon } from "./iconProperties"
+import { ITitle, ITrackerBoxProps, ITrackerContainerProps, Borders, IconNameType } from "./models";
+import * as Icons from "./iconProperties";
 
 ////// Title data //////
 export const itemsTitle: ITitle = {
@@ -50,11 +50,43 @@ export const itemsTrackerBox: ITrackerBoxProps = {
   boxWidth: 372,
   boxHeight: 312,
   ...itemsTitle,
-  icons: [bridgeIcon],
+  icons:
+  [
+    Icons.bridgeIcon, Icons.luteIcon, Icons.crownIcon, Icons.crystalEyeIcon, Icons.herbIcon,
+    Icons.shipIcon, Icons.keyIcon, Icons.tntIcon, Icons.rubyIcon, Icons.rodIcon,
+    Icons.canalIcon, Icons.floaterIcon, Icons.tailIcon, Icons.bottleIcon, Icons.oxyaleIcon,
+    Icons.canoeIcon, Icons.slabIcon, Icons.chimeIcon, Icons.cubeIcon, Icons.adamantIcon,
+  ],
+}
+
+export const orbsTrackerBox: ITrackerBoxProps = {
+  id: "Orbs",
+  boxPositionX: 436,
+  boxPositionY: 8,
+  boxWidth: 156,
+  boxHeight: 312,
+  ...orbsTitle,
+  icons: [ Icons.earthOrb, Icons.fireOrb, Icons.waterOrb, Icons.airOrb ],
+}
+
+export const npcsTrackerBox: ITrackerBoxProps = {
+  id: "Npcs",
+  boxPositionX: 8,
+  boxPositionY: 376,
+  boxWidth: 584,
+  boxHeight: 164,
+  ...npcsTitle,
+  icons:
+  [
+    Icons.kingIcon, Icons.saraIcon, Icons.bikkeIcon, Icons.sardaIcon, Icons.sagesIcon, Icons.robotIcon, Icons.shopkeeperIcon,
+    Icons.astosIcon, Icons.matoyaIcon, Icons.elfIcon, Icons.nerrickIcon, Icons.smythIcon, Icons.lefeinianIcon, Icons.fairyIcon,
+  ],
 }
 
 ////// Tracker container //////
+// TODO: Will need a way to have these items updated by the Settings component
 export const ffrTracker: ITrackerContainerProps = {
   bordersState: Borders.thick,
-  boxes: [itemsTrackerBox],
+  nameType: IconNameType.original,
+  boxes: [itemsTrackerBox, orbsTrackerBox, npcsTrackerBox],
 }
