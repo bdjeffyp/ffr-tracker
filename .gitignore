@@ -22,5 +22,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+/original-tracker/images
 /src/images/working
 /.vscode

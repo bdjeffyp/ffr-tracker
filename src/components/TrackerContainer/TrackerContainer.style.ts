@@ -4,5 +4,5 @@ export const trackerContainerStyle: React.CSSProperties = {
   position: "absolute",
   left: "0px",
   top: "0px",
-  display: "none",
+  display: "inline",
 }

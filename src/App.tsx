@@ -3,7 +3,7 @@ import * as Styles from './App.style';
 import { Settings } from './components/Settings/Settings';
 import { applyCookie } from './utils';
 import { TrackerContainer } from './components/TrackerContainer/TrackerContainer';
-import { ITrackerBoxProps, Borders, itemsTitle } from './models';
+import { ITrackerBoxProps, Borders, itemsTitle, IIconProps, Toggle } from './models';
 
 class App extends React.Component {
   public componentDidMount() {
@@ -21,6 +21,21 @@ class App extends React.Component {
       titlePositionAdjustmentX: 0,
       titlePositionAdjustmentY: 0,
     };
+    const testIcons: IIconProps[] = [
+      {
+        title: "Bridge",
+        state: Toggle.off,
+        width: 64,
+        height: 64,
+        positionX: 0,
+        positionY: 0,
+        offStateImageLocationX: 0,
+        offStateImageLocationY: 320,
+        onStateImageLocationX: 0,
+        onStateImageLocationY: 256,
+      }
+    ]
+    testBox.icons = testIcons;
 
     const itemsBox = {...testBox, ...itemsTitle} as ITrackerBoxProps;
 

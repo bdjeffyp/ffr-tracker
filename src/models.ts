@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 ////// States //////
 export interface ISettingsState {
   goal: Goals;
@@ -11,8 +9,27 @@ export interface ISettingsState {
 }
 
 ////// Props //////
-export interface ITrackerContainerProps {
-  boxes: ITrackerBoxProps[];
+export interface IIconProps {
+  /** Text to display in the settings menu caption; doubles as div id */
+  title: string;
+  /** Current state of the icon: toggled on or off */
+  state: Toggle;
+  /** Width of the icon in pixels */
+  width: number;
+  /** Height of the icon in pixels */
+  height: number;
+  /** x position from the left of the box */
+  positionX: number;
+  /** y position from the top of the box */
+  positionY: number;
+  /** x coordinate for the off state icon in the underlying image */
+  offStateImageLocationX: number;
+  /** y coordinate for the off state icon in the underlying image */
+  offStateImageLocationY: number;
+  /** x coordinate for the on state icon in the underlying image */
+  onStateImageLocationX: number;
+  /** y coordinate for the on state icon in the underlying image */
+  onStateImageLocationY: number;
 }
 
 export interface ITrackerBoxProps {
@@ -36,17 +53,12 @@ export interface ITrackerBoxProps {
   titlePositionAdjustmentX: number;
   /** y coordinate adjustment for the title for this box */
   titlePositionAdjustmentY: number;
+  /** Collection of icons to render in this box */
+  icons?: IIconProps[];
 }
 
-export interface IIconProps {
-  /** Text to display in the settings menu caption */
-  title: string;
-  /** Current state of the icon: toggled on or off */
-  state: Toggle;
-  /** Object that describes the presentation of the icon when toggled off */
-  offStateStyle: React.CSSProperties;
-  /** Object that describes the presentation of the icon when toggled on */
-  onStateStyle: React.CSSProperties;
+export interface ITrackerContainerProps {
+  boxes: ITrackerBoxProps[];
 }
 
 ////// Enums //////

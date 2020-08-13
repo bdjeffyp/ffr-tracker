@@ -1,9 +1,10 @@
 import * as React from 'react';
 import * as Styles from './TrackerBox.style';
-import { ITrackerBoxProps, Borders } from '../../models';
-import { mergeStyles } from '../../utils';
+import { ITrackerBoxProps, Borders, IIconProps } from '../../models';
+import { mergeStyles, formatBackgroundPosition } from '../../utils';
 import thickBorderImage from '../../images/borderThick.png';
 import thinBorderImage from '../../images/borderThin.png';
+import { Icon } from '../Icon/Icon';
 
 export class TrackerBox extends React.Component<ITrackerBoxProps> {
   private _name = "tracker";
@@ -35,15 +36,19 @@ export class TrackerBox extends React.Component<ITrackerBoxProps> {
       borderWidth: borderWidth,
     };
 
-    const xImagePosition = this.props.titleImageLocationX === 0 ? "0px" : "-" + this.props.titleImageLocationX + "px";
-    const yImagePosition = this.props.titleImageLocationY === 0 ? "0px" : "-" + this.props.titleImageLocationY + "px";
+    const xImagePosition = formatBackgroundPosition(this.props.titleImageLocationX);
+    const yImagePosition = formatBackgroundPosition(this.props.titleImageLocationY);
     const currentTitleStyle: React.CSSProperties = {
       backgroundPosition: xImagePosition + " " + yImagePosition,
     }
 
+    const icons = this.props.icons;
+
     return (
       <div id={this._name + this.props.id} style={mergeStyles(Styles.trackerBoxSquareStyle, currentTrackerBoxStyle)}>
         <div id="trackerTitle" style={mergeStyles(Styles.trackerTitleStyle, currentTitleStyle)}></div>
+
+        {icons && icons.map((icon: IIconProps, index: number) => <Icon key={index} {...icon} />)}
       </div>
     );
   }

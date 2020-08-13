@@ -17,6 +17,15 @@ export const mergeStyles = (...args: (React.CSSProperties)[]): React.CSSProperti
 }
 
 /**
+ * Converts a coordinate into a string with a negative value for the background position CSS property.
+ * Checks if a zero value is passed in and returns "0px", to avoid trying to use "-0".
+ * @param coordinate x or y position the desired image is located at in the underlying graphics file
+ */
+export const formatBackgroundPosition = (coordinate: number): string => {
+  return coordinate === 0 ? "0px" : "-" + coordinate + "px";
+}
+
+/**
  * Retrieve the saved cookie from the browser
  * @param cookieName name of the cookie value to retrieve
  */
