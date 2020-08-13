@@ -16,8 +16,7 @@ export const trackerBoxSquareStyle: React.CSSProperties = {
 
 export const trackerTitleStyle: React.CSSProperties = {
   position: "absolute",
-  left: "12px",
-  top: "-16px",
+  top: "-8px",
   width: "136px",
   height: "20px",
   backgroundImage: `url(${titleImage})`,

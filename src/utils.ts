@@ -26,6 +26,17 @@ export const formatBackgroundPosition = (coordinate: number): string => {
 }
 
 /**
+ * Finds the x or y position of the top-left of an object to place in the center of a container.
+ * Note that this can be used to center to the width or the height of a container. Use for both in separate calls
+ * to center the object on both the x and y axes.
+ * @param containerWidth Width (or height) of the container that the object resides within
+ * @param objectWidth Width (or height) of the object itself
+ */
+export const centerObject = (containerWidth: number, objectWidth: number): number => {
+  return (containerWidth / 2) - (objectWidth / 2);
+}
+
+/**
  * Retrieve the saved cookie from the browser
  * @param cookieName name of the cookie value to retrieve
  */
