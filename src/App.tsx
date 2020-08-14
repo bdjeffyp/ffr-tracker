@@ -13,12 +13,17 @@ class App extends React.Component {
 
   public render() {
     return (
-      <div className="app" style={Styles.appContainerStyle}>
+      <div className="app" style={Styles.appContainerStyle} onContextMenu={this._captureRightClick}>
         <div className="totalCover" style={Styles.totalCoverStyle}></div>
         <TrackerContainer {...ffrTracker} />
         <Settings />
       </div>
     );
+  }
+
+  /** Prevent context menu popups within our app */
+  private _captureRightClick = (event: React.MouseEvent) => {
+    event.preventDefault();
   }
 }
 

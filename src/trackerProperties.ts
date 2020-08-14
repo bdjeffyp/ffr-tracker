@@ -43,10 +43,28 @@ export const timerTitle: ITitle = {
 }
 
 ////// Tracker boxes //////
-export const itemsTrackerBox: ITrackerBoxProps = {
-  id: "Items",
+export const timerTrackerBox: ITrackerBoxProps = {
+  id: "Timer",
+  isTimer: true,
+  visible: true,
   boxPositionX: 8,
   boxPositionY: 8,
+  boxWidth: 584,
+  boxHeight: 80,
+  fontSize: 70,
+  fontWeight: 700,
+  textAlign: "center",
+  cursor: "pointer",
+  ...timerTitle,
+}
+
+// If timer is visible, other boxes will shift down
+const timerShift = timerTrackerBox.visible ? 136 : 0;
+export const itemsTrackerBox: ITrackerBoxProps = {
+  id: "Items",
+  visible: true,
+  boxPositionX: 8,
+  boxPositionY: 8 + timerShift,
   boxWidth: 372,
   boxHeight: 312,
   ...itemsTitle,
@@ -61,8 +79,9 @@ export const itemsTrackerBox: ITrackerBoxProps = {
 
 export const orbsTrackerBox: ITrackerBoxProps = {
   id: "Orbs",
+  visible: true,
   boxPositionX: 436,
-  boxPositionY: 8,
+  boxPositionY: 8 + timerShift,
   boxWidth: 156,
   boxHeight: 312,
   ...orbsTitle,
@@ -71,8 +90,9 @@ export const orbsTrackerBox: ITrackerBoxProps = {
 
 export const npcsTrackerBox: ITrackerBoxProps = {
   id: "Npcs",
+  visible: true,
   boxPositionX: 8,
-  boxPositionY: 376,
+  boxPositionY: 376 + timerShift,
   boxWidth: 584,
   boxHeight: 164,
   ...npcsTitle,
@@ -88,5 +108,5 @@ export const npcsTrackerBox: ITrackerBoxProps = {
 export const ffrTracker: ITrackerContainerProps = {
   bordersState: Borders.thick,
   nameType: IconNameType.original,
-  boxes: [itemsTrackerBox, orbsTrackerBox, npcsTrackerBox],
+  boxes: [itemsTrackerBox, orbsTrackerBox, npcsTrackerBox, timerTrackerBox],
 }

@@ -5,8 +5,10 @@ import { mergeStyles, formatBackgroundPosition, centerObject } from '../../utils
 import thickBorderImage from '../../images/borderThick.png';
 import thinBorderImage from '../../images/borderThin.png';
 import { Icon } from '../Icon/Icon';
+import { Timer } from './Timer';
 
 interface IExtendedBoxProps {
+  /** Border to render for this box */
   border: Borders;
 }
 
@@ -38,7 +40,17 @@ export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxP
       height: this.props.boxHeight,
       borderImage: borderImage,
       borderWidth: borderWidth,
+      display: this.props.visible ? "inline" : "none",
     };
+
+    // If the timer options are available, add the extended style options
+    const extendedTrackerBoxStyle: React.CSSProperties = {
+      fontSize: this.props.fontSize,
+      fontWeight: this.props.fontWeight,
+      textAlign: this.props.textAlign as any,
+      cursor: this.props.cursor
+    }
+    const finalStyle = this.props.isTimer ? {...currentTrackerBoxStyle, ...extendedTrackerBoxStyle} : currentTrackerBoxStyle;
 
     const xImagePosition = formatBackgroundPosition(this.props.titleImageLocationX);
     const yImagePosition = formatBackgroundPosition(this.props.titleImageLocationY);
@@ -53,10 +65,11 @@ export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxP
     const icons = this.props.icons;
 
     return (
-      <div id={this._name + this.props.id} style={mergeStyles(Styles.trackerBoxSquareStyle, currentTrackerBoxStyle)}>
+      <div id={this._name + this.props.id} style={mergeStyles(Styles.trackerBoxSquareStyle, finalStyle)}>
         <div id="trackerTitle" style={mergeStyles(Styles.trackerTitleStyle, currentTitleStyle)}></div>
 
         {icons && icons.map((icon: IIconProps, index: number) => <Icon key={index} {...icon} />)}
+        {this.props.isTimer && <Timer key={"timer"} />}
       </div>
     );
   }

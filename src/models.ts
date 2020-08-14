@@ -39,11 +39,24 @@ export enum IconNameType {
   modern
 }
 
+export enum TimerDigits {
+  tensHours,
+  onesHours,
+  tensMinutes,
+  onesMinutes,
+  tensSeconds,
+  onesSeconds,
+  tensMilliseconds,
+  onesMilliseconds,
+}
+
 ////// Constants //////
 /** The base tweak value to shift icons down by 8 pixels */
 export const BASE_Y_TWEAK = 8;
 /** The base tweak value to have an 8 pixel gap between each icon */
 export const BASE_X_TWEAK = 8;
+/** Initial timer array */
+export const INITIAL_TIMER = [0, 0, 0, 0, 0, 0, 0, 0];
 
 ////// States //////
 export interface ISettingsState {
@@ -95,6 +108,10 @@ export interface IIconProps {
 export interface ITrackerBoxProps extends ITitle {
   /** The id attribute to set on this tracker box instance */
   id: string;
+  /** This box shows the timer rather than icons */
+  isTimer?: boolean;
+  /** Box visibility */
+  visible: boolean;
   /** x coordinate for left position of box drawn in browser window */
   boxPositionX: number;
   /** y coordinate for top position of box drawn in browser window */
@@ -103,6 +120,14 @@ export interface ITrackerBoxProps extends ITitle {
   boxWidth: number;
   /** Height of the box in the browser window */
   boxHeight: number;
+  /** Font size for timer */
+  fontSize?: number;
+  /** Font weight for timer */
+  fontWeight?: number;
+  /** Text alignment for timer */
+  textAlign?: string;
+  /** Pointer option for timer */
+  cursor?: string;
   /** Collection of icons to render in this box */
   icons?: IIconProps[];
 }
