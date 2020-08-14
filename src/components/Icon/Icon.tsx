@@ -1,11 +1,25 @@
 import * as React from 'react';
 import * as Styles from './Icon.style';
-import { IIconProps, Toggle, BASE_X_TWEAK, BASE_Y_TWEAK, IconNameType } from '../../models';
+import { IIconProps, Toggle, BASE_X_TWEAK, BASE_Y_TWEAK } from '../../models';
 import { mergeStyles, formatBackgroundPosition } from '../../utils';
-import { IItemNames, ModernItemNames, OriginalItemNames } from '../../strings';
 
-export class Icon extends React.Component<IIconProps> {
+interface IIconState {
+  iconState: Toggle;
+  xImagePosition: string;
+  yImagePosition: string;
+}
+
+export class Icon extends React.Component<IIconProps, IIconState> {
   private _name = "icon";
+
+  constructor(props: IIconProps) {
+    super(props);
+    this.state = {
+      iconState: this.props.state,
+      xImagePosition: formatBackgroundPosition(this.props.state === Toggle.off ? this.props.offStateImageLocationX : this.props.onStateImageLocationX),
+      yImagePosition: formatBackgroundPosition(this.props.state === Toggle.off ? this.props.offStateImageLocationY : this.props.onStateImageLocationY),
+    }
+  }
 
   public render() {
     // Build the extended style information from the props
@@ -15,8 +29,8 @@ export class Icon extends React.Component<IIconProps> {
       left: this.props.column * this.props.width,
       top: this.props.row * this.props.height + BASE_Y_TWEAK,
     };
-    const xImagePosition = formatBackgroundPosition(this.props.state === Toggle.off ? this.props.offStateImageLocationX : this.props.onStateImageLocationX);
-    const yImagePosition = formatBackgroundPosition(this.props.state === Toggle.off ? this.props.offStateImageLocationY : this.props.onStateImageLocationY);
+    const xImagePosition = this.state.xImagePosition;
+    const yImagePosition = this.state.yImagePosition;
     currentIconStyle.backgroundPosition = xImagePosition + " " + yImagePosition;
 
     // Tweak the position, if desired.
@@ -35,7 +49,14 @@ export class Icon extends React.Component<IIconProps> {
     currentIconStyle.top = top;
 
     return (
-      <div id={this._name + this.props.title} style={mergeStyles(Styles.iconStyle, currentIconStyle)}></div>
+      <div id={this._name + this.props.title} style={mergeStyles(Styles.iconStyle, currentIconStyle)} onClick={this._toggleIcon}></div>
     )
+  }
+
+  private _toggleIcon = () => {
+    const newState = this.state.iconState === Toggle.off ? Toggle.on : Toggle.off;
+    const xImagePosition = formatBackgroundPosition(newState === Toggle.off ? this.props.offStateImageLocationX : this.props.onStateImageLocationX);
+    const yImagePosition = formatBackgroundPosition(newState === Toggle.off ? this.props.offStateImageLocationY : this.props.onStateImageLocationY);
+    this.setState({ iconState: newState, xImagePosition: xImagePosition, yImagePosition: yImagePosition });
   }
 }
