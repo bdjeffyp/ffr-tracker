@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Styles from './TrackerContainer.style';
 import { TrackerBox } from '../TrackerBox/TrackerBox';
-import { ITrackerBoxProps, ITrackerContainerProps, Borders } from '../../models';
+import { ITrackerBoxProps, ITrackerContainerProps } from '../../models';
 
 export class TrackerContainer extends React.Component<ITrackerContainerProps> {
   public render() {

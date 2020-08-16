@@ -1,26 +1,39 @@
 import * as React from 'react';
 import { gsap, Elastic, Power4, Back } from 'gsap';
-import { Goals, Layouts, Borders, Toggle, SettingsNames, ISettingsState } from '../../models';
+import { Goals, Layouts, Borders, Toggle, SettingsNames, ISettingsProps } from '../../models';
 import * as Styles from './Settings.style';
 import { mergeStyles } from '../../utils';
 
-export class Settings extends React.Component<{}, ISettingsState> {
+interface ISettingsState {
+  panelOpen: boolean,
+  currentGoal: Goals,
+  currentFreeOrbs: Toggle,
+  currentLayout: Layouts,
+  currentBorder: Borders,
+  currentShowTimer: Toggle,
+  currentShowCrystals: Toggle,
+}
+
+export class Settings extends React.Component<ISettingsProps, ISettingsState> {
   private _name = "settingsTab";
-  private _open = false;
 
   constructor(props: any) {
     super(props);
     this.state = {
-      goal: Goals.regular,
-      freeOrbs: Toggle.off,
-      layout: Layouts.square,
-      border: Borders.thick,
-      showTimer: Toggle.on,
-      showCrystals: Toggle.off,
+      panelOpen: false,
+      currentGoal: this.props.goal,
+      currentFreeOrbs: this.props.freeOrbs,
+      currentLayout: this.props.layout,
+      currentBorder: this.props.border,
+      currentShowTimer: this.props.showTimer,
+      currentShowCrystals: this.props.showCrystals,
     };
   }
 
-  public componentDidMount() {}
+  public componentDidMount() {
+    // Establish the checked buttons in the settings menu based on the passed in settings
+    // this._apply({} as React.ChangeEvent<HTMLInputElement>);
+  }
 
   public render() {
     return (
@@ -32,16 +45,20 @@ export class Settings extends React.Component<{}, ISettingsState> {
         <div className="selection" style={mergeStyles(Styles.settingGroupStyle, Styles.goalGroupStyle)}>
           <b>&nbsp;GOAL</b>
           <br/>
-          <input title="No Variation (Light crystals, get key/lute)" className="radio regMode" type="radio" name={SettingsNames.goal} value={Goals.regular} onChange={this._apply} />
+          <input title="No Variation (Light crystals, get key/lute)" className="radio regMode" type="radio" name={SettingsNames.goal}
+            value={Goals.regular} checked={this.state.currentGoal === Goals.regular} onChange={this._apply} />
           <span className="radio regMode"> Regular</span>
           <br/>
-          <input title="Shard Hunt (Find a required number of crystal shards)" className="radio shardHunt" type="radio" name={SettingsNames.goal} value={Goals.shardHunt} onChange={this._apply} />
+          <input title="Shard Hunt (Find a required number of crystal shards)" className="radio shardHunt" type="radio" name={SettingsNames.goal}
+            value={Goals.shardHunt} checked={this.state.currentGoal === Goals.shardHunt} onChange={this._apply} />
           <span className="radio shardHunt"> Shard Hunt</span>
           <br/>
-          <input title="Chaos Rush (Have lute, key not required in ToFR)" className="radio chaosRush" type="radio" name={SettingsNames.goal} value={Goals.chaosRush} onChange={this._apply} />
+          <input title="Chaos Rush (Have lute, key not required in ToFR)" className="radio chaosRush" type="radio" name={SettingsNames.goal}
+            value={Goals.chaosRush} checked={this.state.currentGoal === Goals.chaosRush} onChange={this._apply} />
           <span className="radio chaosRush"> Chaos Rush</span>
           <br />
-          <input title="Free ORBs (Have all crystals/ORBs lit at the start)" className="checkbox freeOrbs" type="checkbox" name={SettingsNames.freeOrbs} value={Toggle.on} onChange={this._apply} />
+          <input title="Free ORBs (Have all crystals/ORBs lit at the start)" className="checkbox freeOrbs" type="checkbox" name={SettingsNames.freeOrbs}
+            value={Toggle.on} checked={this.state.currentFreeOrbs === Toggle.on} onChange={this._apply} />
           <span className="checkbox freeOrbs"> Free ORBs</span>
         </div>
 
@@ -143,43 +160,44 @@ export class Settings extends React.Component<{}, ISettingsState> {
    * Reflect the updated settings in the tracker layout
    */
   private _apply = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newState = {} as ISettingsState;
+    const newState: ISettingsState = this.state;
 
     // Update the state for the applicable setting group
     switch (event.target.name) {
       case SettingsNames.goal:
-        newState.goal = event.target.value as Goals;
+        newState.currentGoal = event.target.value as Goals;
         break;
       case SettingsNames.freeOrbs:
-        newState.freeOrbs = event.target.value as Toggle;
+        newState.currentFreeOrbs = event.target.value as Toggle;
         break;
       case SettingsNames.layout:
-        newState.layout = event.target.value as Layouts;
+        newState.currentLayout = event.target.value as Layouts;
         break;
       case SettingsNames.border:
-        newState.border = event.target.value as Borders;
+        newState.currentBorder = event.target.value as Borders;
         break;
       case SettingsNames.timerMode:
-        newState.showTimer = event.target.value as Toggle;
+        newState.currentShowTimer = event.target.value as Toggle;
         break;
       case SettingsNames.iconSet:
-        newState.showCrystals = event.target.value as Toggle;
+        newState.currentShowCrystals = event.target.value as Toggle;
         break;
     }
     this.setState(newState);
 
-    // Update the cookie
-    document.cookie = "settings=" + JSON.stringify(this.state) + "; expires=Sat, 26 Dec 2025 12:00:00 UTC; path=/";
+    // Convert to the props format and update the cookie
+    document.cookie = "settings=" + JSON.stringify(newState) + "; expires=Sat, 26 Dec 2025 12:00:00 UTC; path=/";
 
     // TODO: Apply the settings to the tracker boxes
   }
 
   private _toggle = () => {
     // Flip the bit
-    this._open = !this._open;
+    const isOpen = !this.state.panelOpen;
+    this.setState({ panelOpen: isOpen });
 
     // Animate the window
-    if (this._open) {
+    if (isOpen) {
       gsap.to("#" + this._name, 0.5, { bottom: -270, ease: Elastic.easeOut });
       gsap.to("#" + this._name, 0.5, { backgroundColor: "#111", ease: Power4.easeOut });
     } else {

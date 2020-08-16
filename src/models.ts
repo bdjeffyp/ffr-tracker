@@ -58,8 +58,8 @@ export const BASE_X_TWEAK = 8;
 /** Initial timer array */
 export const INITIAL_TIMER = [0, 0, 0, 0, 0, 0, 0, 0];
 
-////// States //////
-export interface ISettingsState {
+////// Props //////
+export interface ISettingsProps {
   goal: Goals;
   freeOrbs: Toggle;
   layout: Layouts;
@@ -68,7 +68,6 @@ export interface ISettingsState {
   showCrystals: Toggle;
 }
 
-////// Props //////
 export interface ITitle {
   /** x coordinate for title in the underlying image */
   titleImageLocationX: number;

@@ -1,4 +1,4 @@
-import { ISettingsState } from "./models";
+import { ISettingsProps, Goals, Toggle, Layouts, Borders } from "./models";
 
 /**
  * Combines all style objects into one for placing in an element style attribute.
@@ -50,19 +50,25 @@ export const getCookie = (cookieName: string): string | undefined => {
 
 /**
  * Gets the Settings cookie and applies it to our Settings component
+ * @returns the settings to pass onto the Settings component
  */
-export const applyCookie = () => {
+export const getSavedSettings = (): ISettingsProps => {
   // Reads the user's cookie and returns it as a settings object
   const cookie = getCookie('settings');
-  const savedSettings = (typeof (cookie) !== 'undefined') ? JSON.parse(cookie) as ISettingsState : undefined;
+  const savedSettings = (typeof (cookie) !== 'undefined') ? JSON.parse(cookie) as ISettingsProps : undefined;
 
-  // Applies each setting from the cookie to the settings options, using the default "checked" state in the rendered object if a setting is not found
+  // Return the settings
   if (savedSettings) {
-    // TODO: Update the settings
+    return savedSettings;
+  } else {
+    // Return defaults
+    return {
+      goal: Goals.regular,
+      freeOrbs: Toggle.off,
+      layout: Layouts.square,
+      border: Borders.thick,
+      showCrystals: Toggle.off,
+      showTimer: Toggle.on,
+    }
   }
-  // $.each(savedSettings, function (k, v) {
-  //   $('input:radio[name=' + k + ']:nth(' + v + ')').attr('checked', true);
-  // });
-
-  // settings.apply(true);
 }
