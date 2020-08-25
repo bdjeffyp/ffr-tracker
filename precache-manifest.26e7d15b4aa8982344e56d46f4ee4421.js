@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "71c217dbe921d497db49e705a04c3c19",
+    "revision": "8390fbc2894bc202c0b2701ab6aac747",
     "url": "/ffr-tracker/index.html"
   },
   {
-    "revision": "eaa0b0bd38132326e1a1",
+    "revision": "3cfcf276cc239b8e60bc",
     "url": "/ffr-tracker/static/css/main.ca3bd040.chunk.css"
   },
   {
-    "revision": "a1b6e65c58e86974f289",
-    "url": "/ffr-tracker/static/js/2.09a65b43.chunk.js"
+    "revision": "b2b17f48cca7a6b893ad",
+    "url": "/ffr-tracker/static/js/2.20f9f8b5.chunk.js"
   },
   {
     "revision": "2206f6f6cbbf99cae08d01b2952f71ad",
-    "url": "/ffr-tracker/static/js/2.09a65b43.chunk.js.LICENSE.txt"
+    "url": "/ffr-tracker/static/js/2.20f9f8b5.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "eaa0b0bd38132326e1a1",
-    "url": "/ffr-tracker/static/js/main.6441b52f.chunk.js"
+    "revision": "3cfcf276cc239b8e60bc",
+    "url": "/ffr-tracker/static/js/main.5a1da60d.chunk.js"
   },
   {
     "revision": "c88748d8d753a2bc2765",
