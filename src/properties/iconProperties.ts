@@ -2,8 +2,8 @@
  * iconProperties -
  * Add/remove icons from here to populate tracker boxes in the trackerProperties.ts file.
  */
-import { IIconProps, Toggle } from "./models";
-import { OriginalItemNames } from './strings';
+import { IIconProps, Toggle } from "../models";
+import { OriginalItemNames } from '../strings';
 
 const _iconNames = OriginalItemNames;
 
@@ -19,6 +19,7 @@ export const bridgeIcon: IIconProps = {
   offStateImageLocationY: 320,
   onStateImageLocationX: 0,
   onStateImageLocationY: 256,
+  handleHover: () => {},
 }
 
 export const luteIcon: IIconProps = {
@@ -32,6 +33,7 @@ export const luteIcon: IIconProps = {
   offStateImageLocationY: 448,
   onStateImageLocationX: 0,
   onStateImageLocationY: 384,
+  handleHover: () => {},
 }
 
 export const crownIcon: IIconProps = {
@@ -45,6 +47,7 @@ export const crownIcon: IIconProps = {
   offStateImageLocationY: 448,
   onStateImageLocationX: 64,
   onStateImageLocationY: 384,
+  handleHover: () => {},
 }
 
 export const crystalEyeIcon: IIconProps = {
@@ -58,6 +61,7 @@ export const crystalEyeIcon: IIconProps = {
   offStateImageLocationY: 448,
   onStateImageLocationX: 128,
   onStateImageLocationY: 384,
+  handleHover: () => {},
 }
 
 export const herbIcon: IIconProps = {
@@ -71,6 +75,7 @@ export const herbIcon: IIconProps = {
   offStateImageLocationY: 448,
   onStateImageLocationX: 192,
   onStateImageLocationY: 384,
+  handleHover: () => {},
 }
 
 ////// Items: row 2 //////
@@ -85,6 +90,7 @@ export const shipIcon: IIconProps = {
   offStateImageLocationY: 320,
   onStateImageLocationX: 128,
   onStateImageLocationY: 256,
+  handleHover: () => {},
 }
 
 export const keyIcon: IIconProps = {
@@ -98,6 +104,7 @@ export const keyIcon: IIconProps = {
   offStateImageLocationY: 576,
   onStateImageLocationX: 0,
   onStateImageLocationY: 512,
+  handleHover: () => {},
 }
 
 export const tntIcon: IIconProps = {
@@ -111,6 +118,7 @@ export const tntIcon: IIconProps = {
   offStateImageLocationY: 576,
   onStateImageLocationX: 64,
   onStateImageLocationY: 512,
+  handleHover: () => {},
 }
 
 export const rubyIcon: IIconProps = {
@@ -124,6 +132,7 @@ export const rubyIcon: IIconProps = {
   offStateImageLocationY: 576,
   onStateImageLocationX: 128,
   onStateImageLocationY: 512,
+  handleHover: () => {},
 }
 
 export const rodIcon: IIconProps = {
@@ -137,6 +146,7 @@ export const rodIcon: IIconProps = {
   offStateImageLocationY: 576,
   onStateImageLocationX: 192,
   onStateImageLocationY: 512,
+  handleHover: () => {},
 }
 
 ////// Items: row 3 //////
@@ -151,6 +161,7 @@ export const canalIcon: IIconProps = {
   offStateImageLocationY: 320,
   onStateImageLocationX: 64,
   onStateImageLocationY: 256,
+  handleHover: () => {},
 }
 
 export const floaterIcon: IIconProps = {
@@ -164,6 +175,7 @@ export const floaterIcon: IIconProps = {
   offStateImageLocationY: 704,
   onStateImageLocationX: 0,
   onStateImageLocationY: 640,
+  handleHover: () => {},
 }
 
 export const tailIcon: IIconProps = {
@@ -177,6 +189,7 @@ export const tailIcon: IIconProps = {
   offStateImageLocationY: 704,
   onStateImageLocationX: 64,
   onStateImageLocationY: 640,
+  handleHover: () => {},
 }
 
 export const bottleIcon: IIconProps = {
@@ -190,6 +203,7 @@ export const bottleIcon: IIconProps = {
   offStateImageLocationY: 704,
   onStateImageLocationX: 128,
   onStateImageLocationY: 640,
+  handleHover: () => {},
 }
 
 export const oxyaleIcon: IIconProps = {
@@ -203,6 +217,7 @@ export const oxyaleIcon: IIconProps = {
   offStateImageLocationY: 704,
   onStateImageLocationX: 192,
   onStateImageLocationY: 640,
+  handleHover: () => {},
 }
 
 ////// Items: row 4 //////
@@ -217,6 +232,7 @@ export const canoeIcon: IIconProps = {
   offStateImageLocationY: 320,
   onStateImageLocationX: 192,
   onStateImageLocationY: 256,
+  handleHover: () => {},
 }
 
 export const slabIcon: IIconProps = {
@@ -230,6 +246,7 @@ export const slabIcon: IIconProps = {
   offStateImageLocationY: 832,
   onStateImageLocationX: 0,
   onStateImageLocationY: 768,
+  handleHover: () => {},
 }
 
 export const chimeIcon: IIconProps = {
@@ -243,6 +260,7 @@ export const chimeIcon: IIconProps = {
   offStateImageLocationY: 832,
   onStateImageLocationX: 64,
   onStateImageLocationY: 768,
+  handleHover: () => {},
 }
 
 export const cubeIcon: IIconProps = {
@@ -256,6 +274,7 @@ export const cubeIcon: IIconProps = {
   offStateImageLocationY: 832,
   onStateImageLocationX: 128,
   onStateImageLocationY: 768,
+  handleHover: () => {},
 }
 
 export const adamantIcon: IIconProps = {
@@ -269,6 +288,7 @@ export const adamantIcon: IIconProps = {
   offStateImageLocationY: 832,
   onStateImageLocationX: 192,
   onStateImageLocationY: 768,
+  handleHover: () => {},
 }
 
 ////// Orbs //////
@@ -284,6 +304,7 @@ export const earthOrb: IIconProps = {
   offStateImageLocationY: 960,
   onStateImageLocationX: 64,
   onStateImageLocationY: 960,
+  handleHover: () => {},
 }
 
 export const fireOrb: IIconProps = {
@@ -298,6 +319,7 @@ export const fireOrb: IIconProps = {
   offStateImageLocationY: 960,
   onStateImageLocationX: 128,
   onStateImageLocationY: 960,
+  handleHover: () => {},
 }
 
 export const waterOrb: IIconProps = {
@@ -312,6 +334,7 @@ export const waterOrb: IIconProps = {
   offStateImageLocationY: 960,
   onStateImageLocationX: 192,
   onStateImageLocationY: 960,
+  handleHover: () => {},
 }
 
 export const airOrb: IIconProps = {
@@ -326,6 +349,7 @@ export const airOrb: IIconProps = {
   offStateImageLocationY: 960,
   onStateImageLocationX: 256,
   onStateImageLocationY: 960,
+  handleHover: () => {},
 }
 
 ////// Main quest NPCs //////
@@ -340,6 +364,7 @@ export const kingIcon: IIconProps = {
   offStateImageLocationY: 64,
   onStateImageLocationX: 0,
   onStateImageLocationY: 0,
+  handleHover: () => {},
 }
 
 export const saraIcon: IIconProps = {
@@ -353,6 +378,7 @@ export const saraIcon: IIconProps = {
   offStateImageLocationY: 64,
   onStateImageLocationX: 64,
   onStateImageLocationY: 0,
+  handleHover: () => {},
 }
 
 export const bikkeIcon: IIconProps = {
@@ -366,6 +392,7 @@ export const bikkeIcon: IIconProps = {
   offStateImageLocationY: 64,
   onStateImageLocationX: 128,
   onStateImageLocationY: 0,
+  handleHover: () => {},
 }
 
 export const sardaIcon: IIconProps = {
@@ -379,6 +406,7 @@ export const sardaIcon: IIconProps = {
   offStateImageLocationY: 64,
   onStateImageLocationX: 192,
   onStateImageLocationY: 0,
+  handleHover: () => {},
 }
 
 export const sagesIcon: IIconProps = {
@@ -392,6 +420,7 @@ export const sagesIcon: IIconProps = {
   offStateImageLocationY: 64,
   onStateImageLocationX: 256,
   onStateImageLocationY: 0,
+  handleHover: () => {},
 }
 
 export const robotIcon: IIconProps = {
@@ -405,6 +434,7 @@ export const robotIcon: IIconProps = {
   offStateImageLocationY: 64,
   onStateImageLocationX: 320,
   onStateImageLocationY: 0,
+  handleHover: () => {},
 }
 
 ////// Fetch quest NPCs //////
@@ -419,6 +449,7 @@ export const astosIcon: IIconProps = {
   offStateImageLocationY: 192,
   onStateImageLocationX: 0,
   onStateImageLocationY: 128,
+  handleHover: () => {},
 }
 
 export const matoyaIcon: IIconProps = {
@@ -432,6 +463,7 @@ export const matoyaIcon: IIconProps = {
   offStateImageLocationY: 192,
   onStateImageLocationX: 64,
   onStateImageLocationY: 128,
+  handleHover: () => {},
 }
 
 export const elfIcon: IIconProps = {
@@ -445,6 +477,7 @@ export const elfIcon: IIconProps = {
   offStateImageLocationY: 192,
   onStateImageLocationX: 128,
   onStateImageLocationY: 128,
+  handleHover: () => {},
 }
 
 export const nerrickIcon: IIconProps = {
@@ -458,6 +491,7 @@ export const nerrickIcon: IIconProps = {
   offStateImageLocationY: 192,
   onStateImageLocationX: 192,
   onStateImageLocationY: 128,
+  handleHover: () => {},
 }
 
 export const smythIcon: IIconProps = {
@@ -471,6 +505,7 @@ export const smythIcon: IIconProps = {
   offStateImageLocationY: 192,
   onStateImageLocationX: 256,
   onStateImageLocationY: 128,
+  handleHover: () => {},
 }
 
 export const lefeinianIcon: IIconProps = {
@@ -484,6 +519,7 @@ export const lefeinianIcon: IIconProps = {
   offStateImageLocationY: 192,
   onStateImageLocationX: 320,
   onStateImageLocationY: 128,
+  handleHover: () => {},
 }
 
 ////// Shopkeeper and fairy //////
@@ -499,6 +535,7 @@ export const shopkeeperIcon: IIconProps = {
   offStateImageLocationY: 64,
   onStateImageLocationX: 384,
   onStateImageLocationY: 0,
+  handleHover: () => {},
 }
 
 export const fairyIcon: IIconProps = {
@@ -513,5 +550,6 @@ export const fairyIcon: IIconProps = {
   offStateImageLocationY: 192,
   onStateImageLocationX: 384,
   onStateImageLocationY: 128,
+  handleHover: () => {},
 }
 

@@ -102,6 +102,8 @@ export interface IIconProps {
   onStateImageLocationX: number;
   /** y coordinate for the on state icon in the underlying image */
   onStateImageLocationY: number;
+  /** Handle icon hover events */
+  handleHover: (caption: string) => void;
 }
 
 export interface ITrackerBoxProps extends ITitle {
@@ -129,6 +131,8 @@ export interface ITrackerBoxProps extends ITitle {
   cursor?: string;
   /** Collection of icons to render in this box */
   icons?: IIconProps[];
+  /** Handle icon hover events */
+  handleHover: (caption: string) => void;
 }
 
 export interface ITrackerContainerProps {
@@ -138,4 +142,36 @@ export interface ITrackerContainerProps {
   nameType: IconNameType;
   /** Tracker boxes to show in this container */
   boxes: ITrackerBoxProps[];
+  /** Handle icon hover events */
+  handleHover: (caption: string) => void;
+}
+
+export interface ISettingsItem {
+  /** Text label for the setting in the menu */
+  name: string;
+  /** Text that appears in the settings menu caption */
+  caption: string;
+  /** This setting is a radio button or a checkbox */
+  isRadio: boolean;
+  /** Group for the radio buttons or input name attribute for checkboxes */
+  group: string;
+  /** Value of this setting */
+  value: string;
+  /** Current value to compare against */
+  currentValue: string;
+}
+
+export interface ISettingsGroup {
+  /** Title for the group header */
+  title: string;
+  /** x coordinate in the settings menu */
+  xPosition: number;
+  /** y coordinate in the settings menu */
+  yPosition: number;
+  /** Collection of items for this group, to be rendered in the order provided */
+  settings: ISettingsItem[];
+}
+
+export interface ISettingsMenuProps {
+  caption: string;
 }

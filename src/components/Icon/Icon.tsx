@@ -7,6 +7,7 @@ interface IIconState {
   iconState: Toggle;
   xImagePosition: string;
   yImagePosition: string;
+  isHovering: boolean;
 }
 
 export class Icon extends React.Component<IIconProps, IIconState> {
@@ -18,6 +19,7 @@ export class Icon extends React.Component<IIconProps, IIconState> {
       iconState: this.props.state,
       xImagePosition: formatBackgroundPosition(this.props.state === Toggle.off ? this.props.offStateImageLocationX : this.props.onStateImageLocationX),
       yImagePosition: formatBackgroundPosition(this.props.state === Toggle.off ? this.props.offStateImageLocationY : this.props.onStateImageLocationY),
+      isHovering: false,
     }
   }
 
@@ -49,8 +51,19 @@ export class Icon extends React.Component<IIconProps, IIconState> {
     currentIconStyle.top = top;
 
     return (
-      <div id={this._name + this.props.title} style={mergeStyles(Styles.iconStyle, currentIconStyle)} onClick={this._toggleIcon}></div>
+      <div
+        id={this._name + this.props.title}
+        style={mergeStyles(Styles.iconStyle, currentIconStyle)}
+        onClick={this._toggleIcon}
+        title={this.props.title}
+        onMouseEnter={() => this._handleHover(this.props.title)}
+        onMouseLeave={() => this._handleHover('')}
+      />
     )
+  }
+
+  private _handleHover = (caption: string) => {
+    this.props.handleHover(caption);
   }
 
   private _toggleIcon = () => {

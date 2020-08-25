@@ -68,8 +68,11 @@ export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxP
       <div id={this._name + this.props.id} style={mergeStyles(Styles.trackerBoxSquareStyle, finalStyle)}>
         <div id="trackerTitle" style={mergeStyles(Styles.trackerTitleStyle, currentTitleStyle)}></div>
 
-        {icons && icons.map((icon: IIconProps, index: number) => <Icon key={index} {...icon} />)}
-        {this.props.isTimer && <Timer key={"timer"} />}
+        {icons && icons.map((icon: IIconProps, index: number) => {
+          const iconProps: IIconProps = { ...icon, handleHover: this.props.handleHover };
+          return <Icon key={index} {...iconProps} />
+        })}
+        {this.props.isTimer && <Timer key={"timer"} handleHover={this.props.handleHover} />}
       </div>
     );
   }

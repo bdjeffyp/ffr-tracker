@@ -2,7 +2,7 @@
  * trackerProperties -
  * Add/remove tracker boxes here to populate the app's tracker container.
  */
-import { ITitle, ITrackerBoxProps, ITrackerContainerProps, Borders, IconNameType } from "./models";
+import { ITitle, ITrackerBoxProps, ITrackerContainerProps, Borders, IconNameType } from "../models";
 import * as Icons from "./iconProperties";
 
 ////// Title data //////
@@ -55,6 +55,7 @@ export const timerTrackerBox: ITrackerBoxProps = {
   fontWeight: 700,
   textAlign: "center",
   cursor: "pointer",
+  handleHover: () => {},
   ...timerTitle,
 }
 
@@ -67,6 +68,7 @@ export const itemsTrackerBox: ITrackerBoxProps = {
   boxPositionY: 8 + timerShift,
   boxWidth: 372,
   boxHeight: 312,
+  handleHover: () => {},
   ...itemsTitle,
   icons:
   [
@@ -84,6 +86,7 @@ export const orbsTrackerBox: ITrackerBoxProps = {
   boxPositionY: 8 + timerShift,
   boxWidth: 156,
   boxHeight: 312,
+  handleHover: () => {},
   ...orbsTitle,
   icons: [ Icons.earthOrb, Icons.fireOrb, Icons.waterOrb, Icons.airOrb ],
 }
@@ -95,6 +98,7 @@ export const npcsTrackerBox: ITrackerBoxProps = {
   boxPositionY: 376 + timerShift,
   boxWidth: 584,
   boxHeight: 164,
+  handleHover: () => {},
   ...npcsTitle,
   icons:
   [
@@ -108,5 +112,6 @@ export const npcsTrackerBox: ITrackerBoxProps = {
 export const ffrTracker: ITrackerContainerProps = {
   bordersState: Borders.thick,
   nameType: IconNameType.original,
+  handleHover: () => {},
   boxes: [itemsTrackerBox, orbsTrackerBox, npcsTrackerBox, timerTrackerBox],
 }

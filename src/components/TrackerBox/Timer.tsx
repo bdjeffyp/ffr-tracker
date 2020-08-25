@@ -8,8 +8,11 @@ import { TimerDigits } from '../../models';
 interface ITimerState {
   isRunning: boolean;
 }
+interface ITimerProps {
+  handleHover: (caption: string) => void;
+}
 
-export class Timer extends React.Component<{}, ITimerState> {
+export class Timer extends React.Component<ITimerProps, ITimerState> {
   private _timerUpdate: NodeJS.Timeout | undefined;
   private _startTime: moment.Moment;
   private _duration: moment.Duration;
@@ -35,7 +38,15 @@ export class Timer extends React.Component<{}, ITimerState> {
 
   public render() {
     return (
-      <div key="timerWrap" id="timerWrap" style={Styles.timerWrapStyle} onClick={this._toggleTimer} onContextMenu={this._resetTimer}>
+      <div
+        key="timerWrap"
+        id="timerWrap"
+        style={Styles.timerWrapStyle}
+        onClick={this._toggleTimer}
+        onContextMenu={this._resetTimer}
+        onMouseEnter={() => this._handleHover("Click to start/pause, right-click to reset")}
+        onMouseLeave={() => this._handleHover("")}
+      >
         {this._digits.map((_: number, index: number) => {
           let style: React.CSSProperties = {};
           let colonStyle: React.CSSProperties = {};
@@ -257,5 +268,9 @@ export class Timer extends React.Component<{}, ITimerState> {
       }
     }
     this._previousBlankCount = blankCount;
+  }
+
+  private _handleHover = (caption: string) => {
+    this.props.handleHover(caption);
   }
 }

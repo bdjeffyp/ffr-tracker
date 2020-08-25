@@ -1,27 +1,35 @@
 import React from 'react';
 import * as Styles from './App.style';
 import { Settings } from './components/Settings/Settings';
-import { getSavedSettings } from './utils';
 import { TrackerContainer } from './components/TrackerContainer/TrackerContainer';
-import { ffrTracker } from './trackerProperties';
-import { ISettingsProps } from './models';
+import { ffrTracker } from './properties/trackerProperties';
+import { ITrackerContainerProps, ISettingsProps } from './models';
 
-class App extends React.Component {
-  private _settings = {} as ISettingsProps;
+interface IAppState {
+  settingCaption: string;
+}
 
-  public componentDidMount() {
-    // Get and apply the settings from the cookies
-    this._settings = getSavedSettings();
+class App extends React.Component<{}, IAppState> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      settingCaption: "",
+    };
   }
 
   public render() {
+    const trackerProps: ITrackerContainerProps = { ...ffrTracker, handleHover: this._handleHoverChange };
     return (
       <div className="app" style={Styles.appContainerStyle} onContextMenu={this._captureRightClick}>
         <div className="totalCover" style={Styles.totalCoverStyle}></div>
-        <TrackerContainer {...ffrTracker} />
-        <Settings {...this._settings} />
+        <TrackerContainer {...trackerProps} />
+        <Settings caption={this.state.settingCaption} />
       </div>
     );
+  }
+
+  private _handleHoverChange = (caption: string) => {
+    this.setState({ settingCaption: caption });
   }
 
   /** Prevent context menu popups within our app */
