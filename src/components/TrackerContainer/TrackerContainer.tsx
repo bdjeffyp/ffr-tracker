@@ -10,7 +10,12 @@ export class TrackerContainer extends React.Component<ITrackerContainerProps> {
     return (
       <div id="trackerContainer" style={Styles.trackerContainerStyle}>
         {boxes && boxes.map((box: ITrackerBoxProps, index: number) => {
-          const boxProps: ITrackerBoxProps = { ...box, handleHover: this.props.handleHover };
+          // Merge missing props
+          const boxProps: ITrackerBoxProps = {
+            ...box,
+            settings: this.props.settings,
+            handleHover: this.props.handleHover,
+          };
           return <TrackerBox key={index} border={this.props.bordersState} {...boxProps} />;
         })}
       </div>

@@ -3,9 +3,10 @@ import { ISettingsState } from "../components/Settings/Settings";
 
 ////// Goals section //////
 const regularGoal = (state: ISettingsState): ISettingsItem => {
+  const crystals = state.currentShowCrystals === Toggle.on ? "crystals" : "ORBs";
   return {
     name: "Regular",
-    caption: "No Variation (Light crystals, get key/lute)",
+    caption: "No Variation (Light " + crystals + ", get key/lute)",
     isRadio: true,
     group: SettingsNames.goal,
     value: Goals.regular,
@@ -14,13 +15,21 @@ const regularGoal = (state: ISettingsState): ISettingsItem => {
 }
 
 const shardHuntGoal = (state: ISettingsState): ISettingsItem => {
+  const crystals = state.currentShowCrystals === Toggle.on ? "CRYSTALS" : "ORBS";
+  const disabled = state.currentFreeOrbs === Toggle.on;
+  let caption = "Find a required number of crystal shards";
+  if (disabled) {
+    caption += " - UNAVAILABLE WITH FREE " + crystals;
+  }
   return {
     name: "Shard Hunt",
-    caption: "Find a required number of crystal shards",
+    caption: caption,
     isRadio: true,
     group: SettingsNames.goal,
     value: Goals.shardHunt,
     currentValue: state.currentGoal,
+    // This goal is not selectable if Free ORBs is on
+    disabled: disabled,
   }
 }
 
@@ -36,13 +45,21 @@ const chaosRushGoal = (state: ISettingsState): ISettingsItem => {
 }
 
 const freeOrbsMode = (state: ISettingsState): ISettingsItem => {
+  const crystals = state.currentShowCrystals === Toggle.on ? "crystals" : "ORBs";
+  const disabled = state.currentGoal === Goals.shardHunt;
+  let caption = "Have all " + crystals + " lit at the start";
+  if (disabled) {
+    caption += " - UNAVAILABLE WITH SHARD HUNT";
+  }
   return {
-    name: "Free ORBs",
-    caption: "Have all crystals/ORBs lit at the start",
+    name: "Free " + crystals,
+    caption: caption,
     isRadio: false,
     group: SettingsNames.freeOrbs,
     value: Toggle.on,
     currentValue: state.currentFreeOrbs,
+    // This mode is not selectable if Shard Hunt is the goal
+    disabled: disabled,
   }
 }
 

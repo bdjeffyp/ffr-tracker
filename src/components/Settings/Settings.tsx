@@ -73,6 +73,7 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
                       type={item.isRadio ? "radio" : "checkbox"}
                       value={item.value}
                       checked={item.currentValue === item.value}
+                      disabled={item.disabled}
                       onChange={this._apply}
                     />
                     <label htmlFor={item.name}> {item.name}</label>
@@ -129,7 +130,8 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
     };
     document.cookie = "settings=" + JSON.stringify(newSettings) + "; expires=Sat, 26 Dec 2025 12:00:00 UTC; path=/";
 
-    // TODO: Apply the settings to the tracker boxes
+    // Pass up the settings to the App wrapper
+    this.props.handleChange(newSettings);
   }
 
   private _convertSettings = (props: ISettingsProps): ISettingsState => {

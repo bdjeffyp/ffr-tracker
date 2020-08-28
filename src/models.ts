@@ -102,6 +102,8 @@ export interface IIconProps {
   onStateImageLocationX: number;
   /** y coordinate for the on state icon in the underlying image */
   onStateImageLocationY: number;
+  /** App settings */
+  settings: ISettingsProps;
   /** Handle icon hover events */
   handleHover: (caption: string) => void;
 }
@@ -131,6 +133,8 @@ export interface ITrackerBoxProps extends ITitle {
   cursor?: string;
   /** Collection of icons to render in this box */
   icons?: IIconProps[];
+  /** App settings */
+  settings: ISettingsProps;
   /** Handle icon hover events */
   handleHover: (caption: string) => void;
 }
@@ -142,6 +146,8 @@ export interface ITrackerContainerProps {
   nameType: IconNameType;
   /** Tracker boxes to show in this container */
   boxes: ITrackerBoxProps[];
+  /** App settings */
+  settings: ISettingsProps;
   /** Handle icon hover events */
   handleHover: (caption: string) => void;
 }
@@ -159,6 +165,8 @@ export interface ISettingsItem {
   value: string;
   /** Current value to compare against */
   currentValue: string;
+  /** Disable this setting */
+  disabled?: boolean;
 }
 
 export interface ISettingsGroup {
@@ -174,4 +182,5 @@ export interface ISettingsGroup {
 
 export interface ISettingsMenuProps {
   caption: string;
+  handleChange: (settings: ISettingsProps) => void;
 }

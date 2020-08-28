@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as Styles from './TrackerBox.style';
-import { ITrackerBoxProps, Borders, IIconProps } from '../../models';
+import { ITrackerBoxProps, Borders, IIconProps, Toggle } from '../../models';
 import { mergeStyles, formatBackgroundPosition, centerObject } from '../../utils';
 import thickBorderImage from '../../images/borderThick.png';
 import thinBorderImage from '../../images/borderThin.png';
@@ -69,10 +69,17 @@ export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxP
         <div id="trackerTitle" style={mergeStyles(Styles.trackerTitleStyle, currentTitleStyle)}></div>
 
         {icons && icons.map((icon: IIconProps, index: number) => {
-          const iconProps: IIconProps = { ...icon, handleHover: this.props.handleHover };
+          // Merge missing props
+          const iconProps: IIconProps = {
+            ...icon,
+            settings: this.props.settings,
+            handleHover: this.props.handleHover,
+          };
           return <Icon key={index} {...iconProps} />
         })}
-        {this.props.isTimer && <Timer key={"timer"} handleHover={this.props.handleHover} />}
+        {this.props.isTimer && (
+          <Timer key={"timer"} handleHover={this.props.handleHover} />
+        )}
       </div>
     );
   }
