@@ -5,6 +5,7 @@ import { TrackerContainer } from './components/TrackerContainer/TrackerContainer
 import { ffrTracker } from './properties/trackerProperties';
 import { ITrackerContainerProps, ISettingsProps, Goals, Toggle, Layouts, Borders, IconNameType } from './models';
 import { getSavedSettings } from './utils';
+import { OriginalItemNames, ModernItemNames } from './strings';
 
 interface IAppState {
   settingCaption: string;
@@ -35,13 +36,15 @@ class App extends React.Component<{}, IAppState> {
   }
 
   public render() {
+    const nameType = this.state.currentSettings.showCrystals === Toggle.on ? IconNameType.modern : IconNameType.original;
+    const names = nameType === IconNameType.original ? OriginalItemNames : ModernItemNames;
     // Build tracker props based on settings
     const trackerProps: ITrackerContainerProps = {
-      nameType: this.state.currentSettings.showCrystals ? IconNameType.modern : IconNameType.original,
+      nameType: nameType,
       bordersState: this.state.currentSettings.border,
       settings: this.state.currentSettings,
       handleHover: this._handleHoverChange,
-      boxes: ffrTracker.boxes!,
+      boxes: ffrTracker(names).boxes!,
     };
     return (
       <div className="app" style={Styles.appContainerStyle} onContextMenu={this._captureRightClick}>

@@ -58,7 +58,6 @@ export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxP
       // Identifies the location of the title in the underlying graphic file
       backgroundPosition: xImagePosition + " " + yImagePosition,
       // Mostly centers the title image within the tracker box
-      // TODO: Should specify the width of the title image in the props rather than the generic setting of 136px, then add half that value to get the true center.
       left: centerObject(this.props.boxWidth, this.props.titleWidth),
     }
 

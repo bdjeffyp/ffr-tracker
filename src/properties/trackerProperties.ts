@@ -2,8 +2,9 @@
  * trackerProperties -
  * Add/remove tracker boxes here to populate the app's tracker container.
  */
-import { ITitle, ITrackerBoxProps, ITrackerContainerProps, Borders, IconNameType, ISettingsProps } from "../models";
+import { ITitle, ITrackerBoxProps, ITrackerContainerProps, ISettingsProps } from "../models";
 import * as Icons from "./iconProperties";
+import { IItemNames } from "../strings";
 
 ////// Title data //////
 export const itemsTitle: ITitle = {
@@ -63,60 +64,67 @@ export const timerTrackerBox: ITrackerBoxProps = {
 
 // If timer is visible, other boxes will shift down
 const timerShift = timerTrackerBox.visible ? 136 : 0;
-export const itemsTrackerBox: ITrackerBoxProps = {
-  id: "Items",
-  visible: true,
-  boxPositionX: 8,
-  boxPositionY: 8 + timerShift,
-  boxWidth: 372,
-  boxHeight: 312,
-  ...itemsTitle,
-  icons:
-  [
-    Icons.bridgeIcon, Icons.luteIcon, Icons.crownIcon, Icons.crystalEyeIcon, Icons.herbIcon,
-    Icons.shipIcon, Icons.keyIcon, Icons.tntIcon, Icons.rubyIcon, Icons.rodIcon,
-    Icons.canalIcon, Icons.floaterIcon, Icons.tailIcon, Icons.bottleIcon, Icons.oxyaleIcon,
-    Icons.canoeIcon, Icons.slabIcon, Icons.chimeIcon, Icons.cubeIcon, Icons.adamantIcon,
-  ],
-  // empty props
-  settings: {} as ISettingsProps,
-  handleHover: () => {},
+export const itemsTrackerBox = (names: IItemNames): ITrackerBoxProps => {
+  return {
+    id: "Items",
+    visible: true,
+    boxPositionX: 8,
+    boxPositionY: 8 + timerShift,
+    boxWidth: 372,
+    boxHeight: 312,
+    ...itemsTitle,
+    icons:
+    [
+      Icons.bridgeIcon(names), Icons.luteIcon(names), Icons.crownIcon(names), Icons.crystalEyeIcon(names), Icons.herbIcon(names),
+      Icons.shipIcon(names), Icons.keyIcon(names), Icons.tntIcon(names), Icons.rubyIcon(names), Icons.rodIcon(names),
+      Icons.canalIcon(names), Icons.floaterIcon(names), Icons.tailIcon(names), Icons.bottleIcon(names), Icons.oxyaleIcon(names),
+      Icons.canoeIcon(names), Icons.slabIcon(names), Icons.chimeIcon(names), Icons.cubeIcon(names), Icons.adamantIcon(names),
+    ],
+    // empty props
+    settings: {} as ISettingsProps,
+    handleHover: () => {},
+  }
 }
 
-export const orbsTrackerBox: ITrackerBoxProps = {
-  id: "Orbs",
-  visible: true,
-  boxPositionX: 436,
-  boxPositionY: 8 + timerShift,
-  boxWidth: 156,
-  boxHeight: 312,
-  ...orbsTitle,
-  icons: [ Icons.earthOrb, Icons.fireOrb, Icons.waterOrb, Icons.airOrb ],
-  // empty props
-  settings: {} as ISettingsProps,
-  handleHover: () => {},
+export const orbsTrackerBox = (names: IItemNames): ITrackerBoxProps => {
+  return {
+    id: "Orbs",
+    visible: true,
+    boxPositionX: 436,
+    boxPositionY: 8 + timerShift,
+    boxWidth: 156,
+    boxHeight: 312,
+    ...orbsTitle,
+    icons: [ Icons.earthOrb(names), Icons.fireOrb(names), Icons.waterOrb(names), Icons.airOrb(names) ],
+    // empty props
+    settings: {} as ISettingsProps,
+    handleHover: () => {},
+  }
 }
 
-export const npcsTrackerBox: ITrackerBoxProps = {
-  id: "Npcs",
-  visible: true,
-  boxPositionX: 8,
-  boxPositionY: 376 + timerShift,
-  boxWidth: 584,
-  boxHeight: 164,
-  ...npcsTitle,
-  icons:
-  [
-    Icons.kingIcon, Icons.saraIcon, Icons.bikkeIcon, Icons.sardaIcon, Icons.sagesIcon, Icons.robotIcon, Icons.shopkeeperIcon,
-    Icons.astosIcon, Icons.matoyaIcon, Icons.elfIcon, Icons.nerrickIcon, Icons.smythIcon, Icons.lefeinianIcon, Icons.fairyIcon,
-  ],
-  // empty props
-  settings: {} as ISettingsProps,
-  handleHover: () => {},
+export const npcsTrackerBox = (names: IItemNames): ITrackerBoxProps => {
+  return {
+    id: "Npcs",
+    visible: true,
+    boxPositionX: 8,
+    boxPositionY: 376 + timerShift,
+    boxWidth: 584,
+    boxHeight: 164,
+    ...npcsTitle,
+    icons:
+    [
+      Icons.kingIcon(names), Icons.saraIcon(names), Icons.bikkeIcon(names), Icons.sardaIcon(names), Icons.sagesIcon(names), Icons.robotIcon(names), Icons.shopkeeperIcon(names),
+      Icons.astosIcon(names), Icons.matoyaIcon(names), Icons.elfIcon(names), Icons.nerrickIcon(names), Icons.smythIcon(names), Icons.lefeinianIcon(names), Icons.fairyIcon(names),
+    ],
+    // empty props
+    settings: {} as ISettingsProps,
+    handleHover: () => {},
+  }
 }
 
 ////// Tracker container //////
-// TODO: Will need a way to have these items updated by the Settings component
-export const ffrTracker: Partial<ITrackerContainerProps> = {
-  boxes: [itemsTrackerBox, orbsTrackerBox, npcsTrackerBox, timerTrackerBox],
+export const ffrTracker = (names: IItemNames): Partial<ITrackerContainerProps> => {
+  return {
+    boxes: [itemsTrackerBox(names), orbsTrackerBox(names), npcsTrackerBox(names), timerTrackerBox],
+  }
 }

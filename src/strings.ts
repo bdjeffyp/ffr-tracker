@@ -76,7 +76,7 @@ export const OriginalItemNames: IItemNames = {
   matoya: "Matoya",
   elf: "Elf Prince",
   nerrick: "Nerrick",
-  smyth: "Smith",
+  smyth: "Blacksmith",
   lefeinian: "Lefeinian",
   shopkeeper: "Shopkeeper",
   fairy: "Fairy",
