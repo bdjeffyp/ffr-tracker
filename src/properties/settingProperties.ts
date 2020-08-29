@@ -16,8 +16,8 @@ const regularGoal = (state: ISettingsState): ISettingsItem => {
 
 const shardHuntGoal = (state: ISettingsState): ISettingsItem => {
   const crystals = state.currentShowCrystals === Toggle.on ? "CRYSTALS" : "ORBS";
-  const disabled = state.currentFreeOrbs === Toggle.on;
-  let caption = "Find a required number of crystal shards";
+  const disabled = true; //state.currentFreeOrbs === Toggle.on;
+  let caption = "Find a required number of crystal shards - COMING SOON";
   if (disabled) {
     caption += " - UNAVAILABLE WITH FREE " + crystals;
   }
@@ -36,18 +36,19 @@ const shardHuntGoal = (state: ISettingsState): ISettingsItem => {
 const chaosRushGoal = (state: ISettingsState): ISettingsItem => {
   return {
     name: "Chaos Rush",
-    caption: "Have lute, key not required in Temple of Fiends Revisited",
+    caption: "Have lute, key not required in Temple of Fiends Revisited - COMING SOON",
     isRadio: true,
     group: SettingsNames.goal,
     value: Goals.chaosRush,
     currentValue: state.currentGoal,
+    disabled: true,
   }
 }
 
 const freeOrbsMode = (state: ISettingsState): ISettingsItem => {
   const crystals = state.currentShowCrystals === Toggle.on ? "crystals" : "ORBs";
-  const disabled = state.currentGoal === Goals.shardHunt;
-  let caption = "Have all " + crystals + " lit at the start";
+  const disabled = true; //state.currentGoal === Goals.shardHunt;
+  let caption = "Have all " + crystals + " lit at the start - COMING SOON";
   if (disabled) {
     caption += " - UNAVAILABLE WITH SHARD HUNT";
   }
