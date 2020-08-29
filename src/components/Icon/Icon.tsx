@@ -23,6 +23,17 @@ export class Icon extends React.Component<IIconProps, IIconState> {
     }
   }
 
+  public componentDidUpdate(prevProps: IIconProps) {
+    // If any of the icon's props updated, update the state
+    if (prevProps !== this.props) {
+      this.setState({
+        iconState: this.props.state,
+        xImagePosition: formatBackgroundPosition(this.props.state === Toggle.off ? this.props.offStateImageLocationX : this.props.onStateImageLocationX),
+        yImagePosition: formatBackgroundPosition(this.props.state === Toggle.off ? this.props.offStateImageLocationY : this.props.onStateImageLocationY),
+      });
+    }
+  }
+
   public render() {
     // Build the extended style information from the props
     const currentIconStyle: React.CSSProperties = {

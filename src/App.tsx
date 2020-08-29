@@ -44,7 +44,7 @@ class App extends React.Component<{}, IAppState> {
       bordersState: this.state.currentSettings.border,
       settings: this.state.currentSettings,
       handleHover: this._handleHoverChange,
-      boxes: ffrTracker(names).boxes!,
+      boxes: ffrTracker(names, this.state.currentSettings.goal, this.state.currentSettings.showTimer === Toggle.on).boxes!,
     };
     return (
       <div className="app" style={Styles.appContainerStyle} onContextMenu={this._captureRightClick}>

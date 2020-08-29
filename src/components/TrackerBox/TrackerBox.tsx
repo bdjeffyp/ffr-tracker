@@ -12,8 +12,41 @@ interface IExtendedBoxProps {
   border: Borders;
 }
 
-export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxProps> {
+interface ITrackerBoxState {
+  titleImageLocationX: number;
+  titleImageLocationY: number;
+  titleWidth: number;
+}
+
+export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxProps, ITrackerBoxState> {
   private _name = "tracker";
+
+  constructor(props: ITrackerBoxProps & IExtendedBoxProps) {
+    super(props);
+    this.state = {
+      titleImageLocationX: 0,
+      titleImageLocationY: 0,
+      titleWidth: 0,
+    };
+  }
+
+  public componentDidMount() {
+    this.setState({
+      titleImageLocationX: this.props.titleImageLocationX,
+      titleImageLocationY: this.props.titleImageLocationY,
+      titleWidth: this.props.titleWidth,
+    });
+  }
+
+  public componentDidUpdate(prevProps: ITrackerBoxProps & IExtendedBoxProps) {
+    if (prevProps !== this.props) {
+      this.setState({
+        titleImageLocationX: this.props.titleImageLocationX,
+        titleImageLocationY: this.props.titleImageLocationY,
+        titleWidth: this.props.titleWidth,
+      })
+    }
+  }
 
   public render() {
     // Build the extended style information from the props
@@ -52,19 +85,20 @@ export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxP
     }
     const finalStyle = this.props.isTimer ? {...currentTrackerBoxStyle, ...extendedTrackerBoxStyle} : currentTrackerBoxStyle;
 
-    const xImagePosition = formatBackgroundPosition(this.props.titleImageLocationX);
-    const yImagePosition = formatBackgroundPosition(this.props.titleImageLocationY);
+    const xImagePosition = formatBackgroundPosition(this.state.titleImageLocationX);
+    const yImagePosition = formatBackgroundPosition(this.state.titleImageLocationY);
     const currentTitleStyle: React.CSSProperties = {
       // Identifies the location of the title in the underlying graphic file
       backgroundPosition: xImagePosition + " " + yImagePosition,
       // Mostly centers the title image within the tracker box
-      left: centerObject(this.props.boxWidth, this.props.titleWidth),
+      left: centerObject(this.props.boxWidth, this.state.titleWidth),
     }
 
     const icons = this.props.icons;
 
     return (
       <div id={this._name + this.props.id} style={mergeStyles(Styles.trackerBoxSquareStyle, finalStyle)}>
+        {/* TODO: Hide the title in the compact views */}
         <div id="trackerTitle" style={mergeStyles(Styles.trackerTitleStyle, currentTitleStyle)}></div>
 
         {icons && icons.map((icon: IIconProps, index: number) => {

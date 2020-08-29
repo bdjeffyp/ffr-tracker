@@ -2,9 +2,9 @@
  * trackerProperties -
  * Add/remove tracker boxes here to populate the app's tracker container.
  */
-import { ITitle, ITrackerBoxProps, ITrackerContainerProps, ISettingsProps } from "../models";
+import { ITitle, ITrackerBoxProps, ITrackerContainerProps, ISettingsProps, Goals, IIconProps } from "../models";
 import * as Icons from "./iconProperties";
-import { IItemNames } from "../strings";
+import { IItemNames, OriginalItemNames } from "../strings";
 
 ////// Title data //////
 export const itemsTitle: ITitle = {
@@ -44,27 +44,29 @@ export const timerTitle: ITitle = {
 }
 
 ////// Tracker boxes //////
-export const timerTrackerBox: ITrackerBoxProps = {
-  id: "Timer",
-  isTimer: true,
-  visible: true,
-  boxPositionX: 8,
-  boxPositionY: 8,
-  boxWidth: 584,
-  boxHeight: 80,
-  fontSize: 70,
-  fontWeight: 700,
-  textAlign: "center",
-  cursor: "pointer",
-  ...timerTitle,
-  // empty props
-  settings: {} as ISettingsProps,
-  handleHover: () => {},
+export const timerTrackerBox = (isVisible: boolean): ITrackerBoxProps => {
+  return {
+    id: "Timer",
+    isTimer: true,
+    visible: isVisible,
+    boxPositionX: 8,
+    boxPositionY: 8,
+    boxWidth: 584,
+    boxHeight: 80,
+    fontSize: 70,
+    fontWeight: 700,
+    textAlign: "center",
+    cursor: "pointer",
+    ...timerTitle,
+    // empty props
+    settings: {} as ISettingsProps,
+    handleHover: () => {},
+  }
 }
 
-// If timer is visible, other boxes will shift down
-const timerShift = timerTrackerBox.visible ? 136 : 0;
-export const itemsTrackerBox = (names: IItemNames): ITrackerBoxProps => {
+export const itemsTrackerBox = (names: IItemNames, timerVisible: boolean): ITrackerBoxProps => {
+  // If timer is visible, other boxes will shift down
+  const timerShift = timerVisible ? 136 : 0;
   return {
     id: "Items",
     visible: true,
@@ -86,7 +88,28 @@ export const itemsTrackerBox = (names: IItemNames): ITrackerBoxProps => {
   }
 }
 
-export const orbsTrackerBox = (names: IItemNames): ITrackerBoxProps => {
+const orbTitleProps = (names: IItemNames, goal: Goals): ITitle => {
+  switch (goal) {
+    case Goals.regular:
+    case Goals.chaosRush:
+      return names === OriginalItemNames ? orbsTitle : crystalsTitle;
+    case Goals.shardHunt:
+      return shardsTitle;
+  }
+}
+const orbIconsProps = (names: IItemNames, goal: Goals): IIconProps[] => {
+  switch (goal) {
+    case Goals.regular:
+    case Goals.chaosRush:
+      return [ Icons.earthOrb(names), Icons.fireOrb(names), Icons.waterOrb(names), Icons.airOrb(names) ];
+    case Goals.shardHunt:
+      // TODO: Change to use the shard icons once that is created
+      return [ Icons.earthOrb(names), Icons.fireOrb(names), Icons.waterOrb(names), Icons.airOrb(names) ];
+  }
+}
+export const orbsTrackerBox = (names: IItemNames, goal: Goals, timerVisible: boolean): ITrackerBoxProps => {
+  // If timer is visible, other boxes will shift down
+  const timerShift = timerVisible ? 136 : 0;
   return {
     id: "Orbs",
     visible: true,
@@ -94,15 +117,17 @@ export const orbsTrackerBox = (names: IItemNames): ITrackerBoxProps => {
     boxPositionY: 8 + timerShift,
     boxWidth: 156,
     boxHeight: 312,
-    ...orbsTitle,
-    icons: [ Icons.earthOrb(names), Icons.fireOrb(names), Icons.waterOrb(names), Icons.airOrb(names) ],
+    ...orbTitleProps(names, goal),
+    icons: orbIconsProps(names, goal),
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
   }
 }
 
-export const npcsTrackerBox = (names: IItemNames): ITrackerBoxProps => {
+export const npcsTrackerBox = (names: IItemNames, timerVisible: boolean): ITrackerBoxProps => {
+  // If timer is visible, other boxes will shift down
+  const timerShift = timerVisible ? 136 : 0;
   return {
     id: "Npcs",
     visible: true,
@@ -123,8 +148,13 @@ export const npcsTrackerBox = (names: IItemNames): ITrackerBoxProps => {
 }
 
 ////// Tracker container //////
-export const ffrTracker = (names: IItemNames): Partial<ITrackerContainerProps> => {
+export const ffrTracker = (names: IItemNames, goal: Goals, isVisible: boolean): Partial<ITrackerContainerProps> => {
   return {
-    boxes: [itemsTrackerBox(names), orbsTrackerBox(names), npcsTrackerBox(names), timerTrackerBox],
+    boxes: [
+      itemsTrackerBox(names, isVisible),
+      orbsTrackerBox(names, goal, isVisible),
+      npcsTrackerBox(names, isVisible),
+      timerTrackerBox(isVisible)
+    ],
   }
 }
