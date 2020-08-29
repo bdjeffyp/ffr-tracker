@@ -44,6 +44,10 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
   }
 
   public render() {
+    // Caption strings for the settings menu toggle and popout buttons
+    const toggleMenuCaption = "Toggle Settings Menu";
+    const popoutMenuCaption = "Open tracker in new window";
+
     // Get the caption from the hovered object in the tracker boxes.
     let caption = this.props.caption;
     // However, if a setting is hovered, the state will have a value so show that instead.
@@ -54,10 +58,22 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
     return (
       <div id={this._name} style={Styles.settingsTabStyle}>
         {/* Icons for opening menu and popping out tracker */}
-        <div style={Styles.tabIconStyle} title="Toggle Settings Menu" onClick={this._toggle}>
+        <div
+          style={Styles.tabIconStyle}
+          title={toggleMenuCaption}
+          onClick={this._toggle}
+          onMouseEnter={() => this._handleHover(toggleMenuCaption)}
+          onMouseLeave={() => this._handleHover("")}
+        >
           &#9776;
         </div>
-        <div style={mergeStyles(Styles.tabIconStyle, Styles.popOutTabIconStyle)} title="Open tracker in new window" onClick={this._popOut}>
+        <div
+          style={mergeStyles(Styles.tabIconStyle, Styles.popOutTabIconStyle)}
+          title={popoutMenuCaption}
+          onClick={this._popOut}
+          onMouseEnter={() => this._handleHover(popoutMenuCaption)}
+          onMouseLeave={() => this._handleHover("")}
+        >
           &#8663;
         </div>
         {/* Caption */}
@@ -173,14 +189,12 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
   };
 
   private _popOut = () => {
+    // TODO: Programmatically determine the width and height of the new window. The code below is making use of JQuery, which we are not using.
     // console.log($("#totalCover").width());
     // const width = $("#totalCover").width() + 40 + ((settings.mapAlign == 1) ? ($("#totalCover").height() / 2) : 0);
     // const height = $("#totalCover").height() + 40 + ((settings.mapAlign == 2) ? ($("#totalCover").width() / 2) : 0);
     // console.log(width + " " + height)
-    // open('index.html',
-    //   '',
-    //   'width=' + width + ',height=' + height + ',titlebar=0,menubar=0,toolbar=0,scrollbars=0,resizable=0'
-    // );
+    window.open("index.html", "", "titlebar=0,menubar=0,toolbar=0,scrollbars=0,resizable=0");
   };
 
   private _handleHover = (caption: string) => {
