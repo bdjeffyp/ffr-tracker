@@ -25,10 +25,13 @@ export class Icon extends React.Component<IIconProps, IIconState> {
 
   public componentDidUpdate(prevProps: IIconProps) {
     // If any of the icon's props updated, update the state
-    if (prevProps !== this.props) {
+    if (prevProps.offStateImageLocationX !== this.props.offStateImageLocationX) {
       this.setState({
-        iconState: this.props.state,
         xImagePosition: formatBackgroundPosition(this.props.state === Toggle.off ? this.props.offStateImageLocationX : this.props.onStateImageLocationX),
+      });
+    }
+    if (prevProps.offStateImageLocationY !== this.props.offStateImageLocationY) {
+      this.setState({
         yImagePosition: formatBackgroundPosition(this.props.state === Toggle.off ? this.props.offStateImageLocationY : this.props.onStateImageLocationY),
       });
     }
