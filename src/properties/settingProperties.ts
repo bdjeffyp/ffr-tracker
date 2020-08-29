@@ -104,22 +104,24 @@ const layoutSettings = (state: ISettingsState): ISettingsGroup => {
 const noBorder = (state: ISettingsState): ISettingsItem => {
   return {
     name: "Off",
-    caption: "No Border (most compact)",
+    caption: "No Border (most compact) - COMING SOON",
     isRadio: true,
     group: SettingsNames.border,
     value: Borders.off,
     currentValue: state.currentBorder,
+    disabled: true,
   }
 }
 
 const thinBorder = (state: ISettingsState): ISettingsItem => {
   return {
     name: "Thin",
-    caption: "Thin border",
+    caption: "Thin border - COMING SOON",
     isRadio: true,
     group: SettingsNames.border,
     value: Borders.thin,
     currentValue: state.currentBorder,
+    disabled: true,
   }
 }
 
