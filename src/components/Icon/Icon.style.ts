@@ -1,5 +1,5 @@
-import * as React from 'react';
-import gridImage from '../../images/grid.png';
+import * as React from "react";
+import gridImage from "../../images/grid.png";
 
 export const iconStyle: React.CSSProperties = {
   position: "absolute",
@@ -8,4 +8,4 @@ export const iconStyle: React.CSSProperties = {
   backgroundImage: `url(${gridImage})`,
   cursor: "pointer",
   margin: "8px",
-}
+};

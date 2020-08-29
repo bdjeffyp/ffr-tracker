@@ -1,19 +1,29 @@
-import * as React from 'react';
-import { gsap, Elastic, Power4, Back } from 'gsap';
-import { Goals, Layouts, Borders, Toggle, SettingsNames, ISettingsProps, ISettingsMenuProps, ISettingsGroup, ISettingsItem } from '../../models';
-import * as Styles from './Settings.style';
-import { mergeStyles, getSavedSettings } from '../../utils';
-import { settingsMenu } from '../../properties/settingProperties';
+import { Back, Elastic, gsap, Power4 } from "gsap";
+import * as React from "react";
+import {
+  Borders,
+  Goals,
+  ISettingsGroup,
+  ISettingsItem,
+  ISettingsMenuProps,
+  ISettingsProps,
+  Layouts,
+  SettingsNames,
+  Toggle,
+} from "../../models";
+import { settingsMenu } from "../../properties/settingProperties";
+import { getSavedSettings, mergeStyles } from "../../utils";
+import * as Styles from "./Settings.style";
 
 export interface ISettingsState {
-  panelOpen: boolean,
-  currentGoal: Goals,
-  currentFreeOrbs: Toggle,
-  currentLayout: Layouts,
-  currentBorder: Borders,
-  currentShowTimer: Toggle,
-  currentShowCrystals: Toggle,
-  caption: string,
+  panelOpen: boolean;
+  currentGoal: Goals;
+  currentFreeOrbs: Toggle;
+  currentLayout: Layouts;
+  currentBorder: Borders;
+  currentShowTimer: Toggle;
+  currentShowCrystals: Toggle;
+  caption: string;
 }
 
 export class Settings extends React.Component<ISettingsMenuProps, ISettingsState> {
@@ -44,28 +54,28 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
     return (
       <div id={this._name} style={Styles.settingsTabStyle}>
         {/* Icons for opening menu and popping out tracker */}
-        <div style={Styles.tabIconStyle} title="Toggle Settings Menu" onClick={this._toggle}>&#9776;</div>
-        <div style={mergeStyles(Styles.tabIconStyle, Styles.popOutTabIconStyle)} title="Open tracker in new window" onClick={this._popOut}>&#8663;</div>
+        <div style={Styles.tabIconStyle} title="Toggle Settings Menu" onClick={this._toggle}>
+          &#9776;
+        </div>
+        <div style={mergeStyles(Styles.tabIconStyle, Styles.popOutTabIconStyle)} title="Open tracker in new window" onClick={this._popOut}>
+          &#8663;
+        </div>
         {/* Caption */}
         <div style={Styles.captionStyle}>{caption}</div>
 
         {/* Render settings options based on the imported properties */}
-        {this._settings && (
+        {this._settings &&
           this._settings.map((group: ISettingsGroup, index: number) => {
             const positionStyle: React.CSSProperties = {
               left: group.xPosition,
               top: group.yPosition,
-            }
+            };
             return (
               <div key={index} style={mergeStyles(Styles.settingGroupStyle, positionStyle)}>
                 <b>&nbsp;{group.title}</b>
                 <br />
-                {group.settings.map((item: ISettingsItem, index: number) =>
-                  <div
-                    key={index}
-                    onMouseEnter={() => this._handleHover(item.caption)}
-                    onMouseLeave={() => this._handleHover("")}
-                  >
+                {group.settings.map((item: ISettingsItem, index: number) => (
+                  <div key={index} onMouseEnter={() => this._handleHover(item.caption)} onMouseLeave={() => this._handleHover("")}>
                     <input
                       id={item.name}
                       name={item.group}
@@ -78,11 +88,10 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
                     />
                     <label htmlFor={item.name}> {item.name}</label>
                   </div>
-                )}
+                ))}
               </div>
             );
-          })
-        )}
+          })}
       </div>
     );
   }
@@ -132,7 +141,7 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
 
     // Pass up the settings to the App wrapper
     this.props.handleChange(newSettings);
-  }
+  };
 
   private _convertSettings = (props: ISettingsProps): ISettingsState => {
     // Convert
@@ -146,7 +155,7 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
       currentShowCrystals: props.showCrystals,
       caption: "",
     };
-  }
+  };
 
   private _toggle = () => {
     // Flip the bit
@@ -161,22 +170,20 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
       gsap.to("#" + this._name, 0.3, { bottom: -495, ease: Back.easeIn });
       gsap.to("#" + this._name, 0.5, { backgroundColor: "rgba(17,17,17,0)", ease: Power4.easeOut });
     }
-  }
+  };
 
   private _popOut = () => {
     // console.log($("#totalCover").width());
-  
     // const width = $("#totalCover").width() + 40 + ((settings.mapAlign == 1) ? ($("#totalCover").height() / 2) : 0);
     // const height = $("#totalCover").height() + 40 + ((settings.mapAlign == 2) ? ($("#totalCover").width() / 2) : 0);
-  
     // console.log(width + " " + height)
     // open('index.html',
     //   '',
     //   'width=' + width + ',height=' + height + ',titlebar=0,menubar=0,toolbar=0,scrollbars=0,resizable=0'
     // );
-  }
+  };
 
   private _handleHover = (caption: string) => {
     this.setState({ caption: caption });
-  }
+  };
 }

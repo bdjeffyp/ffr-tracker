@@ -36,7 +36,7 @@ export enum SettingsNames {
 /** Defines which set of strings to use for the names of icons */
 export enum IconNameType {
   original,
-  modern
+  modern,
 }
 
 export enum TimerDigits {

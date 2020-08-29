@@ -2,8 +2,8 @@
  * iconProperties -
  * Add/remove icons from here to populate tracker boxes in the trackerProperties.ts file.
  */
-import { IIconProps, Toggle, ISettingsProps } from "../models";
-import { IItemNames, OriginalItemNames } from '../strings';
+import { IIconProps, ISettingsProps, Toggle } from "../models";
+import { IItemNames, OriginalItemNames } from "../strings";
 
 ////// Items: row 1 //////
 export const bridgeIcon = (names: IItemNames): IIconProps => {
@@ -21,8 +21,8 @@ export const bridgeIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const luteIcon = (names: IItemNames): IIconProps => {
   return {
@@ -39,8 +39,8 @@ export const luteIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const crownIcon = (names: IItemNames): IIconProps => {
   return {
@@ -57,8 +57,8 @@ export const crownIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const crystalEyeIcon = (names: IItemNames): IIconProps => {
   return {
@@ -75,8 +75,8 @@ export const crystalEyeIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const herbIcon = (names: IItemNames): IIconProps => {
   return {
@@ -93,8 +93,8 @@ export const herbIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 ////// Items: row 2 //////
 export const shipIcon = (names: IItemNames): IIconProps => {
@@ -112,8 +112,8 @@ export const shipIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const keyIcon = (names: IItemNames): IIconProps => {
   return {
@@ -130,8 +130,8 @@ export const keyIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const tntIcon = (names: IItemNames): IIconProps => {
   return {
@@ -148,8 +148,8 @@ export const tntIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const rubyIcon = (names: IItemNames): IIconProps => {
   return {
@@ -166,8 +166,8 @@ export const rubyIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const rodIcon = (names: IItemNames): IIconProps => {
   return {
@@ -184,8 +184,8 @@ export const rodIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 ////// Items: row 3 //////
 export const canalIcon = (names: IItemNames): IIconProps => {
@@ -203,8 +203,8 @@ export const canalIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const floaterIcon = (names: IItemNames): IIconProps => {
   return {
@@ -221,8 +221,8 @@ export const floaterIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const tailIcon = (names: IItemNames): IIconProps => {
   return {
@@ -239,8 +239,8 @@ export const tailIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const bottleIcon = (names: IItemNames): IIconProps => {
   return {
@@ -257,8 +257,8 @@ export const bottleIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const oxyaleIcon = (names: IItemNames): IIconProps => {
   return {
@@ -275,8 +275,8 @@ export const oxyaleIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 ////// Items: row 4 //////
 export const canoeIcon = (names: IItemNames): IIconProps => {
@@ -294,8 +294,8 @@ export const canoeIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const slabIcon = (names: IItemNames): IIconProps => {
   return {
@@ -312,8 +312,8 @@ export const slabIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const chimeIcon = (names: IItemNames): IIconProps => {
   return {
@@ -330,8 +330,8 @@ export const chimeIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const cubeIcon = (names: IItemNames): IIconProps => {
   return {
@@ -348,8 +348,8 @@ export const cubeIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const adamantIcon = (names: IItemNames): IIconProps => {
   return {
@@ -366,8 +366,8 @@ export const adamantIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 ////// Orbs/Crystals //////
 export const earthOrb = (names: IItemNames): IIconProps => {
@@ -386,8 +386,8 @@ export const earthOrb = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const fireOrb = (names: IItemNames): IIconProps => {
   return {
@@ -405,8 +405,8 @@ export const fireOrb = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const waterOrb = (names: IItemNames): IIconProps => {
   return {
@@ -424,8 +424,8 @@ export const waterOrb = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const airOrb = (names: IItemNames): IIconProps => {
   return {
@@ -443,8 +443,8 @@ export const airOrb = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 ////// Main quest NPCs //////
 export const kingIcon = (names: IItemNames): IIconProps => {
@@ -462,8 +462,8 @@ export const kingIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const saraIcon = (names: IItemNames): IIconProps => {
   return {
@@ -480,8 +480,8 @@ export const saraIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const bikkeIcon = (names: IItemNames): IIconProps => {
   return {
@@ -498,8 +498,8 @@ export const bikkeIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const sardaIcon = (names: IItemNames): IIconProps => {
   return {
@@ -516,8 +516,8 @@ export const sardaIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const sagesIcon = (names: IItemNames): IIconProps => {
   return {
@@ -534,8 +534,8 @@ export const sagesIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const robotIcon = (names: IItemNames): IIconProps => {
   return {
@@ -552,8 +552,8 @@ export const robotIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 ////// Fetch quest NPCs //////
 export const astosIcon = (names: IItemNames): IIconProps => {
@@ -571,8 +571,8 @@ export const astosIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const matoyaIcon = (names: IItemNames): IIconProps => {
   return {
@@ -589,8 +589,8 @@ export const matoyaIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const elfIcon = (names: IItemNames): IIconProps => {
   return {
@@ -607,8 +607,8 @@ export const elfIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const nerrickIcon = (names: IItemNames): IIconProps => {
   return {
@@ -625,8 +625,8 @@ export const nerrickIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const smythIcon = (names: IItemNames): IIconProps => {
   return {
@@ -643,8 +643,8 @@ export const smythIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const lefeinianIcon = (names: IItemNames): IIconProps => {
   return {
@@ -661,8 +661,8 @@ export const lefeinianIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 ////// Shopkeeper and fairy //////
 export const shopkeeperIcon = (names: IItemNames): IIconProps => {
@@ -681,8 +681,8 @@ export const shopkeeperIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};
 
 export const fairyIcon = (names: IItemNames): IIconProps => {
   return {
@@ -700,5 +700,5 @@ export const fairyIcon = (names: IItemNames): IIconProps => {
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
-  }
-}
+  };
+};

@@ -1,11 +1,11 @@
-import * as React from 'react';
-import * as Styles from './TrackerBox.style';
-import { ITrackerBoxProps, Borders, IIconProps, Toggle } from '../../models';
-import { mergeStyles, formatBackgroundPosition, centerObject } from '../../utils';
-import thickBorderImage from '../../images/borderThick.png';
-import thinBorderImage from '../../images/borderThin.png';
-import { Icon } from '../Icon/Icon';
-import { Timer } from './Timer';
+import * as React from "react";
+import thickBorderImage from "../../images/borderThick.png";
+import thinBorderImage from "../../images/borderThin.png";
+import { Borders, IIconProps, ITrackerBoxProps } from "../../models";
+import { centerObject, formatBackgroundPosition, mergeStyles } from "../../utils";
+import { Icon } from "../Icon/Icon";
+import { Timer } from "./Timer";
+import * as Styles from "./TrackerBox.style";
 
 interface IExtendedBoxProps {
   /** Border to render for this box */
@@ -44,7 +44,7 @@ export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxP
         titleImageLocationX: this.props.titleImageLocationX,
         titleImageLocationY: this.props.titleImageLocationY,
         titleWidth: this.props.titleWidth,
-      })
+      });
     }
   }
 
@@ -81,9 +81,9 @@ export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxP
       fontSize: this.props.fontSize,
       fontWeight: this.props.fontWeight,
       textAlign: this.props.textAlign as any,
-      cursor: this.props.cursor
-    }
-    const finalStyle = this.props.isTimer ? {...currentTrackerBoxStyle, ...extendedTrackerBoxStyle} : currentTrackerBoxStyle;
+      cursor: this.props.cursor,
+    };
+    const finalStyle = this.props.isTimer ? { ...currentTrackerBoxStyle, ...extendedTrackerBoxStyle } : currentTrackerBoxStyle;
 
     const xImagePosition = formatBackgroundPosition(this.state.titleImageLocationX);
     const yImagePosition = formatBackgroundPosition(this.state.titleImageLocationY);
@@ -92,7 +92,7 @@ export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxP
       backgroundPosition: xImagePosition + " " + yImagePosition,
       // Mostly centers the title image within the tracker box
       left: centerObject(this.props.boxWidth, this.state.titleWidth),
-    }
+    };
 
     const icons = this.props.icons;
 
@@ -101,18 +101,17 @@ export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxP
         {/* TODO: Hide the title in the compact views */}
         <div id="trackerTitle" style={mergeStyles(Styles.trackerTitleStyle, currentTitleStyle)}></div>
 
-        {icons && icons.map((icon: IIconProps, index: number) => {
-          // Merge missing props
-          const iconProps: IIconProps = {
-            ...icon,
-            settings: this.props.settings,
-            handleHover: this.props.handleHover,
-          };
-          return <Icon key={index} {...iconProps} />
-        })}
-        {this.props.isTimer && (
-          <Timer key={"timer"} handleHover={this.props.handleHover} />
-        )}
+        {icons &&
+          icons.map((icon: IIconProps, index: number) => {
+            // Merge missing props
+            const iconProps: IIconProps = {
+              ...icon,
+              settings: this.props.settings,
+              handleHover: this.props.handleHover,
+            };
+            return <Icon key={index} {...iconProps} />;
+          })}
+        {this.props.isTimer && <Timer key={"timer"} handleHover={this.props.handleHover} />}
       </div>
     );
   }

@@ -1,11 +1,11 @@
-import React from 'react';
-import * as Styles from './App.style';
-import { Settings } from './components/Settings/Settings';
-import { TrackerContainer } from './components/TrackerContainer/TrackerContainer';
-import { ffrTracker } from './properties/trackerProperties';
-import { ITrackerContainerProps, ISettingsProps, Goals, Toggle, Layouts, Borders, IconNameType } from './models';
-import { getSavedSettings } from './utils';
-import { OriginalItemNames, ModernItemNames } from './strings';
+import React from "react";
+import * as Styles from "./App.style";
+import { Settings } from "./components/Settings/Settings";
+import { TrackerContainer } from "./components/TrackerContainer/TrackerContainer";
+import { ffrTracker } from "./properties/trackerProperties";
+import { ITrackerContainerProps, ISettingsProps, Goals, Toggle, Layouts, Borders, IconNameType } from "./models";
+import { getSavedSettings } from "./utils";
+import { OriginalItemNames, ModernItemNames } from "./strings";
 
 interface IAppState {
   settingCaption: string;
@@ -31,7 +31,7 @@ class App extends React.Component<{}, IAppState> {
 
   public componentDidMount() {
     // Ensure the default settings are updated with saved settings, if available
-    const savedSettings = getSavedSettings()
+    const savedSettings = getSavedSettings();
     this._handleSettingsChange(savedSettings);
   }
 
@@ -65,17 +65,17 @@ class App extends React.Component<{}, IAppState> {
 
   private _handleHoverChange = (caption: string) => {
     this.setState({ settingCaption: caption });
-  }
+  };
 
   private _handleSettingsChange = (settings: ISettingsProps) => {
     this.setState({ currentSettings: settings });
     // this._updateBoxes(settings);
-  }
+  };
 
   /** Prevent context menu popups within our app */
   private _captureRightClick = (event: React.MouseEvent) => {
     event.preventDefault();
-  }
+  };
 }
 
 export default App;

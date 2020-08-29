@@ -1,5 +1,5 @@
-import { ISettingsItem, ISettingsGroup, SettingsNames, Goals, Toggle, Layouts, Borders } from "../models";
 import { ISettingsState } from "../components/Settings/Settings";
+import { Borders, Goals, ISettingsGroup, ISettingsItem, Layouts, SettingsNames, Toggle } from "../models";
 
 ////// Goals section //////
 const regularGoal = (state: ISettingsState): ISettingsItem => {
@@ -11,8 +11,8 @@ const regularGoal = (state: ISettingsState): ISettingsItem => {
     group: SettingsNames.goal,
     value: Goals.regular,
     currentValue: state.currentGoal,
-  }
-}
+  };
+};
 
 const shardHuntGoal = (state: ISettingsState): ISettingsItem => {
   const crystals = state.currentShowCrystals === Toggle.on ? "CRYSTALS" : "ORBS";
@@ -30,8 +30,8 @@ const shardHuntGoal = (state: ISettingsState): ISettingsItem => {
     currentValue: state.currentGoal,
     // This goal is not selectable if Free ORBs is on
     disabled: disabled,
-  }
-}
+  };
+};
 
 const chaosRushGoal = (state: ISettingsState): ISettingsItem => {
   return {
@@ -42,8 +42,8 @@ const chaosRushGoal = (state: ISettingsState): ISettingsItem => {
     value: Goals.chaosRush,
     currentValue: state.currentGoal,
     disabled: true,
-  }
-}
+  };
+};
 
 const freeOrbsMode = (state: ISettingsState): ISettingsItem => {
   const crystals = state.currentShowCrystals === Toggle.on ? "crystals" : "ORBs";
@@ -61,22 +61,17 @@ const freeOrbsMode = (state: ISettingsState): ISettingsItem => {
     currentValue: state.currentFreeOrbs,
     // This mode is not selectable if Shard Hunt is the goal
     disabled: disabled,
-  }
-}
+  };
+};
 
 const goalsSettings = (state: ISettingsState): ISettingsGroup => {
   return {
     title: "GOAL",
     xPosition: 50,
     yPosition: 40,
-    settings: [
-      regularGoal(state),
-      shardHuntGoal(state),
-      chaosRushGoal(state),
-      freeOrbsMode(state),
-    ],
-  }
-}
+    settings: [regularGoal(state), shardHuntGoal(state), chaosRushGoal(state), freeOrbsMode(state)],
+  };
+};
 
 ////// Layout section //////
 const squareLayout = (state: ISettingsState): ISettingsItem => {
@@ -87,19 +82,17 @@ const squareLayout = (state: ISettingsState): ISettingsItem => {
     group: SettingsNames.layout,
     value: Layouts.square,
     currentValue: state.currentLayout,
-  }
-}
+  };
+};
 
 const layoutSettings = (state: ISettingsState): ISettingsGroup => {
   return {
     title: "LAYOUT",
     xPosition: 170,
     yPosition: 40,
-    settings: [
-      squareLayout(state),
-    ],
-  }
-}
+    settings: [squareLayout(state)],
+  };
+};
 
 ////// Borders section //////
 const noBorder = (state: ISettingsState): ISettingsItem => {
@@ -111,8 +104,8 @@ const noBorder = (state: ISettingsState): ISettingsItem => {
     value: Borders.off,
     currentValue: state.currentBorder,
     disabled: true,
-  }
-}
+  };
+};
 
 const thinBorder = (state: ISettingsState): ISettingsItem => {
   return {
@@ -123,8 +116,8 @@ const thinBorder = (state: ISettingsState): ISettingsItem => {
     value: Borders.thin,
     currentValue: state.currentBorder,
     disabled: true,
-  }
-}
+  };
+};
 
 const thickBorder = (state: ISettingsState): ISettingsItem => {
   return {
@@ -134,21 +127,17 @@ const thickBorder = (state: ISettingsState): ISettingsItem => {
     group: SettingsNames.border,
     value: Borders.thick,
     currentValue: state.currentBorder,
-  }
-}
+  };
+};
 
 const borderSettings = (state: ISettingsState): ISettingsGroup => {
   return {
     title: "BORDERS",
     xPosition: 290,
     yPosition: 40,
-    settings: [
-      noBorder(state),
-      thinBorder(state),
-      thickBorder(state),
-    ],
-  }
-}
+    settings: [noBorder(state), thinBorder(state), thickBorder(state)],
+  };
+};
 
 ////// Timer section //////
 const timerOff = (state: ISettingsState): ISettingsItem => {
@@ -159,8 +148,8 @@ const timerOff = (state: ISettingsState): ISettingsItem => {
     group: SettingsNames.timerMode,
     value: Toggle.off,
     currentValue: state.currentShowTimer,
-  }
-}
+  };
+};
 
 const timerOn = (state: ISettingsState): ISettingsItem => {
   return {
@@ -170,20 +159,17 @@ const timerOn = (state: ISettingsState): ISettingsItem => {
     group: SettingsNames.timerMode,
     value: Toggle.on,
     currentValue: state.currentShowTimer,
-  }
-}
+  };
+};
 
 const timerSettings = (state: ISettingsState): ISettingsGroup => {
   return {
     title: "TIMER",
     xPosition: 170,
     yPosition: 170,
-    settings: [
-      timerOff(state),
-      timerOn(state),
-    ],
-  }
-}
+    settings: [timerOff(state), timerOn(state)],
+  };
+};
 
 ////// Crystal icons section //////
 const crystalIcons = (state: ISettingsState): ISettingsItem => {
@@ -194,8 +180,8 @@ const crystalIcons = (state: ISettingsState): ISettingsItem => {
     group: SettingsNames.iconSet,
     value: Toggle.on,
     currentValue: state.currentShowCrystals,
-  }
-}
+  };
+};
 
 const orbIcons = (state: ISettingsState): ISettingsItem => {
   return {
@@ -205,20 +191,17 @@ const orbIcons = (state: ISettingsState): ISettingsItem => {
     group: SettingsNames.iconSet,
     value: Toggle.off,
     currentValue: state.currentShowCrystals,
-  }
-}
+  };
+};
 
 const iconSettings = (state: ISettingsState): ISettingsGroup => {
   return {
     title: "ERA",
     xPosition: 50,
     yPosition: 170,
-    settings: [
-      crystalIcons(state),
-      orbIcons(state),
-    ],
-  }
-}
+    settings: [crystalIcons(state), orbIcons(state)],
+  };
+};
 
 ////// Settings menu collection //////
 export const settingsMenu = (state: ISettingsState): ISettingsGroup[] => [
@@ -227,4 +210,4 @@ export const settingsMenu = (state: ISettingsState): ISettingsGroup[] => [
   borderSettings(state),
   timerSettings(state),
   iconSettings(state),
-]
+];

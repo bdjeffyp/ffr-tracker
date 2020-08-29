@@ -80,7 +80,7 @@ export const OriginalItemNames: IItemNames = {
   lefeinian: "Lefeinian",
   shopkeeper: "Shopkeeper",
   fairy: "Fairy",
-}
+};
 
 export const ModernItemNames: IItemNames = {
   bridge: "Drawbridge",
@@ -122,4 +122,4 @@ export const ModernItemNames: IItemNames = {
   lefeinian: "Lufenian",
   shopkeeper: OriginalItemNames.shopkeeper,
   fairy: "Faerie",
-}
+};

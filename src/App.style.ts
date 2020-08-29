@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 export const appContainerStyle: React.CSSProperties = {
   backgroundColor: "#282c34",
@@ -6,7 +6,7 @@ export const appContainerStyle: React.CSSProperties = {
   fontFamily: "Oswald",
   color: "#fff",
   overflow: "hidden",
-}
+};
 
 export const totalCoverStyle: React.CSSProperties = {
   display: "none",
@@ -16,4 +16,4 @@ export const totalCoverStyle: React.CSSProperties = {
   backgroundColor: "#a00",
   opacity: "0.3",
   margin: "0",
-}
+};
