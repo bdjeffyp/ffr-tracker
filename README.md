@@ -1,10 +1,9 @@
 # Yet Another Final Fantasy Randomizer Tracker
+
 Found online at [https://bdjeffyp.github.io/ffr-tracker](https://bdjeffyp.github.io/ffr-tracker)
 
 This tracker is based on ItsSupercar's A Link to the Past tracker, using the base design to create a tracker for Final Fantasy Randomizer.
 Major changes include the use of React and TypeScript for development.
-
-# TODO - Update the text below!!!
 
 ## INSTALLATION
 
@@ -16,60 +15,30 @@ This is a browser-based tracker. You can simply open index.html directly to begi
 
 ###### BASIC USE
 
-- When you find an item, click its icon in the tracker. When you check an item location out in the world, click it on the map. When you find an item inside a dungeon, click on that dungeon's item counter on the map.
-- Some items, like the bow, cycle through multiple states. Make sure to click the icon until it matches what you have!
-- Click the white question mark on each dungeon icon to mark what that dungeon's prize is
-(Unknown -> Pendant -> Green Pendant -> Crystal -> Red Crystal).
-- Click the yellow question mark on the icons for Misery Mire and Turtle Rock to mark what type of medallion is required to enter each of them.
-(Unknown -> Bombos -> Ether -> Quake)
-- To mark a dungeon as completed, click the boss head icon or the large icon on the map.
+- Before starting your game, check the flags to see what items you have initially. For example: if you have a Free Bridge at the start, click on the icon for the bridge.
+- When you find an item, click its icon in the tracker. If you make a mistake and click the wrong icon, simply click it again.
 
-**TIP:** For icons that count up/down, or cycle through multiple states (like the bow, keys, and dungeon chests), you can right click to cycle backwards-- helpful if you need to undo a mistake!
+## GOAL-SPECIFIC INSTRUCTIONS
 
-###### COLOUR LEGEND
+###### SHARD HUNT (COMING SOON):
 
-Icons on the map are displayed in various colours. Here's what they mean:
-- **RED:** This item is not accessible.
-- **ORANGE**: This item is not accessible, but it is possible to check what it is.
-- **GREEN**: This item is accessible.
-- **BLUE**: This item is accessible, but only by traversing a dark room.
-- **YELLOW**: It is uncertain whether or not this item is accessible.
+- This changes the ORBs/Crystals section of the tracker to Shards.
+- Check the number of required shards to find from your flag set. Click on the +/- icons to match the flag with the number of shards. If the flag is for variable number of shards, you can set the required amount when you check the menu in-game for the first time.
+- Click on the shard icon to change the number of shards found by one. Right-click to reduce the count by one (in case you made a mistake).
+- You can visually tell how close you are to getting all required shards as the shard becomes brighter.
 
-###### DUNGEON CHESTS
+###### CHAOS RUSH/FREE ORBS:
 
-- The colour of the large circle tells you whether the boss is beatable, unbeatable, uncertain, or requires traversal of dark rooms (same as legend above).
-- The colour of the numbered circle tells you whether the next item in the dungeon is available, unavailable, or uncertain. The number indicates how many items total are left in the dungeon.
-- The colour and number of the small dots represents ALL the remaining items and the state of their availability.
-
-
-## MODE-SPECIFIC INSTRUCTIONS
-
-###### REGULAR:
-- While exploring dungeons in this mode, you should only count chests that contain a non-dungeon item.
-
-###### KEY-SANITY:
-- When you find a key inside a chest or in a free-standing location, mark it on the tracker.
-DO NOT mark keys that you find under pots or dropped by enemies!
-- While exploring dungeons in this mode, you should count every chest you open, no matter what is inside.
-
-###### RETRO:
-- In this mode, diamond-shaped shop icons are added to the map. If you find a shop that sells keys, mark it! These same shops also sell a "wooden arrow" item that is required to use your bow (unless you find the silver arrows somewhere).
-- Until you find a key shop, you should track the number of keys you've found using the key icon in the "DUNGEON" panel.
-- After you find a key shop (or get enough items to guarantee that one is accessible somewhere in the world), you'll be logically considered to have infinite keys, and no longer need to count them.
-- While exploring dungeons in this mode, you should only count chests that contain a non-dungeon item OR chests that contain a small key.
-
+- This simply checks off the Lute as found before starting your game. The hover prompt reminds you that the Key is not required to be found for the Temple of Fiends Revisited.
+- Clicking on the Free ORBs/Crystals checkbox will check off the ORBs as found before starting your game as well.
 
 ## OPTIONS
 
 Click the icon in the bottom left to open up the options menu.
 
-- **VARIATION:** Which variation of the game you're playing with.
-- **STATE:** Whether you're playing Standard or Open mode.
-- **LAYOUT:** Choose between a few different arrangements for the item tracker.
-- **ICONS:** Choose which style of icons the tracker uses.
-- **BORDERS:** Choose between a few different tracker border styles.
-- **DUNGEONS:** Choose what the dungeon icons look like.
-- **COMBINE FETCH ITEMS:** Choose whether you want to combine the mushroom/powder and flute/shovel, or keep those icons separated (if choosing the latter, the mushroom will replace the bomb and the shovel will replace the bug net).
-- **MAPS:** Choose how the map is positioned, or turn it off.
+- **GOAL:** Which variation of the game you're playing. Toggle Free ORBs on if that flag is set.
+- **ERA:** Choose if you want Crystals or ORBs, along with the modern or NES-era names for items and NPCs.
+- **LAYOUT (COMING SOON):** Choose between a few different arrangements for the item tracker. Currently only Square layout is available. The plan is to also use tall and wide layouts and toggle if everything in within one frame or separated by category.
+- **BORDERS (COMING SOON):** Choose between a few different tracker border styles.
+- **MAPS (COMING SOON):** Choose how the map is positioned, or turn it off.
 - **TIMER:** Show/hide the timer's tracker.
-- **LOCATION PREDICTOR:** Highlights the historical probability that a particular chest contains an item you'll need for go mode. The brightest chest is the one most likely to be valuable. Hovering over an item in the tracker will show probabilities for that particular item. Note that this feature is based only on past data and does not account for logic at all.
