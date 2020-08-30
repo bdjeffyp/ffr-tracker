@@ -42,6 +42,7 @@ export interface IItemNames {
   addShard: string;
   removeShard: string;
   requiredShards: string;
+  shardsFound: string;
 }
 
 export const OriginalItemNames: IItemNames = {
@@ -87,7 +88,8 @@ export const OriginalItemNames: IItemNames = {
   shards: "Shards",
   addShard: "Add a required shard",
   removeShard: "Remove a required shard",
-  requiredShards: "Shards required to find",
+  requiredShards: "Total shards required to find",
+  shardsFound: "Number of shards found",
 };
 
 export const ModernItemNames: IItemNames = {
@@ -134,4 +136,5 @@ export const ModernItemNames: IItemNames = {
   addShard: OriginalItemNames.addShard,
   removeShard: OriginalItemNames.removeShard,
   requiredShards: OriginalItemNames.requiredShards,
+  shardsFound: OriginalItemNames.shardsFound,
 };

@@ -2,12 +2,15 @@
  * iconProperties -
  * Add/remove icons from here to populate tracker boxes in the trackerProperties.ts file.
  */
-import { IIconProps, ISettingsProps, Toggle, ICoordinates } from "../models";
+import { ICoordinates, IIconProps, ISettingsProps, Toggle } from "../models";
 import { IItemNames, OriginalItemNames } from "../strings";
 
 ////// Constants for image locations and sizes //////
 const standardWidthHeight = 64;
 const shardWidthHeight = 32;
+const textHeight = 14;
+const slashSymbolWidth = 10; // Add one pixel to each side of the image. Should make larger if that is too close...
+
 const retroBridgeOff: ICoordinates = {
   x: 0,
   y: 320,
@@ -416,9 +419,10 @@ const airShard5: ICoordinates = {
   x: 352,
   y: 1056,
 };
+
 const numbersRowOneX = 1088;
 const numbersRowTwoX = 1102;
-const timesSymbolY = 0;
+// const timesSymbolY = 0;
 const zeroY = 10;
 const oneY = 20;
 const twoY = 30;
@@ -459,6 +463,45 @@ const thirtySixY = 122;
 const slashSymbolY = 143;
 const plusSymbolY = 151;
 const minusSymbolY = 163;
+const numbersCollection: ICoordinates[] = [
+  { x: numbersRowOneX, y: zeroY },
+  { x: numbersRowOneX, y: oneY },
+  { x: numbersRowOneX, y: twoY },
+  { x: numbersRowOneX, y: threeY },
+  { x: numbersRowOneX, y: fourY },
+  { x: numbersRowOneX, y: fiveY },
+  { x: numbersRowOneX, y: sixY },
+  { x: numbersRowOneX, y: sevenY },
+  { x: numbersRowOneX, y: eightY },
+  { x: numbersRowOneX, y: nineY },
+  { x: numbersRowOneX, y: tenY },
+  { x: numbersRowOneX, y: elevenY },
+  { x: numbersRowOneX, y: twelveY },
+  { x: numbersRowOneX, y: thirteenY },
+  { x: numbersRowOneX, y: fourteenY },
+  { x: numbersRowOneX, y: fifteenY },
+  { x: numbersRowOneX, y: sixteenY },
+  { x: numbersRowOneX, y: seventeenY },
+  { x: numbersRowOneX, y: eighteenY },
+  { x: numbersRowOneX, y: nineteenY },
+  { x: numbersRowOneX, y: twentyY },
+  { x: numbersRowOneX, y: twentyOneY },
+  { x: numbersRowOneX, y: twentyTwoY },
+  { x: numbersRowOneX, y: twentyThreeY },
+  { x: numbersRowOneX, y: twentyFourY },
+  { x: numbersRowOneX, y: twentyFiveY },
+  { x: numbersRowOneX, y: twentySixY },
+  { x: numbersRowOneX, y: twentySevenY },
+  { x: numbersRowOneX, y: twentyEightY },
+  { x: numbersRowOneX, y: twentyNineY },
+  { x: numbersRowTwoX, y: thirtyY },
+  { x: numbersRowTwoX, y: thirtyOneY },
+  { x: numbersRowTwoX, y: thirtyTwoY },
+  { x: numbersRowTwoX, y: thirtyThreeY },
+  { x: numbersRowTwoX, y: thirtyFourY },
+  { x: numbersRowTwoX, y: thirtyFiveY },
+  { x: numbersRowTwoX, y: thirtySixY },
+];
 
 ////// Items: row 1 //////
 export const bridgeIcon = (names: IItemNames): IIconProps => {
@@ -469,7 +512,7 @@ export const bridgeIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 0,
-    stateImageLocations: [retroBridgeOff, retroBridgeOn, ],
+    stateImageLocations: [retroBridgeOff, retroBridgeOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -484,7 +527,7 @@ export const luteIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 1,
-    stateImageLocations: [ luteOff, luteOn, ],
+    stateImageLocations: [luteOff, luteOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -499,7 +542,7 @@ export const crownIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 2,
-    stateImageLocations: [ crownOff, crownOn, ],
+    stateImageLocations: [crownOff, crownOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -514,7 +557,7 @@ export const crystalEyeIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 3,
-    stateImageLocations: [ crystalEyeOff, crystalEyeOn, ],
+    stateImageLocations: [crystalEyeOff, crystalEyeOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -529,7 +572,7 @@ export const herbIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 4,
-    stateImageLocations: [ herbOff, herbOn, ],
+    stateImageLocations: [herbOff, herbOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -545,7 +588,7 @@ export const shipIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 0,
-    stateImageLocations: [ retroShipOff, retroShipOn, ],
+    stateImageLocations: [retroShipOff, retroShipOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -560,7 +603,7 @@ export const keyIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 1,
-    stateImageLocations: [ keyOff, keyOn, ],
+    stateImageLocations: [keyOff, keyOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -575,7 +618,7 @@ export const tntIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 2,
-    stateImageLocations: [ tntOff, tntOn, ],
+    stateImageLocations: [tntOff, tntOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -590,7 +633,7 @@ export const rubyIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 3,
-    stateImageLocations: [ rubyOff, rubyOn, ],
+    stateImageLocations: [rubyOff, rubyOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -605,7 +648,7 @@ export const rodIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 4,
-    stateImageLocations: [ rodOff, rodOn, ],
+    stateImageLocations: [rodOff, rodOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -621,7 +664,7 @@ export const canalIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 2,
     column: 0,
-    stateImageLocations: [ retroCanalOff, retroCanalOn, ],
+    stateImageLocations: [retroCanalOff, retroCanalOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -636,7 +679,7 @@ export const floaterIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 2,
     column: 1,
-    stateImageLocations: [ floaterOff, floaterOn, ],
+    stateImageLocations: [floaterOff, floaterOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -651,7 +694,7 @@ export const tailIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 2,
     column: 2,
-    stateImageLocations: [ tailOff, tailOn, ],
+    stateImageLocations: [tailOff, tailOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -666,7 +709,7 @@ export const bottleIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 2,
     column: 3,
-    stateImageLocations: [ bottleOff, bottleOn, ],
+    stateImageLocations: [bottleOff, bottleOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -681,7 +724,7 @@ export const oxyaleIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 2,
     column: 4,
-    stateImageLocations: [ oxyaleOff, oxyaleOn, ],
+    stateImageLocations: [oxyaleOff, oxyaleOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -697,7 +740,7 @@ export const canoeIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 3,
     column: 0,
-    stateImageLocations: [ retroCanoeOff, retroCanoeOn, ],
+    stateImageLocations: [retroCanoeOff, retroCanoeOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -712,7 +755,7 @@ export const slabIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 3,
     column: 1,
-    stateImageLocations: [ slabOff, slabOn, ],
+    stateImageLocations: [slabOff, slabOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -727,7 +770,7 @@ export const chimeIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 3,
     column: 2,
-    stateImageLocations: [ chimeOff, chimeOn, ],
+    stateImageLocations: [chimeOff, chimeOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -742,7 +785,7 @@ export const cubeIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 3,
     column: 3,
-    stateImageLocations: [ cubeOff, cubeOn, ],
+    stateImageLocations: [cubeOff, cubeOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -757,7 +800,7 @@ export const adamantIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 3,
     column: 4,
-    stateImageLocations: [ adamantOff, adamantOn, ],
+    stateImageLocations: [adamantOff, adamantOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -773,8 +816,8 @@ export const earthOrb = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 0,
-    offsetY: 32,
-    stateImageLocations: [ names === OriginalItemNames ? orbOff : crystalOff, names === OriginalItemNames ? earthOrbOn : earthCrystalOn, ],
+    offsetY: 32, // shift down
+    stateImageLocations: [names === OriginalItemNames ? orbOff : crystalOff, names === OriginalItemNames ? earthOrbOn : earthCrystalOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -789,8 +832,8 @@ export const fireOrb = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 1,
-    offsetY: 32,
-    stateImageLocations: [ names === OriginalItemNames ? orbOff : crystalOff, names === OriginalItemNames ? fireOrbOn : fireCrystalOn, ],
+    offsetY: 32, // shift down
+    stateImageLocations: [names === OriginalItemNames ? orbOff : crystalOff, names === OriginalItemNames ? fireOrbOn : fireCrystalOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -805,8 +848,8 @@ export const waterOrb = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 0,
-    offsetY: 108,
-    stateImageLocations: [ names === OriginalItemNames ? orbOff : crystalOff, names === OriginalItemNames ? waterOrbOn : waterCrystalOn, ],
+    offsetY: 108, // shift WAY down
+    stateImageLocations: [names === OriginalItemNames ? orbOff : crystalOff, names === OriginalItemNames ? waterOrbOn : waterCrystalOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -821,8 +864,8 @@ export const airOrb = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 1,
-    offsetY: 108,
-    stateImageLocations: [ names === OriginalItemNames ? orbOff : crystalOff, names === OriginalItemNames ? airOrbOn : airCrystalOn, ],
+    offsetY: 108, // shift WAY down
+    stateImageLocations: [names === OriginalItemNames ? orbOff : crystalOff, names === OriginalItemNames ? airOrbOn : airCrystalOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -838,7 +881,7 @@ export const kingIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 0,
-    stateImageLocations: [ kingOff, kingOn, ],
+    stateImageLocations: [kingOff, kingOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -853,7 +896,7 @@ export const saraIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 1,
-    stateImageLocations: [ saraOff, saraOn, ],
+    stateImageLocations: [saraOff, saraOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -868,7 +911,7 @@ export const bikkeIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 2,
-    stateImageLocations: [ bikkeOff, bikkeOn, ],
+    stateImageLocations: [bikkeOff, bikkeOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -883,7 +926,7 @@ export const sardaIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 3,
-    stateImageLocations: [ sardaOff, sardaOn, ],
+    stateImageLocations: [sardaOff, sardaOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -898,7 +941,7 @@ export const sagesIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 4,
-    stateImageLocations: [ sagesOff, sagesOn, ],
+    stateImageLocations: [sagesOff, sagesOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -913,7 +956,7 @@ export const robotIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 5,
-    stateImageLocations: [ robotOff, robotOn, ],
+    stateImageLocations: [robotOff, robotOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -929,7 +972,7 @@ export const astosIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 0,
-    stateImageLocations: [ astosOff, astosOn, ],
+    stateImageLocations: [astosOff, astosOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -944,7 +987,7 @@ export const matoyaIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 1,
-    stateImageLocations: [ matoyaOff, matoyaOn, ],
+    stateImageLocations: [matoyaOff, matoyaOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -959,7 +1002,7 @@ export const elfIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 2,
-    stateImageLocations: [ elfOff, elfOn, ],
+    stateImageLocations: [elfOff, elfOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -974,7 +1017,7 @@ export const nerrickIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 3,
-    stateImageLocations: [ nerrickOff, nerrickOn, ],
+    stateImageLocations: [nerrickOff, nerrickOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -989,7 +1032,7 @@ export const smythIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 4,
-    stateImageLocations: [ smythOff, smythOn, ],
+    stateImageLocations: [smythOff, smythOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -1004,7 +1047,7 @@ export const lefeinianIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 5,
-    stateImageLocations: [ lefeinianOff, lefeinianOn, ],
+    stateImageLocations: [lefeinianOff, lefeinianOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -1021,7 +1064,7 @@ export const shopkeeperIcon = (names: IItemNames): IIconProps => {
     row: 0,
     column: 6,
     offsetX: 68,
-    stateImageLocations: [ shopkeeperOff, shopkeeperOn, ],
+    stateImageLocations: [shopkeeperOff, shopkeeperOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -1037,7 +1080,7 @@ export const fairyIcon = (names: IItemNames): IIconProps => {
     row: 1,
     column: 6,
     offsetX: 68,
-    stateImageLocations: [ fairyOff, fairyOn, ],
+    stateImageLocations: [fairyOff, fairyOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -1045,6 +1088,12 @@ export const fairyIcon = (names: IItemNames): IIconProps => {
 };
 
 ////// Shard hunt stuff //////
+// Layout will be something like this:
+// row 0 - Image of shards top center
+// row 1 - shardsFound slashSymbol requiredShards
+// row 2 - blank
+// row 3 - plusSymbol slashSymbol minusSymbol
+/** Images of the shards */
 export const shardIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.shards,
@@ -1052,7 +1101,86 @@ export const shardIcon = (names: IItemNames): IIconProps => {
     height: shardWidthHeight,
     row: 0,
     column: 0,
-    stateImageLocations: [ earthShard0, earthShard1, ],
+    stateImageLocations: [earthShard0, earthShard1],
+    // empty props
+    settings: {} as ISettingsProps,
+    handleHover: () => {},
+  };
+};
+
+/** Number of shards found */
+export const shardsFoundIcon = (names: IItemNames): IIconProps => {
+  return {
+    title: names.shardsFound,
+    width: standardWidthHeight,
+    height: textHeight,
+    row: 1,
+    column: 0,
+    stateImageLocations: numbersCollection,
+    // empty props
+    settings: {} as ISettingsProps,
+    handleHover: () => {},
+  };
+};
+
+/**
+ * Divider that appears between shards found and required, as well as the Plus and Minus icons
+ * @param row zero-based index for positioning the slash
+ * @param column zero-based index for positioning the slash
+ */
+export const slashSymbolIcon = (row: number, column: number): IIconProps => {
+  return {
+    title: "",
+    width: slashSymbolWidth,
+    height: textHeight,
+    row: row,
+    column: column,
+    stateImageLocations: [{ x: numbersRowTwoX, y: slashSymbolY }],
+    // empty props
+    settings: {} as ISettingsProps,
+    handleHover: () => {},
+  };
+};
+
+/** Number of shards the player needs to find */
+export const requiredShardsIcon = (names: IItemNames): IIconProps => {
+  return {
+    title: names.requiredShards,
+    width: standardWidthHeight,
+    height: textHeight,
+    row: 1,
+    column: 2,
+    stateImageLocations: numbersCollection,
+    // empty props
+    settings: {} as ISettingsProps,
+    handleHover: () => {},
+  };
+};
+
+/** Plus symbol to increment the required number of shards to find */
+export const addShardIcon = (names: IItemNames): IIconProps => {
+  return {
+    title: names.addShard,
+    width: standardWidthHeight,
+    height: textHeight,
+    row: 2,
+    column: 0,
+    stateImageLocations: [{ x: numbersRowTwoX, y: plusSymbolY }],
+    // empty props
+    settings: {} as ISettingsProps,
+    handleHover: () => {},
+  };
+};
+
+/** Minus symbol to decrement the required number of shards to find */
+export const removeShardIcon = (names: IItemNames): IIconProps => {
+  return {
+    title: names.removeShard,
+    width: standardWidthHeight,
+    height: textHeight,
+    row: 2,
+    column: 2,
+    stateImageLocations: [{ x: numbersRowTwoX, y: minusSymbolY }],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
