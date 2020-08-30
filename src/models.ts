@@ -57,8 +57,17 @@ export const BASE_Y_TWEAK = 8;
 export const BASE_X_TWEAK = 8;
 /** Initial timer array */
 export const INITIAL_TIMER = [0, 0, 0, 0, 0, 0, 0, 0];
+/** Off state index in the Icon's stateImageLocations */
+export const OFF_STATE_INDEX = 0;
+/** On state index in the Icon's stateImageLocations */
+export const ON_STATE_INDEX = 1;
 
 ////// Props //////
+export interface ICoordinates {
+  x: number;
+  y: number;
+}
+
 export interface ISettingsProps {
   goal: Goals;
   freeOrbs: Toggle;
@@ -94,14 +103,8 @@ export interface IIconProps {
   offsetX?: number;
   /** Tweaked y position from the row/col location */
   offsetY?: number;
-  /** x coordinate for the off state icon in the underlying image */
-  offStateImageLocationX: number;
-  /** y coordinate for the off state icon in the underlying image */
-  offStateImageLocationY: number;
-  /** x coordinate for the on state icon in the underlying image */
-  onStateImageLocationX: number;
-  /** y coordinate for the on state icon in the underlying image */
-  onStateImageLocationY: number;
+  /** coordinates for the icon's various states in the underlying image */
+  stateImageLocations: ICoordinates[];
   /** App settings */
   settings: ISettingsProps;
   /** Handle icon hover events */

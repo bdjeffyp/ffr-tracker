@@ -1,5 +1,5 @@
 import * as React from "react";
-import { BASE_X_TWEAK, BASE_Y_TWEAK, IIconProps, Toggle } from "../../models";
+import { BASE_X_TWEAK, BASE_Y_TWEAK, IIconProps, Toggle, OFF_STATE_INDEX, ON_STATE_INDEX } from "../../models";
 import { formatBackgroundPosition, mergeStyles } from "../../utils";
 import * as Styles from "./Icon.style";
 
@@ -18,10 +18,10 @@ export class Icon extends React.Component<IIconProps, IIconState> {
     this.state = {
       toggleState: this.props.toggleState,
       xImagePosition: formatBackgroundPosition(
-        this.props.toggleState === Toggle.off ? this.props.offStateImageLocationX : this.props.onStateImageLocationX
+        this.props.toggleState === Toggle.off ? this.props.stateImageLocations[OFF_STATE_INDEX].x : this.props.stateImageLocations[ON_STATE_INDEX].x
       ),
       yImagePosition: formatBackgroundPosition(
-        this.props.toggleState === Toggle.off ? this.props.offStateImageLocationY : this.props.onStateImageLocationY
+        this.props.toggleState === Toggle.off ? this.props.stateImageLocations[OFF_STATE_INDEX].y : this.props.stateImageLocations[ON_STATE_INDEX].y
       ),
       isHovering: false,
     };
@@ -29,17 +29,19 @@ export class Icon extends React.Component<IIconProps, IIconState> {
 
   public componentDidUpdate(prevProps: IIconProps) {
     // If any of the icon's props updated, update the state
-    if (prevProps.offStateImageLocationX !== this.props.offStateImageLocationX) {
+    // TODO: Need to update how we do this since we are having more states than just two and toggleState isn't guaranteed
+    // TODO(con't): Perhaps check for toggleState, or other state tracking methods that exist in the future.
+    if (prevProps.stateImageLocations[OFF_STATE_INDEX].x !== this.props.stateImageLocations[OFF_STATE_INDEX].x || prevProps.stateImageLocations[ON_STATE_INDEX].x !== this.props.stateImageLocations[ON_STATE_INDEX].x) {
       this.setState({
         xImagePosition: formatBackgroundPosition(
-          this.props.toggleState === Toggle.off ? this.props.offStateImageLocationX : this.props.onStateImageLocationX
+          this.props.toggleState === Toggle.off ? this.props.stateImageLocations[OFF_STATE_INDEX].x : this.props.stateImageLocations[ON_STATE_INDEX].x
         ),
       });
     }
-    if (prevProps.offStateImageLocationY !== this.props.offStateImageLocationY) {
+    if (prevProps.stateImageLocations[OFF_STATE_INDEX].y !== this.props.stateImageLocations[OFF_STATE_INDEX].y || prevProps.stateImageLocations[ON_STATE_INDEX].y !== this.props.stateImageLocations[ON_STATE_INDEX].y) {
       this.setState({
         yImagePosition: formatBackgroundPosition(
-          this.props.toggleState === Toggle.off ? this.props.offStateImageLocationY : this.props.onStateImageLocationY
+          this.props.toggleState === Toggle.off ? this.props.stateImageLocations[OFF_STATE_INDEX].y : this.props.stateImageLocations[ON_STATE_INDEX].y
         ),
       });
     }
@@ -90,11 +92,13 @@ export class Icon extends React.Component<IIconProps, IIconState> {
 
   private _toggleIcon = () => {
     const newState = this.state.toggleState === Toggle.off ? Toggle.on : Toggle.off;
+    // TODO: Need to update how we do this since we are having more states than just two and toggleState isn't guaranteed
+    // TODO(con't): Perhaps check for toggleState, or other state tracking methods that exist in the future.
     const xImagePosition = formatBackgroundPosition(
-      newState === Toggle.off ? this.props.offStateImageLocationX : this.props.onStateImageLocationX
+      newState === Toggle.off ? this.props.stateImageLocations[OFF_STATE_INDEX].x : this.props.stateImageLocations[ON_STATE_INDEX].x
     );
     const yImagePosition = formatBackgroundPosition(
-      newState === Toggle.off ? this.props.offStateImageLocationY : this.props.onStateImageLocationY
+      newState === Toggle.off ? this.props.stateImageLocations[OFF_STATE_INDEX].y : this.props.stateImageLocations[ON_STATE_INDEX].y
     );
     this.setState({ toggleState: newState, xImagePosition: xImagePosition, yImagePosition: yImagePosition });
   };

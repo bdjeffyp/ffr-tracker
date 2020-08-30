@@ -2,416 +2,417 @@
  * iconProperties -
  * Add/remove icons from here to populate tracker boxes in the trackerProperties.ts file.
  */
-import { IIconProps, ISettingsProps, Toggle } from "../models";
+import { IIconProps, ISettingsProps, Toggle, ICoordinates } from "../models";
 import { IItemNames, OriginalItemNames } from "../strings";
 
 ////// Constants for image locations and sizes //////
 const standardWidthHeight = 64;
-const retroBridgeOff = {
+const shardWidthHeight = 32;
+const retroBridgeOff: ICoordinates = {
   x: 0,
   y: 320,
 };
-const retroBridgeOn = {
+const retroBridgeOn: ICoordinates = {
   x: 0,
   y: 256,
 };
-const luteOff = {
+const luteOff: ICoordinates = {
   x: 0,
   y: 448,
 };
-const luteOn = {
+const luteOn: ICoordinates = {
   x: 0,
   y: 384,
 };
-const crownOff = {
+const crownOff: ICoordinates = {
   x: 64,
   y: 448,
 };
-const crownOn = {
+const crownOn: ICoordinates = {
   x: 64,
   y: 384,
 };
-const crystalEyeOff = {
+const crystalEyeOff: ICoordinates = {
   x: 128,
   y: 448,
 };
-const crystalEyeOn = {
+const crystalEyeOn: ICoordinates = {
   x: 128,
   y: 384,
 };
-const herbOff = {
+const herbOff: ICoordinates = {
   x: 192,
   y: 448,
 };
-const herbOn = {
+const herbOn: ICoordinates = {
   x: 192,
   y: 384,
 };
-const retroShipOff = {
+const retroShipOff: ICoordinates = {
   x: 128,
   y: 320,
 };
-const retroShipOn = {
+const retroShipOn: ICoordinates = {
   x: 128,
   y: 256,
 };
-const keyOff = {
+const keyOff: ICoordinates = {
   x: 0,
   y: 576,
 };
-const keyOn = {
+const keyOn: ICoordinates = {
   x: 0,
   y: 512,
 };
-const tntOff = {
+const tntOff: ICoordinates = {
   x: 64,
   y: 576,
 };
-const tntOn = {
+const tntOn: ICoordinates = {
   x: 64,
   y: 512,
 };
-const rubyOff = {
+const rubyOff: ICoordinates = {
   x: 128,
   y: 576,
 };
-const rubyOn = {
+const rubyOn: ICoordinates = {
   x: 128,
   y: 512,
 };
-const rodOff = {
+const rodOff: ICoordinates = {
   x: 192,
   y: 576,
 };
-const rodOn = {
+const rodOn: ICoordinates = {
   x: 192,
   y: 512,
 };
-const retroCanalOff = {
+const retroCanalOff: ICoordinates = {
   x: 64,
   y: 320,
 };
-const retroCanalOn = {
+const retroCanalOn: ICoordinates = {
   x: 64,
   y: 256,
 };
-const floaterOff = {
+const floaterOff: ICoordinates = {
   x: 0,
   y: 704,
 };
-const floaterOn = {
+const floaterOn: ICoordinates = {
   x: 0,
   y: 640,
 };
-const tailOff = {
+const tailOff: ICoordinates = {
   x: 64,
   y: 704,
 };
-const tailOn = {
+const tailOn: ICoordinates = {
   x: 64,
   y: 640,
 };
-const bottleOff = {
+const bottleOff: ICoordinates = {
   x: 128,
   y: 704,
 };
-const bottleOn = {
+const bottleOn: ICoordinates = {
   x: 128,
   y: 640,
 };
-const oxyaleOff = {
+const oxyaleOff: ICoordinates = {
   x: 192,
   y: 704,
 };
-const oxyaleOn = {
+const oxyaleOn: ICoordinates = {
   x: 192,
   y: 640,
 };
-const retroCanoeOff = {
+const retroCanoeOff: ICoordinates = {
   x: 192,
   y: 320,
 };
-const retroCanoeOn = {
+const retroCanoeOn: ICoordinates = {
   x: 192,
   y: 256,
 };
-const slabOff = {
+const slabOff: ICoordinates = {
   x: 0,
   y: 832,
 };
-const slabOn = {
+const slabOn: ICoordinates = {
   x: 0,
   y: 768,
 };
-const chimeOff = {
+const chimeOff: ICoordinates = {
   x: 64,
   y: 832,
 };
-const chimeOn = {
+const chimeOn: ICoordinates = {
   x: 64,
   y: 768,
 };
-const cubeOff = {
+const cubeOff: ICoordinates = {
   x: 128,
   y: 832,
 };
-const cubeOn = {
+const cubeOn: ICoordinates = {
   x: 128,
   y: 768,
 };
-const adamantOff = {
+const adamantOff: ICoordinates = {
   x: 192,
   y: 832,
 };
-const adamantOn = {
+const adamantOn: ICoordinates = {
   x: 192,
   y: 768,
 };
-const orbOff = {
+const orbOff: ICoordinates = {
   x: 0,
   y: 960,
 };
-const crystalOff = {
+const crystalOff: ICoordinates = {
   x: 0,
   y: 896,
 };
-const earthOrbOn = {
+const earthOrbOn: ICoordinates = {
   x: 64,
   y: 960,
 };
-const earthCrystalOn = {
+const earthCrystalOn: ICoordinates = {
   x: 64,
   y: 896,
 };
-const fireOrbOn = {
+const fireOrbOn: ICoordinates = {
   x: 128,
   y: 960,
 };
-const fireCrystalOn = {
+const fireCrystalOn: ICoordinates = {
   x: 128,
   y: 896,
 };
-const waterOrbOn = {
+const waterOrbOn: ICoordinates = {
   x: 192,
   y: 960,
 };
-const waterCrystalOn = {
+const waterCrystalOn: ICoordinates = {
   x: 192,
   y: 896,
 };
-const airOrbOn = {
+const airOrbOn: ICoordinates = {
   x: 256,
   y: 960,
 };
-const airCrystalOn = {
+const airCrystalOn: ICoordinates = {
   x: 256,
   y: 896,
 };
-const kingOff = {
+const kingOff: ICoordinates = {
   x: 0,
   y: 64,
 };
-const kingOn = {
+const kingOn: ICoordinates = {
   x: 0,
   y: 0,
 };
-const saraOff = {
+const saraOff: ICoordinates = {
   x: 64,
   y: 64,
 };
-const saraOn = {
+const saraOn: ICoordinates = {
   x: 64,
   y: 0,
 };
-const bikkeOff = {
+const bikkeOff: ICoordinates = {
   x: 128,
   y: 64,
 };
-const bikkeOn = {
+const bikkeOn: ICoordinates = {
   x: 128,
   y: 0,
 };
-const sardaOff = {
+const sardaOff: ICoordinates = {
   x: 192,
   y: 64,
 };
-const sardaOn = {
+const sardaOn: ICoordinates = {
   x: 192,
   y: 0,
 };
-const sagesOff = {
+const sagesOff: ICoordinates = {
   x: 256,
   y: 64,
 };
-const sagesOn = {
+const sagesOn: ICoordinates = {
   x: 256,
   y: 0,
 };
-const robotOff = {
+const robotOff: ICoordinates = {
   x: 320,
   y: 64,
 };
-const robotOn = {
+const robotOn: ICoordinates = {
   x: 320,
   y: 0,
 };
-const astosOff = {
+const astosOff: ICoordinates = {
   x: 0,
   y: 192,
 };
-const astosOn = {
+const astosOn: ICoordinates = {
   x: 0,
   y: 128,
 };
-const matoyaOff = {
+const matoyaOff: ICoordinates = {
   x: 64,
   y: 192,
 };
-const matoyaOn = {
+const matoyaOn: ICoordinates = {
   x: 64,
   y: 128,
 };
-const elfOff = {
+const elfOff: ICoordinates = {
   x: 128,
   y: 192,
 };
-const elfOn = {
+const elfOn: ICoordinates = {
   x: 128,
   y: 128,
 };
-const nerrickOff = {
+const nerrickOff: ICoordinates = {
   x: 192,
   y: 192,
 };
-const nerrickOn = {
+const nerrickOn: ICoordinates = {
   x: 192,
   y: 128,
 };
-const smythOff = {
+const smythOff: ICoordinates = {
   x: 256,
   y: 192,
 };
-const smythOn = {
+const smythOn: ICoordinates = {
   x: 256,
   y: 128,
 };
-const lefeinianOff = {
+const lefeinianOff: ICoordinates = {
   x: 320,
   y: 192,
 };
-const lefeinianOn = {
+const lefeinianOn: ICoordinates = {
   x: 320,
   y: 128,
 };
-const shopkeeperOff = {
+const shopkeeperOff: ICoordinates = {
   x: 384,
   y: 64,
 };
-const shopkeeperOn = {
+const shopkeeperOn: ICoordinates = {
   x: 384,
   y: 0,
 };
-const fairyOff = {
+const fairyOff: ICoordinates = {
   x: 384,
   y: 192,
 };
-const fairyOn = {
+const fairyOn: ICoordinates = {
   x: 384,
   y: 128,
 };
-const earthShard0 = {
+const earthShard0: ICoordinates = {
   x: 0,
   y: 1024,
 };
-const earthShard1 = {
+const earthShard1: ICoordinates = {
   x: 32,
   y: 1024,
 };
-const earthShard2 = {
+const earthShard2: ICoordinates = {
   x: 64,
   y: 1024,
 };
-const earthShard3 = {
+const earthShard3: ICoordinates = {
   x: 96,
   y: 1024,
 };
-const earthShard4 = {
+const earthShard4: ICoordinates = {
   x: 128,
   y: 1024,
 };
-const earthShard5 = {
+const earthShard5: ICoordinates = {
   x: 160,
   y: 1024,
 };
-const fireShard0 = {
+const fireShard0: ICoordinates = {
   x: 192,
   y: 1024,
 };
-const fireShard1 = {
+const fireShard1: ICoordinates = {
   x: 224,
   y: 1024,
 };
-const fireShard2 = {
+const fireShard2: ICoordinates = {
   x: 256,
   y: 1024,
 };
-const fireShard3 = {
+const fireShard3: ICoordinates = {
   x: 288,
   y: 1024,
 };
-const fireShard4 = {
+const fireShard4: ICoordinates = {
   x: 320,
   y: 1024,
 };
-const fireShard5 = {
+const fireShard5: ICoordinates = {
   x: 352,
   y: 1024,
 };
-const waterShard0 = {
+const waterShard0: ICoordinates = {
   x: 0,
   y: 1056,
 };
-const waterShard1 = {
+const waterShard1: ICoordinates = {
   x: 32,
   y: 1056,
 };
-const waterShard2 = {
+const waterShard2: ICoordinates = {
   x: 64,
   y: 1056,
 };
-const waterShard3 = {
+const waterShard3: ICoordinates = {
   x: 96,
   y: 1056,
 };
-const waterShard4 = {
+const waterShard4: ICoordinates = {
   x: 128,
   y: 1056,
 };
-const waterShard5 = {
+const waterShard5: ICoordinates = {
   x: 160,
   y: 1056,
 };
-const airShard0 = {
+const airShard0: ICoordinates = {
   x: 192,
   y: 1056,
 };
-const airShard1 = {
+const airShard1: ICoordinates = {
   x: 224,
   y: 1056,
 };
-const airShard2 = {
+const airShard2: ICoordinates = {
   x: 256,
   y: 1056,
 };
-const airShard3 = {
+const airShard3: ICoordinates = {
   x: 288,
   y: 1056,
 };
-const airShard4 = {
+const airShard4: ICoordinates = {
   x: 320,
   y: 1056,
 };
-const airShard5 = {
+const airShard5: ICoordinates = {
   x: 352,
   y: 1056,
 };
@@ -468,10 +469,7 @@ export const bridgeIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 0,
-    offStateImageLocationX: retroBridgeOff.x,
-    offStateImageLocationY: retroBridgeOff.y,
-    onStateImageLocationX: retroBridgeOn.x,
-    onStateImageLocationY: retroBridgeOn.y,
+    stateImageLocations: [retroBridgeOff, retroBridgeOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -486,10 +484,7 @@ export const luteIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 1,
-    offStateImageLocationX: luteOff.x,
-    offStateImageLocationY: luteOff.y,
-    onStateImageLocationX: luteOn.x,
-    onStateImageLocationY: luteOn.y,
+    stateImageLocations: [ luteOff, luteOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -504,10 +499,7 @@ export const crownIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 2,
-    offStateImageLocationX: crownOff.x,
-    offStateImageLocationY: crownOff.y,
-    onStateImageLocationX: crownOn.x,
-    onStateImageLocationY: crownOn.y,
+    stateImageLocations: [ crownOff, crownOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -522,10 +514,7 @@ export const crystalEyeIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 3,
-    offStateImageLocationX: crystalEyeOff.x,
-    offStateImageLocationY: crystalEyeOff.y,
-    onStateImageLocationX: crystalEyeOn.x,
-    onStateImageLocationY: crystalEyeOn.y,
+    stateImageLocations: [ crystalEyeOff, crystalEyeOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -540,10 +529,7 @@ export const herbIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 4,
-    offStateImageLocationX: herbOff.x,
-    offStateImageLocationY: herbOff.y,
-    onStateImageLocationX: herbOn.x,
-    onStateImageLocationY: herbOn.y,
+    stateImageLocations: [ herbOff, herbOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -559,10 +545,7 @@ export const shipIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 0,
-    offStateImageLocationX: retroShipOff.x,
-    offStateImageLocationY: retroShipOff.y,
-    onStateImageLocationX: retroShipOn.x,
-    onStateImageLocationY: retroShipOn.y,
+    stateImageLocations: [ retroShipOff, retroShipOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -577,10 +560,7 @@ export const keyIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 1,
-    offStateImageLocationX: keyOff.x,
-    offStateImageLocationY: keyOff.y,
-    onStateImageLocationX: keyOn.x,
-    onStateImageLocationY: keyOn.y,
+    stateImageLocations: [ keyOff, keyOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -595,10 +575,7 @@ export const tntIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 2,
-    offStateImageLocationX: tntOff.x,
-    offStateImageLocationY: tntOff.y,
-    onStateImageLocationX: tntOn.x,
-    onStateImageLocationY: tntOn.y,
+    stateImageLocations: [ tntOff, tntOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -613,10 +590,7 @@ export const rubyIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 3,
-    offStateImageLocationX: rubyOff.x,
-    offStateImageLocationY: rubyOff.y,
-    onStateImageLocationX: rubyOn.x,
-    onStateImageLocationY: rubyOn.y,
+    stateImageLocations: [ rubyOff, rubyOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -631,10 +605,7 @@ export const rodIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 4,
-    offStateImageLocationX: rodOff.x,
-    offStateImageLocationY: rodOff.y,
-    onStateImageLocationX: rodOn.x,
-    onStateImageLocationY: rodOn.y,
+    stateImageLocations: [ rodOff, rodOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -650,10 +621,7 @@ export const canalIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 2,
     column: 0,
-    offStateImageLocationX: retroCanalOff.x,
-    offStateImageLocationY: retroCanalOff.y,
-    onStateImageLocationX: retroCanalOn.x,
-    onStateImageLocationY: retroCanalOn.y,
+    stateImageLocations: [ retroCanalOff, retroCanalOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -668,10 +636,7 @@ export const floaterIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 2,
     column: 1,
-    offStateImageLocationX: floaterOff.x,
-    offStateImageLocationY: floaterOff.y,
-    onStateImageLocationX: floaterOn.x,
-    onStateImageLocationY: floaterOn.y,
+    stateImageLocations: [ floaterOff, floaterOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -686,10 +651,7 @@ export const tailIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 2,
     column: 2,
-    offStateImageLocationX: tailOff.x,
-    offStateImageLocationY: tailOff.y,
-    onStateImageLocationX: tailOn.x,
-    onStateImageLocationY: tailOn.y,
+    stateImageLocations: [ tailOff, tailOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -704,10 +666,7 @@ export const bottleIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 2,
     column: 3,
-    offStateImageLocationX: bottleOff.x,
-    offStateImageLocationY: bottleOff.y,
-    onStateImageLocationX: bottleOn.x,
-    onStateImageLocationY: bottleOn.y,
+    stateImageLocations: [ bottleOff, bottleOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -722,10 +681,7 @@ export const oxyaleIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 2,
     column: 4,
-    offStateImageLocationX: oxyaleOff.x,
-    offStateImageLocationY: oxyaleOff.y,
-    onStateImageLocationX: oxyaleOn.x,
-    onStateImageLocationY: oxyaleOn.y,
+    stateImageLocations: [ oxyaleOff, oxyaleOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -741,10 +697,7 @@ export const canoeIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 3,
     column: 0,
-    offStateImageLocationX: retroCanoeOff.x,
-    offStateImageLocationY: retroCanoeOff.y,
-    onStateImageLocationX: retroCanoeOn.x,
-    onStateImageLocationY: retroCanoeOn.y,
+    stateImageLocations: [ retroCanoeOff, retroCanoeOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -759,10 +712,7 @@ export const slabIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 3,
     column: 1,
-    offStateImageLocationX: slabOff.x,
-    offStateImageLocationY: slabOff.y,
-    onStateImageLocationX: slabOn.x,
-    onStateImageLocationY: slabOn.y,
+    stateImageLocations: [ slabOff, slabOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -777,10 +727,7 @@ export const chimeIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 3,
     column: 2,
-    offStateImageLocationX: chimeOff.x,
-    offStateImageLocationY: chimeOff.y,
-    onStateImageLocationX: chimeOn.x,
-    onStateImageLocationY: chimeOn.y,
+    stateImageLocations: [ chimeOff, chimeOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -795,10 +742,7 @@ export const cubeIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 3,
     column: 3,
-    offStateImageLocationX: cubeOff.x,
-    offStateImageLocationY: cubeOff.y,
-    onStateImageLocationX: cubeOn.x,
-    onStateImageLocationY: cubeOn.y,
+    stateImageLocations: [ cubeOff, cubeOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -813,10 +757,7 @@ export const adamantIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 3,
     column: 4,
-    offStateImageLocationX: adamantOff.x,
-    offStateImageLocationY: adamantOff.y,
-    onStateImageLocationX: adamantOn.x,
-    onStateImageLocationY: adamantOn.y,
+    stateImageLocations: [ adamantOff, adamantOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -833,10 +774,7 @@ export const earthOrb = (names: IItemNames): IIconProps => {
     row: 0,
     column: 0,
     offsetY: 32,
-    offStateImageLocationX: names === OriginalItemNames ? orbOff.x : crystalOff.x,
-    offStateImageLocationY: names === OriginalItemNames ? orbOff.y : crystalOff.y,
-    onStateImageLocationX: names === OriginalItemNames ? earthOrbOn.x : earthCrystalOn.x,
-    onStateImageLocationY: names === OriginalItemNames ? earthOrbOn.y : earthCrystalOn.y,
+    stateImageLocations: [ names === OriginalItemNames ? orbOff : crystalOff, names === OriginalItemNames ? earthOrbOn : earthCrystalOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -852,10 +790,7 @@ export const fireOrb = (names: IItemNames): IIconProps => {
     row: 0,
     column: 1,
     offsetY: 32,
-    offStateImageLocationX: names === OriginalItemNames ? orbOff.x : crystalOff.x,
-    offStateImageLocationY: names === OriginalItemNames ? orbOff.y : crystalOff.y,
-    onStateImageLocationX: names === OriginalItemNames ? fireOrbOn.x : fireCrystalOn.x,
-    onStateImageLocationY: names === OriginalItemNames ? fireOrbOn.y : fireCrystalOn.y,
+    stateImageLocations: [ names === OriginalItemNames ? orbOff : crystalOff, names === OriginalItemNames ? fireOrbOn : fireCrystalOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -871,10 +806,7 @@ export const waterOrb = (names: IItemNames): IIconProps => {
     row: 1,
     column: 0,
     offsetY: 108,
-    offStateImageLocationX: names === OriginalItemNames ? orbOff.x : crystalOff.x,
-    offStateImageLocationY: names === OriginalItemNames ? orbOff.y : crystalOff.y,
-    onStateImageLocationX: names === OriginalItemNames ? waterOrbOn.x : waterCrystalOn.x,
-    onStateImageLocationY: names === OriginalItemNames ? waterOrbOn.y : waterCrystalOn.y,
+    stateImageLocations: [ names === OriginalItemNames ? orbOff : crystalOff, names === OriginalItemNames ? waterOrbOn : waterCrystalOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -890,10 +822,7 @@ export const airOrb = (names: IItemNames): IIconProps => {
     row: 1,
     column: 1,
     offsetY: 108,
-    offStateImageLocationX: names === OriginalItemNames ? orbOff.x : crystalOff.x,
-    offStateImageLocationY: names === OriginalItemNames ? orbOff.y : crystalOff.y,
-    onStateImageLocationX: names === OriginalItemNames ? airOrbOn.x : airCrystalOn.x,
-    onStateImageLocationY: names === OriginalItemNames ? airOrbOn.y : airCrystalOn.y,
+    stateImageLocations: [ names === OriginalItemNames ? orbOff : crystalOff, names === OriginalItemNames ? airOrbOn : airCrystalOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -909,10 +838,7 @@ export const kingIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 0,
-    offStateImageLocationX: kingOff.x,
-    offStateImageLocationY: kingOff.y,
-    onStateImageLocationX: kingOn.x,
-    onStateImageLocationY: kingOn.y,
+    stateImageLocations: [ kingOff, kingOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -927,10 +853,7 @@ export const saraIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 1,
-    offStateImageLocationX: saraOff.x,
-    offStateImageLocationY: saraOff.y,
-    onStateImageLocationX: saraOn.x,
-    onStateImageLocationY: saraOn.y,
+    stateImageLocations: [ saraOff, saraOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -945,10 +868,7 @@ export const bikkeIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 2,
-    offStateImageLocationX: bikkeOff.x,
-    offStateImageLocationY: bikkeOff.y,
-    onStateImageLocationX: bikkeOn.x,
-    onStateImageLocationY: bikkeOn.y,
+    stateImageLocations: [ bikkeOff, bikkeOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -963,10 +883,7 @@ export const sardaIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 3,
-    offStateImageLocationX: sardaOff.x,
-    offStateImageLocationY: sardaOff.y,
-    onStateImageLocationX: sardaOn.x,
-    onStateImageLocationY: sardaOn.y,
+    stateImageLocations: [ sardaOff, sardaOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -981,10 +898,7 @@ export const sagesIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 4,
-    offStateImageLocationX: sagesOff.x,
-    offStateImageLocationY: sagesOff.y,
-    onStateImageLocationX: sagesOn.x,
-    onStateImageLocationY: sagesOn.y,
+    stateImageLocations: [ sagesOff, sagesOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -999,10 +913,7 @@ export const robotIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 0,
     column: 5,
-    offStateImageLocationX: robotOff.x,
-    offStateImageLocationY: robotOff.y,
-    onStateImageLocationX: robotOn.x,
-    onStateImageLocationY: robotOn.y,
+    stateImageLocations: [ robotOff, robotOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -1018,10 +929,7 @@ export const astosIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 0,
-    offStateImageLocationX: astosOff.x,
-    offStateImageLocationY: astosOff.y,
-    onStateImageLocationX: astosOn.x,
-    onStateImageLocationY: astosOn.y,
+    stateImageLocations: [ astosOff, astosOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -1036,10 +944,7 @@ export const matoyaIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 1,
-    offStateImageLocationX: matoyaOff.x,
-    offStateImageLocationY: matoyaOff.y,
-    onStateImageLocationX: matoyaOn.x,
-    onStateImageLocationY: matoyaOn.y,
+    stateImageLocations: [ matoyaOff, matoyaOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -1054,10 +959,7 @@ export const elfIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 2,
-    offStateImageLocationX: elfOff.x,
-    offStateImageLocationY: elfOff.y,
-    onStateImageLocationX: elfOn.x,
-    onStateImageLocationY: elfOn.y,
+    stateImageLocations: [ elfOff, elfOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -1072,10 +974,7 @@ export const nerrickIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 3,
-    offStateImageLocationX: nerrickOff.x,
-    offStateImageLocationY: nerrickOff.y,
-    onStateImageLocationX: nerrickOn.x,
-    onStateImageLocationY: nerrickOn.y,
+    stateImageLocations: [ nerrickOff, nerrickOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -1090,10 +989,7 @@ export const smythIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 4,
-    offStateImageLocationX: smythOff.x,
-    offStateImageLocationY: smythOff.y,
-    onStateImageLocationX: smythOn.x,
-    onStateImageLocationY: smythOn.y,
+    stateImageLocations: [ smythOff, smythOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -1108,10 +1004,7 @@ export const lefeinianIcon = (names: IItemNames): IIconProps => {
     height: standardWidthHeight,
     row: 1,
     column: 5,
-    offStateImageLocationX: lefeinianOff.x,
-    offStateImageLocationY: lefeinianOff.y,
-    onStateImageLocationX: lefeinianOn.x,
-    onStateImageLocationY: lefeinianOn.y,
+    stateImageLocations: [ lefeinianOff, lefeinianOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -1128,10 +1021,7 @@ export const shopkeeperIcon = (names: IItemNames): IIconProps => {
     row: 0,
     column: 6,
     offsetX: 68,
-    offStateImageLocationX: shopkeeperOff.x,
-    offStateImageLocationY: shopkeeperOff.y,
-    onStateImageLocationX: shopkeeperOn.x,
-    onStateImageLocationY: shopkeeperOn.y,
+    stateImageLocations: [ shopkeeperOff, shopkeeperOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -1147,10 +1037,7 @@ export const fairyIcon = (names: IItemNames): IIconProps => {
     row: 1,
     column: 6,
     offsetX: 68,
-    offStateImageLocationX: fairyOff.x,
-    offStateImageLocationY: fairyOff.y,
-    onStateImageLocationX: fairyOn.x,
-    onStateImageLocationY: fairyOn.y,
+    stateImageLocations: [ fairyOff, fairyOn, ],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
@@ -1158,8 +1045,16 @@ export const fairyIcon = (names: IItemNames): IIconProps => {
 };
 
 ////// Shard hunt stuff //////
-// export const shardIcon = (names: IItemNames): IIconProps => {
-//   return {
-//     title: names.shards,
-//   };
-// };
+export const shardIcon = (names: IItemNames): IIconProps => {
+  return {
+    title: names.shards,
+    width: shardWidthHeight,
+    height: shardWidthHeight,
+    row: 0,
+    column: 0,
+    stateImageLocations: [ earthShard0, earthShard1, ],
+    // empty props
+    settings: {} as ISettingsProps,
+    handleHover: () => {},
+  };
+};
