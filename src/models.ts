@@ -81,7 +81,7 @@ export interface IIconProps {
   /** Text to display in the settings menu caption; doubles as div id */
   title: string;
   /** Current state of the icon: toggled on or off */
-  state: Toggle;
+  toggleState?: Toggle;
   /** Width of the icon in pixels */
   width: number;
   /** Height of the icon in pixels */
