@@ -83,7 +83,7 @@ export const OriginalItemNames: IItemNames = {
   nerrick: "Nerrick",
   smyth: "Blacksmith",
   lefeinian: "Lefeinian",
-  shopkeeper: "Shopkeeper",
+  shopkeeper: "Shopkeeper with item",
   fairy: "Fairy",
   shards: "Shards",
   addShard: "Add a required shard",
