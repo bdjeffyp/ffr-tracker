@@ -1,7 +1,7 @@
 import * as React from "react";
-import thickBorderImage from "../../images/borderThick.png";
-import thinBorderImage from "../../images/borderThin.png";
-import { Borders, IIconProps, ITrackerBoxProps } from "../../models";
+import retroBorderImage from "../../images/borderRetroThick.png";
+import modernBorderImage from "../../images/borderThick.png";
+import { Borders, IIconProps, ITrackerBoxProps, Toggle } from "../../models";
 import { centerObject, formatBackgroundPosition, mergeStyles } from "../../utils";
 import { Icon } from "../Icon/Icon";
 import { Timer } from "./Timer";
@@ -52,19 +52,13 @@ export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxP
     // Build the extended style information from the props
     let borderImage = "";
     let borderWidth = 1;
-    switch (this.props.border) {
-      case Borders.thick:
-        borderImage = `url(${thickBorderImage}) 28 round`;
-        borderWidth = 28;
-        break;
-      case Borders.thin:
-        borderImage = `url(${thinBorderImage}) 20 round`;
-        borderWidth = 20;
-        break;
-      default:
-        borderImage = "none";
-        borderWidth = 1;
-        break;
+    const isModern = this.props.settings.era === Toggle.on;
+    if (isModern) {
+      borderImage = `url(${modernBorderImage}) 28 round`;
+      borderWidth = 28;
+    } else {
+      borderImage = `url(${retroBorderImage}) 28 round`;
+      borderWidth = 28;
     }
     const currentTrackerBoxStyle: React.CSSProperties = {
       left: this.props.boxPositionX,
@@ -97,9 +91,9 @@ export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxP
     const icons = this.props.icons;
 
     return (
-      <div id={this._name + this.props.id} style={mergeStyles(Styles.trackerBoxSquareStyle, finalStyle)}>
+      <div id={this._name + this.props.id} style={mergeStyles(Styles.trackerBoxSquareStyle(isModern), finalStyle)}>
         {/* TODO: Hide the title in the compact views */}
-        <div id="trackerTitle" style={mergeStyles(Styles.trackerTitleStyle, currentTitleStyle)}></div>
+        <div id="trackerTitle" style={mergeStyles(Styles.trackerTitleStyle(isModern), currentTitleStyle)}></div>
 
         {icons &&
           icons.map((icon: IIconProps, index: number) => {

@@ -3,7 +3,7 @@
  * Add/remove icons from here to populate tracker boxes in the trackerProperties.ts file.
  */
 import { ICoordinates, IIconProps, ISettingsProps, Toggle } from "../models";
-import { IItemNames, OriginalItemNames } from "../strings";
+import { IItemNames } from "../strings";
 
 ////// Constants for image locations and sizes //////
 const standardWidthHeight = 64;
@@ -808,7 +808,7 @@ export const adamantIcon = (names: IItemNames): IIconProps => {
 };
 
 ////// Orbs/Crystals //////
-export const earthOrb = (names: IItemNames): IIconProps => {
+export const earthOrb = (names: IItemNames, showCrystals: boolean): IIconProps => {
   return {
     title: names.earthOrb,
     toggleState: Toggle.off,
@@ -817,14 +817,14 @@ export const earthOrb = (names: IItemNames): IIconProps => {
     row: 0,
     column: 0,
     offsetY: 32, // shift down
-    stateImageLocations: [names === OriginalItemNames ? orbOff : crystalOff, names === OriginalItemNames ? earthOrbOn : earthCrystalOn],
+    stateImageLocations: [showCrystals ? crystalOff : orbOff, showCrystals ? earthCrystalOn : earthOrbOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
   };
 };
 
-export const fireOrb = (names: IItemNames): IIconProps => {
+export const fireOrb = (names: IItemNames, showCrystals: boolean): IIconProps => {
   return {
     title: names.fireOrb,
     toggleState: Toggle.off,
@@ -833,14 +833,14 @@ export const fireOrb = (names: IItemNames): IIconProps => {
     row: 0,
     column: 1,
     offsetY: 32, // shift down
-    stateImageLocations: [names === OriginalItemNames ? orbOff : crystalOff, names === OriginalItemNames ? fireOrbOn : fireCrystalOn],
+    stateImageLocations: [showCrystals ? crystalOff : orbOff, showCrystals ? fireCrystalOn : fireOrbOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
   };
 };
 
-export const waterOrb = (names: IItemNames): IIconProps => {
+export const waterOrb = (names: IItemNames, showCrystals: boolean): IIconProps => {
   return {
     title: names.waterOrb,
     toggleState: Toggle.off,
@@ -849,14 +849,14 @@ export const waterOrb = (names: IItemNames): IIconProps => {
     row: 1,
     column: 0,
     offsetY: 108, // shift WAY down
-    stateImageLocations: [names === OriginalItemNames ? orbOff : crystalOff, names === OriginalItemNames ? waterOrbOn : waterCrystalOn],
+    stateImageLocations: [showCrystals ? crystalOff : orbOff, showCrystals ? waterCrystalOn : waterOrbOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
   };
 };
 
-export const airOrb = (names: IItemNames): IIconProps => {
+export const airOrb = (names: IItemNames, showCrystals: boolean): IIconProps => {
   return {
     title: names.airOrb,
     toggleState: Toggle.off,
@@ -865,7 +865,7 @@ export const airOrb = (names: IItemNames): IIconProps => {
     row: 1,
     column: 1,
     offsetY: 108, // shift WAY down
-    stateImageLocations: [names === OriginalItemNames ? orbOff : crystalOff, names === OriginalItemNames ? airOrbOn : airCrystalOn],
+    stateImageLocations: [showCrystals ? crystalOff : orbOff, showCrystals ? airCrystalOn : airOrbOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},

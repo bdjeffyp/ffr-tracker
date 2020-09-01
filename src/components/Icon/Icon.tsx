@@ -72,6 +72,7 @@ export class Icon extends React.Component<IIconProps, IIconState> {
     const xImagePosition = this.state.xImagePosition;
     const yImagePosition = this.state.yImagePosition;
     currentIconStyle.backgroundPosition = xImagePosition + " " + yImagePosition;
+    const isModern = this.props.settings.era === Toggle.on;
 
     // Tweak the position, if desired.
     let left = currentIconStyle.left as number;
@@ -91,7 +92,7 @@ export class Icon extends React.Component<IIconProps, IIconState> {
     return (
       <div
         id={this._name + this.props.title}
-        style={mergeStyles(Styles.iconStyle, currentIconStyle)}
+        style={mergeStyles(Styles.iconStyle(isModern), currentIconStyle)}
         onClick={this._toggleIcon}
         title={this.props.title}
         onMouseEnter={() => this._handleHover(this.props.title)}

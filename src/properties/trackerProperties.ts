@@ -3,48 +3,60 @@
  * Add/remove tracker boxes here to populate the app's tracker container.
  */
 import { Goals, IIconProps, ISettingsProps, ITitle, ITrackerBoxProps, ITrackerContainerProps } from "../models";
-import { IItemNames, OriginalItemNames } from "../strings";
+import { IItemNames } from "../strings";
 import * as Icons from "./iconProperties";
 
 ////// Title data //////
-export const itemsTitle: ITitle = {
-  titleImageLocationX: 0,
-  titleImageLocationY: 0,
-  titleWidth: 58,
+export const itemsTitle = (isModern: boolean): ITitle => {
+  return {
+    titleImageLocationX: 0,
+    titleImageLocationY: 0,
+    titleWidth: isModern ? 58 : 65,
+  };
 };
 
-export const npcsTitle: ITitle = {
-  titleImageLocationX: 0,
-  titleImageLocationY: 20,
-  titleWidth: 56,
+export const npcsTitle = (isModern: boolean): ITitle => {
+  return {
+    titleImageLocationX: 0,
+    titleImageLocationY: 20,
+    titleWidth: isModern ? 56 : 64,
+  };
 };
 
-export const crystalsTitle: ITitle = {
-  titleImageLocationX: 0,
-  titleImageLocationY: 80,
-  titleWidth: 92,
+export const crystalsTitle = (isModern: boolean): ITitle => {
+  return {
+    titleImageLocationX: 0,
+    titleImageLocationY: 80,
+    titleWidth: isModern ? 92 : 102,
+  };
 };
 
-export const orbsTitle: ITitle = {
-  titleImageLocationX: 0,
-  titleImageLocationY: 100,
-  titleWidth: 52,
+export const orbsTitle = (isModern: boolean): ITitle => {
+  return {
+    titleImageLocationX: 0,
+    titleImageLocationY: 100,
+    titleWidth: isModern ? 52 : 64,
+  };
 };
 
-export const shardsTitle: ITitle = {
-  titleImageLocationX: 0,
-  titleImageLocationY: 120,
-  titleWidth: 74,
+export const shardsTitle = (isModern: boolean): ITitle => {
+  return {
+    titleImageLocationX: 0,
+    titleImageLocationY: 120,
+    titleWidth: isModern ? 74 : 84,
+  };
 };
 
-export const timerTitle: ITitle = {
-  titleImageLocationX: 0,
-  titleImageLocationY: 60,
-  titleWidth: 48,
+export const timerTitle = (isModern: boolean): ITitle => {
+  return {
+    titleImageLocationX: 0,
+    titleImageLocationY: 60,
+    titleWidth: isModern ? 48 : 54,
+  };
 };
 
 ////// Tracker boxes //////
-export const timerTrackerBox = (isVisible: boolean): ITrackerBoxProps => {
+export const timerTrackerBox = (isVisible: boolean, isModern: boolean): ITrackerBoxProps => {
   return {
     id: "Timer",
     isTimer: true,
@@ -57,14 +69,14 @@ export const timerTrackerBox = (isVisible: boolean): ITrackerBoxProps => {
     fontWeight: 700,
     textAlign: "center",
     cursor: "pointer",
-    ...timerTitle,
+    ...timerTitle(isModern),
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
   };
 };
 
-export const itemsTrackerBox = (names: IItemNames, timerVisible: boolean): ITrackerBoxProps => {
+export const itemsTrackerBox = (names: IItemNames, timerVisible: boolean, isModern: boolean): ITrackerBoxProps => {
   // If timer is visible, other boxes will shift down
   const timerShift = timerVisible ? 136 : 0;
   return {
@@ -74,7 +86,7 @@ export const itemsTrackerBox = (names: IItemNames, timerVisible: boolean): ITrac
     boxPositionY: 8 + timerShift,
     boxWidth: 372,
     boxHeight: 312,
-    ...itemsTitle,
+    ...itemsTitle(isModern),
     icons: [
       Icons.bridgeIcon(names),
       Icons.luteIcon(names),
@@ -103,26 +115,42 @@ export const itemsTrackerBox = (names: IItemNames, timerVisible: boolean): ITrac
   };
 };
 
-const orbTitleProps = (names: IItemNames, goal: Goals): ITitle => {
+const orbTitleProps = (goal: Goals, showCrystals: boolean, isModern: boolean): ITitle => {
   switch (goal) {
     case Goals.regular:
     case Goals.chaosRush:
-      return names === OriginalItemNames ? orbsTitle : crystalsTitle;
+      return showCrystals ? crystalsTitle(isModern) : orbsTitle(isModern);
     case Goals.shardHunt:
-      return shardsTitle;
+      return shardsTitle(isModern);
   }
 };
-const orbIconsProps = (names: IItemNames, goal: Goals): IIconProps[] => {
+const orbIconsProps = (names: IItemNames, goal: Goals, showCrystals: boolean): IIconProps[] => {
   switch (goal) {
     case Goals.regular:
     case Goals.chaosRush:
-      return [Icons.earthOrb(names), Icons.fireOrb(names), Icons.waterOrb(names), Icons.airOrb(names)];
+      return [
+        Icons.earthOrb(names, showCrystals),
+        Icons.fireOrb(names, showCrystals),
+        Icons.waterOrb(names, showCrystals),
+        Icons.airOrb(names, showCrystals),
+      ];
     case Goals.shardHunt:
       // TODO: Change to use the shard icons once that is created
-      return [Icons.earthOrb(names), Icons.fireOrb(names), Icons.waterOrb(names), Icons.airOrb(names)];
+      return [
+        Icons.earthOrb(names, showCrystals),
+        Icons.fireOrb(names, showCrystals),
+        Icons.waterOrb(names, showCrystals),
+        Icons.airOrb(names, showCrystals),
+      ];
   }
 };
-export const orbsTrackerBox = (names: IItemNames, goal: Goals, timerVisible: boolean): ITrackerBoxProps => {
+export const orbsTrackerBox = (
+  names: IItemNames,
+  goal: Goals,
+  timerVisible: boolean,
+  showCrystals: boolean,
+  isModern: boolean
+): ITrackerBoxProps => {
   // If timer is visible, other boxes will shift down
   const timerShift = timerVisible ? 136 : 0;
   return {
@@ -132,15 +160,15 @@ export const orbsTrackerBox = (names: IItemNames, goal: Goals, timerVisible: boo
     boxPositionY: 8 + timerShift,
     boxWidth: 156,
     boxHeight: 312,
-    ...orbTitleProps(names, goal),
-    icons: orbIconsProps(names, goal),
+    ...orbTitleProps(goal, showCrystals, isModern),
+    icons: orbIconsProps(names, goal, showCrystals),
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
   };
 };
 
-export const npcsTrackerBox = (names: IItemNames, timerVisible: boolean): ITrackerBoxProps => {
+export const npcsTrackerBox = (names: IItemNames, timerVisible: boolean, isModern: boolean): ITrackerBoxProps => {
   // If timer is visible, other boxes will shift down
   const timerShift = timerVisible ? 136 : 0;
   return {
@@ -150,7 +178,7 @@ export const npcsTrackerBox = (names: IItemNames, timerVisible: boolean): ITrack
     boxPositionY: 376 + timerShift,
     boxWidth: 584,
     boxHeight: 164,
-    ...npcsTitle,
+    ...npcsTitle(isModern),
     icons: [
       Icons.kingIcon(names),
       Icons.saraIcon(names),
@@ -174,13 +202,19 @@ export const npcsTrackerBox = (names: IItemNames, timerVisible: boolean): ITrack
 };
 
 ////// Tracker container //////
-export const ffrTracker = (names: IItemNames, goal: Goals, isVisible: boolean): Partial<ITrackerContainerProps> => {
+export const ffrTracker = (
+  names: IItemNames,
+  goal: Goals,
+  isVisible: boolean,
+  showCrystals: boolean,
+  isModern: boolean
+): Partial<ITrackerContainerProps> => {
   return {
     boxes: [
-      itemsTrackerBox(names, isVisible),
-      orbsTrackerBox(names, goal, isVisible),
-      npcsTrackerBox(names, isVisible),
-      timerTrackerBox(isVisible),
+      itemsTrackerBox(names, isVisible, isModern),
+      orbsTrackerBox(names, goal, isVisible, showCrystals, isModern),
+      npcsTrackerBox(names, isVisible, isModern),
+      timerTrackerBox(isVisible, isModern),
     ],
   };
 };

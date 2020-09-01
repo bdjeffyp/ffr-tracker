@@ -2,10 +2,10 @@ import React from "react";
 import * as Styles from "./App.style";
 import { Settings } from "./components/Settings/Settings";
 import { TrackerContainer } from "./components/TrackerContainer/TrackerContainer";
+import { Borders, Goals, IconNameType, ISettingsProps, ITrackerContainerProps, Layouts, Toggle } from "./models";
 import { ffrTracker } from "./properties/trackerProperties";
-import { ITrackerContainerProps, ISettingsProps, Goals, Toggle, Layouts, Borders, IconNameType } from "./models";
+import { ModernItemNames, OriginalItemNames } from "./strings";
 import { getSavedSettings } from "./utils";
-import { OriginalItemNames, ModernItemNames } from "./strings";
 
 interface IAppState {
   settingCaption: string;
@@ -18,6 +18,7 @@ const defaultSettings: ISettingsProps = {
   border: Borders.thick,
   showTimer: Toggle.on,
   showCrystals: Toggle.off,
+  era: Toggle.off,
 };
 
 class App extends React.Component<{}, IAppState> {
@@ -36,15 +37,20 @@ class App extends React.Component<{}, IAppState> {
   }
 
   public render() {
-    const nameType = this.state.currentSettings.showCrystals === Toggle.on ? IconNameType.modern : IconNameType.original;
+    // Establish names and icons to show based on era setting
+    const isModern = this.state.currentSettings.era === Toggle.on;
+    const nameType = isModern ? IconNameType.modern : IconNameType.original;
     const names = nameType === IconNameType.original ? OriginalItemNames : ModernItemNames;
+    // Establish crystals or orbs based on the showCrystals setting
+    const showCrystals = this.state.currentSettings.showCrystals === Toggle.on;
     // Build tracker props based on settings
     const trackerProps: ITrackerContainerProps = {
       nameType: nameType,
       bordersState: this.state.currentSettings.border,
       settings: this.state.currentSettings,
       handleHover: this._handleHoverChange,
-      boxes: ffrTracker(names, this.state.currentSettings.goal, this.state.currentSettings.showTimer === Toggle.on).boxes!,
+      boxes: ffrTracker(names, this.state.currentSettings.goal, this.state.currentSettings.showTimer === Toggle.on, showCrystals, isModern)
+        .boxes!,
     };
     return (
       <div className="app" style={Styles.appContainerStyle} onContextMenu={this._captureRightClick}>
@@ -54,14 +60,6 @@ class App extends React.Component<{}, IAppState> {
       </div>
     );
   }
-
-  // private _updateBoxes = (settings: ISettingsProps) => {
-  //   const boxProps: IBoxesProps = {
-  //     goal: settings.goal,
-  //     names: settings.showCrystals === Toggle.on ? IconNameType.modern : IconNameType.original
-  //   };
-  //   this._trackerBoxes = new FfrTracker(boxProps);
-  // }
 
   private _handleHoverChange = (caption: string) => {
     this.setState({ settingCaption: caption });
