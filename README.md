@@ -37,8 +37,7 @@ This is a browser-based tracker. You can simply open index.html directly to begi
 Click the icon in the bottom left to open up the options menu.
 
 - **GOAL:** Which variation of the game you're playing. Toggle Free ORBs on if that flag is set.
-- **ERA:** Choose if you want Crystals or ORBs, along with the modern or NES-era names for items and NPCs.
+- **ERA:** Do you prefer the NES-style graphics and names or the later GBA/PSP release? Choose Modern or NES to make the tracker appear as if it were from those eras!
 - **LAYOUT (COMING SOON):** Choose between a few different arrangements for the item tracker. Currently only Square layout is available. The plan is to also use tall and wide layouts and toggle if everything in within one frame or separated by category.
-- **BORDERS (COMING SOON):** Choose between a few different tracker border styles.
 - **MAPS (COMING SOON):** Choose how the map is positioned, or turn it off.
 - **TIMER:** Show/hide the timer's tracker.
