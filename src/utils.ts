@@ -69,6 +69,7 @@ export const getSavedSettings = (): ISettingsProps => {
       border: Borders.thick,
       showCrystals: Toggle.off,
       showTimer: Toggle.on,
+      era: Toggle.off,
     };
   }
 };

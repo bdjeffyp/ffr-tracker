@@ -16,8 +16,8 @@ const regularGoal = (state: ISettingsState): ISettingsItem => {
 
 const shardHuntGoal = (state: ISettingsState): ISettingsItem => {
   const crystals = state.currentShowCrystals === Toggle.on ? "CRYSTALS" : "ORBS";
-  const disabled = true; //state.currentFreeOrbs === Toggle.on;
-  let caption = "Find a required number of crystal shards - COMING SOON";
+  const disabled = state.currentFreeOrbs === Toggle.on;
+  let caption = "Find a required number of crystal shards";
   if (disabled) {
     caption += " - UNAVAILABLE WITH FREE " + crystals;
   }
@@ -49,9 +49,9 @@ const freeOrbsMode = (state: ISettingsState): ISettingsItem => {
   const crystals = state.currentShowCrystals === Toggle.on ? "crystals" : "ORBs";
   const disabled = true; //state.currentGoal === Goals.shardHunt;
   let caption = "Have all " + crystals + " lit at the start - COMING SOON";
-  if (disabled) {
-    caption += " - UNAVAILABLE WITH SHARD HUNT";
-  }
+  // if (disabled) {
+  //   caption += " - UNAVAILABLE WITH SHARD HUNT";
+  // }
   return {
     name: "Free " + crystals,
     caption: caption,
@@ -171,35 +171,35 @@ const timerSettings = (state: ISettingsState): ISettingsGroup => {
   };
 };
 
-////// Crystal icons section //////
-const crystalIcons = (state: ISettingsState): ISettingsItem => {
+////// Icon era settings //////
+const modernNamesAndIcons = (state: ISettingsState): ISettingsItem => {
   return {
-    name: "Crystals",
-    caption: "Use crystal icons and modern names",
+    name: "Modern",
+    caption: "Use modern (PSP/GBA) icons and names",
     isRadio: true,
     group: SettingsNames.iconSet,
     value: Toggle.on,
-    currentValue: state.currentShowCrystals,
+    currentValue: state.currentEra,
   };
 };
 
-const orbIcons = (state: ISettingsState): ISettingsItem => {
+const retroNamesAndIcons = (state: ISettingsState): ISettingsItem => {
   return {
-    name: "ORBs",
-    caption: "Use ORB icons and NES names",
+    name: "NES",
+    caption: "Use retro (NES) icons and names",
     isRadio: true,
     group: SettingsNames.iconSet,
     value: Toggle.off,
-    currentValue: state.currentShowCrystals,
+    currentValue: state.currentEra,
   };
 };
 
-const iconSettings = (state: ISettingsState): ISettingsGroup => {
+const eraSettings = (state: ISettingsState): ISettingsGroup => {
   return {
     title: "ERA",
     xPosition: 50,
     yPosition: 170,
-    settings: [crystalIcons(state), orbIcons(state)],
+    settings: [modernNamesAndIcons(state), retroNamesAndIcons(state)],
   };
 };
 
@@ -209,5 +209,5 @@ export const settingsMenu = (state: ISettingsState): ISettingsGroup[] => [
   layoutSettings(state),
   borderSettings(state),
   timerSettings(state),
-  iconSettings(state),
+  eraSettings(state),
 ];

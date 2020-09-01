@@ -23,6 +23,7 @@ export interface ISettingsState {
   currentBorder: Borders;
   currentShowTimer: Toggle;
   currentShowCrystals: Toggle;
+  currentEra: Toggle;
   caption: string;
 }
 
@@ -135,9 +136,11 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
       case SettingsNames.timerMode:
         newState.currentShowTimer = event.target.value as Toggle;
         break;
-      case SettingsNames.iconSet:
+      case SettingsNames.crystalOrOrb:
         newState.currentShowCrystals = event.target.value as Toggle;
         break;
+      case SettingsNames.iconSet:
+        newState.currentEra = event.target.value as Toggle;
     }
     this.setState(newState);
 
@@ -152,6 +155,7 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
       border: newState.currentBorder,
       showTimer: newState.currentShowTimer,
       showCrystals: newState.currentShowCrystals,
+      era: newState.currentEra,
     };
     document.cookie = "settings=" + JSON.stringify(newSettings) + "; expires=Sat, 26 Dec 2025 12:00:00 UTC; path=/";
 
@@ -169,6 +173,7 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
       currentBorder: props.border,
       currentShowTimer: props.showTimer,
       currentShowCrystals: props.showCrystals,
+      currentEra: props.era,
       caption: "",
     };
   };
