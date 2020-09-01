@@ -18,11 +18,11 @@ const regularGoal = (state: ISettingsState): ISettingsItem => {
 const shardHuntGoal = (state: ISettingsState): ISettingsItem => {
   const isModern = state.currentEra === Toggle.on;
   const crystals = isModern ? "CRYSTALS" : "ORBS";
-  const disabled = state.currentFreeOrbs === Toggle.on;
-  let caption = "Find a required number of crystal shards";
-  if (disabled) {
-    caption += " - UNAVAILABLE WITH FREE " + crystals;
-  }
+  const disabled = true; //state.currentFreeOrbs === Toggle.on;
+  let caption = "Find a required number of crystal shards - COMING SOON";
+  // if (disabled) {
+  //   caption += " - UNAVAILABLE WITH FREE " + crystals;
+  // }
   return {
     name: "Shard Hunt",
     caption: caption,
