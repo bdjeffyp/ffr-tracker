@@ -2,7 +2,7 @@ import React from "react";
 import * as Styles from "./App.style";
 import { Settings } from "./components/Settings/Settings";
 import { TrackerContainer } from "./components/TrackerContainer/TrackerContainer";
-import { Goals, IconNameType, ISettingsProps, ITrackerContainerProps, Layouts, Toggle } from "./models";
+import { defaultSettings, IconNameType, ISettingsProps, ITrackerContainerProps, Toggle } from "./models";
 import { ffrTracker } from "./properties/trackerProperties";
 import { ModernItemNames, OriginalItemNames } from "./strings";
 import { getSavedSettings } from "./utils";
@@ -11,13 +11,6 @@ interface IAppState {
   settingCaption: string;
   currentSettings: ISettingsProps;
 }
-const defaultSettings: ISettingsProps = {
-  goal: Goals.regular,
-  freeOrbs: Toggle.off,
-  layout: Layouts.square,
-  showTimer: Toggle.on,
-  era: Toggle.off,
-};
 
 class App extends React.Component<{}, IAppState> {
   constructor(props: any) {

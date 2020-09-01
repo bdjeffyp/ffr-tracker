@@ -1,4 +1,4 @@
-import { Goals, ISettingsProps, Layouts, Toggle } from "./models";
+import { defaultSettings, ISettingsProps } from "./models";
 
 /**
  * Combines all style objects into one for placing in an element style attribute.
@@ -62,12 +62,6 @@ export const getSavedSettings = (): ISettingsProps => {
     return savedSettings;
   } else {
     // Return defaults
-    return {
-      goal: Goals.regular,
-      freeOrbs: Toggle.off,
-      layout: Layouts.square,
-      showTimer: Toggle.on,
-      era: Toggle.off,
-    };
+    return defaultSettings;
   }
 };

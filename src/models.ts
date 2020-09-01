@@ -30,8 +30,14 @@ export enum SettingsNames {
   layout = "layout",
   border = "border",
   timerMode = "timerMode",
-  crystalOrOrb = "crystalOrOrb",
   iconSet = "iconSet",
+  showNames = "showNames",
+}
+
+export enum ShowNamesSettings {
+  always = "always",
+  onHover = "onHover",
+  never = "never",
 }
 
 /** Defines which set of strings to use for the names of icons */
@@ -63,6 +69,16 @@ export const OFF_STATE_INDEX = 0;
 /** On state index in the Icon's stateImageLocations */
 export const ON_STATE_INDEX = 1;
 
+/** Default options for the settings menu when first loaded */
+export const defaultSettings: ISettingsProps = {
+  goal: Goals.regular,
+  freeOrbs: Toggle.off,
+  layout: Layouts.square,
+  showTimer: Toggle.on,
+  era: Toggle.off,
+  showNames: ShowNamesSettings.never,
+};
+
 ////// Props //////
 export interface ICoordinates {
   x: number;
@@ -75,6 +91,7 @@ export interface ISettingsProps {
   layout: Layouts;
   showTimer: Toggle;
   era: Toggle;
+  showNames: ShowNamesSettings;
 }
 
 export interface ITitle {
