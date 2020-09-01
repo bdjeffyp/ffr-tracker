@@ -1,16 +1,11 @@
 import * as React from "react";
 import retroBorderImage from "../../images/borderRetroThick.png";
 import modernBorderImage from "../../images/borderThick.png";
-import { Borders, IIconProps, ITrackerBoxProps, Toggle } from "../../models";
+import { IIconProps, ITrackerBoxProps, Toggle } from "../../models";
 import { centerObject, formatBackgroundPosition, mergeStyles } from "../../utils";
 import { Icon } from "../Icon/Icon";
 import { Timer } from "./Timer";
 import * as Styles from "./TrackerBox.style";
-
-interface IExtendedBoxProps {
-  /** Border to render for this box */
-  border: Borders;
-}
 
 interface ITrackerBoxState {
   titleImageLocationX: number;
@@ -18,10 +13,10 @@ interface ITrackerBoxState {
   titleWidth: number;
 }
 
-export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxProps, ITrackerBoxState> {
+export class TrackerBox extends React.Component<ITrackerBoxProps, ITrackerBoxState> {
   private _name = "tracker";
 
-  constructor(props: ITrackerBoxProps & IExtendedBoxProps) {
+  constructor(props: ITrackerBoxProps) {
     super(props);
     this.state = {
       titleImageLocationX: 0,
@@ -38,7 +33,7 @@ export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxP
     });
   }
 
-  public componentDidUpdate(prevProps: ITrackerBoxProps & IExtendedBoxProps) {
+  public componentDidUpdate(prevProps: ITrackerBoxProps) {
     if (prevProps !== this.props) {
       this.setState({
         titleImageLocationX: this.props.titleImageLocationX,

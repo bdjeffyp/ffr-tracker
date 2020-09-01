@@ -1,4 +1,4 @@
-import { Borders, Goals, ISettingsProps, Layouts, Toggle } from "./models";
+import { Goals, ISettingsProps, Layouts, Toggle } from "./models";
 
 /**
  * Combines all style objects into one for placing in an element style attribute.
@@ -66,8 +66,6 @@ export const getSavedSettings = (): ISettingsProps => {
       goal: Goals.regular,
       freeOrbs: Toggle.off,
       layout: Layouts.square,
-      border: Borders.thick,
-      showCrystals: Toggle.off,
       showTimer: Toggle.on,
       era: Toggle.off,
     };

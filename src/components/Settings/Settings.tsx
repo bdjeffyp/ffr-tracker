@@ -1,16 +1,6 @@
 import { Back, Elastic, gsap, Power4 } from "gsap";
 import * as React from "react";
-import {
-  Borders,
-  Goals,
-  ISettingsGroup,
-  ISettingsItem,
-  ISettingsMenuProps,
-  ISettingsProps,
-  Layouts,
-  SettingsNames,
-  Toggle,
-} from "../../models";
+import { Goals, ISettingsGroup, ISettingsItem, ISettingsMenuProps, ISettingsProps, Layouts, SettingsNames, Toggle } from "../../models";
 import { settingsMenu } from "../../properties/settingProperties";
 import { getSavedSettings, mergeStyles } from "../../utils";
 import * as Styles from "./Settings.style";
@@ -20,9 +10,7 @@ export interface ISettingsState {
   currentGoal: Goals;
   currentFreeOrbs: Toggle;
   currentLayout: Layouts;
-  currentBorder: Borders;
   currentShowTimer: Toggle;
-  currentShowCrystals: Toggle;
   currentEra: Toggle;
   caption: string;
 }
@@ -130,14 +118,8 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
       case SettingsNames.layout:
         newState.currentLayout = event.target.value as Layouts;
         break;
-      case SettingsNames.border:
-        newState.currentBorder = event.target.value as Borders;
-        break;
       case SettingsNames.timerMode:
         newState.currentShowTimer = event.target.value as Toggle;
-        break;
-      case SettingsNames.crystalOrOrb:
-        newState.currentShowCrystals = event.target.value as Toggle;
         break;
       case SettingsNames.iconSet:
         newState.currentEra = event.target.value as Toggle;
@@ -152,9 +134,7 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
       goal: newState.currentGoal,
       freeOrbs: newState.currentFreeOrbs,
       layout: newState.currentLayout,
-      border: newState.currentBorder,
       showTimer: newState.currentShowTimer,
-      showCrystals: newState.currentShowCrystals,
       era: newState.currentEra,
     };
     document.cookie = "settings=" + JSON.stringify(newSettings) + "; expires=Sat, 26 Dec 2025 12:00:00 UTC; path=/";
@@ -170,9 +150,7 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
       currentGoal: props.goal,
       currentFreeOrbs: props.freeOrbs,
       currentLayout: props.layout,
-      currentBorder: props.border,
       currentShowTimer: props.showTimer,
-      currentShowCrystals: props.showCrystals,
       currentEra: props.era,
       caption: "",
     };

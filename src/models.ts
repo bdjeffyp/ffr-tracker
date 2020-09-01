@@ -73,9 +73,7 @@ export interface ISettingsProps {
   goal: Goals;
   freeOrbs: Toggle;
   layout: Layouts;
-  border: Borders;
   showTimer: Toggle;
-  showCrystals: Toggle;
   era: Toggle;
 }
 
@@ -145,8 +143,6 @@ export interface ITrackerBoxProps extends ITitle {
 }
 
 export interface ITrackerContainerProps {
-  /** Current state of the box borders: off, thin, or thick */
-  bordersState: Borders;
   /** Setting that describes the collection of names to use for objects */
   nameType: IconNameType;
   /** Tracker boxes to show in this container */

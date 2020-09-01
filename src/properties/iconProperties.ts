@@ -808,7 +808,7 @@ export const adamantIcon = (names: IItemNames): IIconProps => {
 };
 
 ////// Orbs/Crystals //////
-export const earthOrb = (names: IItemNames, showCrystals: boolean): IIconProps => {
+export const earthOrb = (names: IItemNames, isModern: boolean): IIconProps => {
   return {
     title: names.earthOrb,
     toggleState: Toggle.off,
@@ -817,14 +817,14 @@ export const earthOrb = (names: IItemNames, showCrystals: boolean): IIconProps =
     row: 0,
     column: 0,
     offsetY: 32, // shift down
-    stateImageLocations: [showCrystals ? crystalOff : orbOff, showCrystals ? earthCrystalOn : earthOrbOn],
+    stateImageLocations: [isModern ? crystalOff : orbOff, isModern ? earthCrystalOn : earthOrbOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
   };
 };
 
-export const fireOrb = (names: IItemNames, showCrystals: boolean): IIconProps => {
+export const fireOrb = (names: IItemNames, isModern: boolean): IIconProps => {
   return {
     title: names.fireOrb,
     toggleState: Toggle.off,
@@ -833,14 +833,14 @@ export const fireOrb = (names: IItemNames, showCrystals: boolean): IIconProps =>
     row: 0,
     column: 1,
     offsetY: 32, // shift down
-    stateImageLocations: [showCrystals ? crystalOff : orbOff, showCrystals ? fireCrystalOn : fireOrbOn],
+    stateImageLocations: [isModern ? crystalOff : orbOff, isModern ? fireCrystalOn : fireOrbOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
   };
 };
 
-export const waterOrb = (names: IItemNames, showCrystals: boolean): IIconProps => {
+export const waterOrb = (names: IItemNames, isModern: boolean): IIconProps => {
   return {
     title: names.waterOrb,
     toggleState: Toggle.off,
@@ -849,14 +849,14 @@ export const waterOrb = (names: IItemNames, showCrystals: boolean): IIconProps =
     row: 1,
     column: 0,
     offsetY: 108, // shift WAY down
-    stateImageLocations: [showCrystals ? crystalOff : orbOff, showCrystals ? waterCrystalOn : waterOrbOn],
+    stateImageLocations: [isModern ? crystalOff : orbOff, isModern ? waterCrystalOn : waterOrbOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},
   };
 };
 
-export const airOrb = (names: IItemNames, showCrystals: boolean): IIconProps => {
+export const airOrb = (names: IItemNames, isModern: boolean): IIconProps => {
   return {
     title: names.airOrb,
     toggleState: Toggle.off,
@@ -865,7 +865,7 @@ export const airOrb = (names: IItemNames, showCrystals: boolean): IIconProps => 
     row: 1,
     column: 1,
     offsetY: 108, // shift WAY down
-    stateImageLocations: [showCrystals ? crystalOff : orbOff, showCrystals ? airCrystalOn : airOrbOn],
+    stateImageLocations: [isModern ? crystalOff : orbOff, isModern ? airCrystalOn : airOrbOn],
     // empty props
     settings: {} as ISettingsProps,
     handleHover: () => {},

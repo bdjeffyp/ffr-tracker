@@ -1,9 +1,10 @@
 import { ISettingsState } from "../components/Settings/Settings";
-import { Borders, Goals, ISettingsGroup, ISettingsItem, Layouts, SettingsNames, Toggle } from "../models";
+import { Goals, ISettingsGroup, ISettingsItem, Layouts, SettingsNames, Toggle } from "../models";
 
 ////// Goals section //////
 const regularGoal = (state: ISettingsState): ISettingsItem => {
-  const crystals = state.currentShowCrystals === Toggle.on ? "crystals" : "ORBs";
+  const isModern = state.currentEra === Toggle.on;
+  const crystals = isModern ? "crystals" : "ORBs";
   return {
     name: "Regular",
     caption: "No Variation (Light " + crystals + ", get key/lute)",
@@ -15,7 +16,8 @@ const regularGoal = (state: ISettingsState): ISettingsItem => {
 };
 
 const shardHuntGoal = (state: ISettingsState): ISettingsItem => {
-  const crystals = state.currentShowCrystals === Toggle.on ? "CRYSTALS" : "ORBS";
+  const isModern = state.currentEra === Toggle.on;
+  const crystals = isModern ? "CRYSTALS" : "ORBS";
   const disabled = state.currentFreeOrbs === Toggle.on;
   let caption = "Find a required number of crystal shards";
   if (disabled) {
@@ -46,7 +48,8 @@ const chaosRushGoal = (state: ISettingsState): ISettingsItem => {
 };
 
 const freeOrbsMode = (state: ISettingsState): ISettingsItem => {
-  const crystals = state.currentShowCrystals === Toggle.on ? "crystals" : "ORBs";
+  const isModern = state.currentEra === Toggle.on;
+  const crystals = isModern ? "crystals" : "ORBs";
   const disabled = true; //state.currentGoal === Goals.shardHunt;
   let caption = "Have all " + crystals + " lit at the start - COMING SOON";
   // if (disabled) {
@@ -91,51 +94,6 @@ const layoutSettings = (state: ISettingsState): ISettingsGroup => {
     xPosition: 170,
     yPosition: 40,
     settings: [squareLayout(state)],
-  };
-};
-
-////// Borders section //////
-const noBorder = (state: ISettingsState): ISettingsItem => {
-  return {
-    name: "Off",
-    caption: "No Border (most compact) - COMING SOON",
-    isRadio: true,
-    group: SettingsNames.border,
-    value: Borders.off,
-    currentValue: state.currentBorder,
-    disabled: true,
-  };
-};
-
-const thinBorder = (state: ISettingsState): ISettingsItem => {
-  return {
-    name: "Thin",
-    caption: "Thin border - COMING SOON",
-    isRadio: true,
-    group: SettingsNames.border,
-    value: Borders.thin,
-    currentValue: state.currentBorder,
-    disabled: true,
-  };
-};
-
-const thickBorder = (state: ISettingsState): ISettingsItem => {
-  return {
-    name: "Thick",
-    caption: "Thick border",
-    isRadio: true,
-    group: SettingsNames.border,
-    value: Borders.thick,
-    currentValue: state.currentBorder,
-  };
-};
-
-const borderSettings = (state: ISettingsState): ISettingsGroup => {
-  return {
-    title: "BORDERS",
-    xPosition: 290,
-    yPosition: 40,
-    settings: [noBorder(state), thinBorder(state), thickBorder(state)],
   };
 };
 
@@ -207,7 +165,6 @@ const eraSettings = (state: ISettingsState): ISettingsGroup => {
 export const settingsMenu = (state: ISettingsState): ISettingsGroup[] => [
   goalsSettings(state),
   layoutSettings(state),
-  borderSettings(state),
   timerSettings(state),
   eraSettings(state),
 ];

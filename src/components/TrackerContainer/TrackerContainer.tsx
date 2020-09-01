@@ -17,7 +17,7 @@ export class TrackerContainer extends React.Component<ITrackerContainerProps> {
               settings: this.props.settings,
               handleHover: this.props.handleHover,
             };
-            return <TrackerBox key={index} border={this.props.bordersState} {...boxProps} />;
+            return <TrackerBox key={index} {...boxProps} />;
           })}
       </div>
     );
