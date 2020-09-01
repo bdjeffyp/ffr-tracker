@@ -1,9 +1,10 @@
-import { ISettingsItem, ISettingsGroup, SettingsNames, Goals, Toggle, Layouts, Borders } from "../models";
 import { ISettingsState } from "../components/Settings/Settings";
+import { Goals, ISettingsGroup, ISettingsItem, Layouts, SettingsNames, Toggle } from "../models";
 
 ////// Goals section //////
 const regularGoal = (state: ISettingsState): ISettingsItem => {
-  const crystals = state.currentShowCrystals === Toggle.on ? "crystals" : "ORBs";
+  const isModern = state.currentEra === Toggle.on;
+  const crystals = isModern ? "crystals" : "ORBs";
   return {
     name: "Regular",
     caption: "No Variation (Light " + crystals + ", get key/lute)",
@@ -11,16 +12,17 @@ const regularGoal = (state: ISettingsState): ISettingsItem => {
     group: SettingsNames.goal,
     value: Goals.regular,
     currentValue: state.currentGoal,
-  }
-}
+  };
+};
 
 const shardHuntGoal = (state: ISettingsState): ISettingsItem => {
-  const crystals = state.currentShowCrystals === Toggle.on ? "CRYSTALS" : "ORBS";
+  const isModern = state.currentEra === Toggle.on;
+  const crystals = isModern ? "CRYSTALS" : "ORBS";
   const disabled = true; //state.currentFreeOrbs === Toggle.on;
   let caption = "Find a required number of crystal shards - COMING SOON";
-  if (disabled) {
-    caption += " - UNAVAILABLE WITH FREE " + crystals;
-  }
+  // if (disabled) {
+  //   caption += " - UNAVAILABLE WITH FREE " + crystals;
+  // }
   return {
     name: "Shard Hunt",
     caption: caption,
@@ -30,8 +32,8 @@ const shardHuntGoal = (state: ISettingsState): ISettingsItem => {
     currentValue: state.currentGoal,
     // This goal is not selectable if Free ORBs is on
     disabled: disabled,
-  }
-}
+  };
+};
 
 const chaosRushGoal = (state: ISettingsState): ISettingsItem => {
   return {
@@ -42,16 +44,17 @@ const chaosRushGoal = (state: ISettingsState): ISettingsItem => {
     value: Goals.chaosRush,
     currentValue: state.currentGoal,
     disabled: true,
-  }
-}
+  };
+};
 
 const freeOrbsMode = (state: ISettingsState): ISettingsItem => {
-  const crystals = state.currentShowCrystals === Toggle.on ? "crystals" : "ORBs";
+  const isModern = state.currentEra === Toggle.on;
+  const crystals = isModern ? "crystals" : "ORBs";
   const disabled = true; //state.currentGoal === Goals.shardHunt;
   let caption = "Have all " + crystals + " lit at the start - COMING SOON";
-  if (disabled) {
-    caption += " - UNAVAILABLE WITH SHARD HUNT";
-  }
+  // if (disabled) {
+  //   caption += " - UNAVAILABLE WITH SHARD HUNT";
+  // }
   return {
     name: "Free " + crystals,
     caption: caption,
@@ -61,22 +64,17 @@ const freeOrbsMode = (state: ISettingsState): ISettingsItem => {
     currentValue: state.currentFreeOrbs,
     // This mode is not selectable if Shard Hunt is the goal
     disabled: disabled,
-  }
-}
+  };
+};
 
 const goalsSettings = (state: ISettingsState): ISettingsGroup => {
   return {
     title: "GOAL",
     xPosition: 50,
     yPosition: 40,
-    settings: [
-      regularGoal(state),
-      shardHuntGoal(state),
-      chaosRushGoal(state),
-      freeOrbsMode(state),
-    ],
-  }
-}
+    settings: [regularGoal(state), shardHuntGoal(state), chaosRushGoal(state), freeOrbsMode(state)],
+  };
+};
 
 ////// Layout section //////
 const squareLayout = (state: ISettingsState): ISettingsItem => {
@@ -87,68 +85,17 @@ const squareLayout = (state: ISettingsState): ISettingsItem => {
     group: SettingsNames.layout,
     value: Layouts.square,
     currentValue: state.currentLayout,
-  }
-}
+  };
+};
 
 const layoutSettings = (state: ISettingsState): ISettingsGroup => {
   return {
     title: "LAYOUT",
     xPosition: 170,
     yPosition: 40,
-    settings: [
-      squareLayout(state),
-    ],
-  }
-}
-
-////// Borders section //////
-const noBorder = (state: ISettingsState): ISettingsItem => {
-  return {
-    name: "Off",
-    caption: "No Border (most compact) - COMING SOON",
-    isRadio: true,
-    group: SettingsNames.border,
-    value: Borders.off,
-    currentValue: state.currentBorder,
-    disabled: true,
-  }
-}
-
-const thinBorder = (state: ISettingsState): ISettingsItem => {
-  return {
-    name: "Thin",
-    caption: "Thin border - COMING SOON",
-    isRadio: true,
-    group: SettingsNames.border,
-    value: Borders.thin,
-    currentValue: state.currentBorder,
-    disabled: true,
-  }
-}
-
-const thickBorder = (state: ISettingsState): ISettingsItem => {
-  return {
-    name: "Thick",
-    caption: "Thick border",
-    isRadio: true,
-    group: SettingsNames.border,
-    value: Borders.thick,
-    currentValue: state.currentBorder,
-  }
-}
-
-const borderSettings = (state: ISettingsState): ISettingsGroup => {
-  return {
-    title: "BORDERS",
-    xPosition: 290,
-    yPosition: 40,
-    settings: [
-      noBorder(state),
-      thinBorder(state),
-      thickBorder(state),
-    ],
-  }
-}
+    settings: [squareLayout(state)],
+  };
+};
 
 ////// Timer section //////
 const timerOff = (state: ISettingsState): ISettingsItem => {
@@ -159,8 +106,8 @@ const timerOff = (state: ISettingsState): ISettingsItem => {
     group: SettingsNames.timerMode,
     value: Toggle.off,
     currentValue: state.currentShowTimer,
-  }
-}
+  };
+};
 
 const timerOn = (state: ISettingsState): ISettingsItem => {
   return {
@@ -170,61 +117,54 @@ const timerOn = (state: ISettingsState): ISettingsItem => {
     group: SettingsNames.timerMode,
     value: Toggle.on,
     currentValue: state.currentShowTimer,
-  }
-}
+  };
+};
 
 const timerSettings = (state: ISettingsState): ISettingsGroup => {
   return {
     title: "TIMER",
     xPosition: 170,
     yPosition: 170,
-    settings: [
-      timerOff(state),
-      timerOn(state),
-    ],
-  }
-}
+    settings: [timerOff(state), timerOn(state)],
+  };
+};
 
-////// Crystal icons section //////
-const crystalIcons = (state: ISettingsState): ISettingsItem => {
+////// Icon era settings //////
+const modernNamesAndIcons = (state: ISettingsState): ISettingsItem => {
   return {
-    name: "Crystals",
-    caption: "Use crystal icons and modern names",
+    name: "Modern",
+    caption: "Use modern (PSP/GBA) icons and names",
     isRadio: true,
     group: SettingsNames.iconSet,
     value: Toggle.on,
-    currentValue: state.currentShowCrystals,
-  }
-}
+    currentValue: state.currentEra,
+  };
+};
 
-const orbIcons = (state: ISettingsState): ISettingsItem => {
+const retroNamesAndIcons = (state: ISettingsState): ISettingsItem => {
   return {
-    name: "ORBs",
-    caption: "Use ORB icons and NES names",
+    name: "NES",
+    caption: "Use retro (NES) icons and names",
     isRadio: true,
     group: SettingsNames.iconSet,
     value: Toggle.off,
-    currentValue: state.currentShowCrystals,
-  }
-}
+    currentValue: state.currentEra,
+  };
+};
 
-const iconSettings = (state: ISettingsState): ISettingsGroup => {
+const eraSettings = (state: ISettingsState): ISettingsGroup => {
   return {
     title: "ERA",
     xPosition: 50,
     yPosition: 170,
-    settings: [
-      crystalIcons(state),
-      orbIcons(state),
-    ],
-  }
-}
+    settings: [modernNamesAndIcons(state), retroNamesAndIcons(state)],
+  };
+};
 
 ////// Settings menu collection //////
 export const settingsMenu = (state: ISettingsState): ISettingsGroup[] => [
   goalsSettings(state),
   layoutSettings(state),
-  borderSettings(state),
   timerSettings(state),
-  iconSettings(state),
-]
+  eraSettings(state),
+];

@@ -1,10 +1,10 @@
-import { ISettingsProps, Goals, Toggle, Layouts, Borders } from "./models";
+import { Goals, ISettingsProps, Layouts, Toggle } from "./models";
 
 /**
  * Combines all style objects into one for placing in an element style attribute.
  * @param args one or more style objects to merge
  */
-export const mergeStyles = (...args: (React.CSSProperties)[]): React.CSSProperties => {
+export const mergeStyles = (...args: React.CSSProperties[]): React.CSSProperties => {
   const finalStyle: React.CSSProperties = {};
 
   for (let i = 0; i < args.length; i++) {
@@ -14,7 +14,7 @@ export const mergeStyles = (...args: (React.CSSProperties)[]): React.CSSProperti
   }
 
   return finalStyle;
-}
+};
 
 /**
  * Converts a coordinate into a string with a negative value for the background position CSS property.
@@ -23,7 +23,7 @@ export const mergeStyles = (...args: (React.CSSProperties)[]): React.CSSProperti
  */
 export const formatBackgroundPosition = (coordinate: number): string => {
   return coordinate === 0 ? "0px" : "-" + coordinate + "px";
-}
+};
 
 /**
  * Finds the x or y position of the top-left of an object to place in the center of a container.
@@ -33,8 +33,8 @@ export const formatBackgroundPosition = (coordinate: number): string => {
  * @param objectWidth Width (or height) of the object itself
  */
 export const centerObject = (containerWidth: number, objectWidth: number): number => {
-  return (containerWidth / 2) - (objectWidth / 2);
-}
+  return containerWidth / 2 - objectWidth / 2;
+};
 
 /**
  * Retrieve the saved cookie from the browser
@@ -46,7 +46,7 @@ export const getCookie = (cookieName: string): string | undefined => {
   if (parts.length === 2) {
     return parts.pop()?.split(";").shift();
   }
-}
+};
 
 /**
  * Gets the Settings cookie and applies it to our Settings component
@@ -54,8 +54,8 @@ export const getCookie = (cookieName: string): string | undefined => {
  */
 export const getSavedSettings = (): ISettingsProps => {
   // Reads the user's cookie and returns it as a settings object
-  const cookie = getCookie('settings');
-  const savedSettings = (typeof (cookie) !== 'undefined') ? JSON.parse(cookie) as ISettingsProps : undefined;
+  const cookie = getCookie("settings");
+  const savedSettings = typeof cookie !== "undefined" ? (JSON.parse(cookie) as ISettingsProps) : undefined;
 
   // Return the settings
   if (savedSettings) {
@@ -66,9 +66,8 @@ export const getSavedSettings = (): ISettingsProps => {
       goal: Goals.regular,
       freeOrbs: Toggle.off,
       layout: Layouts.square,
-      border: Borders.thick,
-      showCrystals: Toggle.off,
       showTimer: Toggle.on,
-    }
+      era: Toggle.off,
+    };
   }
-}
+};

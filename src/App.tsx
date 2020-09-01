@@ -1,11 +1,11 @@
-import React from 'react';
-import * as Styles from './App.style';
-import { Settings } from './components/Settings/Settings';
-import { TrackerContainer } from './components/TrackerContainer/TrackerContainer';
-import { ffrTracker } from './properties/trackerProperties';
-import { ITrackerContainerProps, ISettingsProps, Goals, Toggle, Layouts, Borders, IconNameType } from './models';
-import { getSavedSettings } from './utils';
-import { OriginalItemNames, ModernItemNames } from './strings';
+import React from "react";
+import * as Styles from "./App.style";
+import { Settings } from "./components/Settings/Settings";
+import { TrackerContainer } from "./components/TrackerContainer/TrackerContainer";
+import { Goals, IconNameType, ISettingsProps, ITrackerContainerProps, Layouts, Toggle } from "./models";
+import { ffrTracker } from "./properties/trackerProperties";
+import { ModernItemNames, OriginalItemNames } from "./strings";
+import { getSavedSettings } from "./utils";
 
 interface IAppState {
   settingCaption: string;
@@ -15,9 +15,8 @@ const defaultSettings: ISettingsProps = {
   goal: Goals.regular,
   freeOrbs: Toggle.off,
   layout: Layouts.square,
-  border: Borders.thick,
   showTimer: Toggle.on,
-  showCrystals: Toggle.off,
+  era: Toggle.off,
 };
 
 class App extends React.Component<{}, IAppState> {
@@ -31,20 +30,22 @@ class App extends React.Component<{}, IAppState> {
 
   public componentDidMount() {
     // Ensure the default settings are updated with saved settings, if available
-    const savedSettings = getSavedSettings()
+    const savedSettings = getSavedSettings();
     this._handleSettingsChange(savedSettings);
   }
 
   public render() {
-    const nameType = this.state.currentSettings.showCrystals === Toggle.on ? IconNameType.modern : IconNameType.original;
+    // Establish names and icons to show based on era setting
+    const isModern = this.state.currentSettings.era === Toggle.on;
+    const nameType = isModern ? IconNameType.modern : IconNameType.original;
     const names = nameType === IconNameType.original ? OriginalItemNames : ModernItemNames;
+
     // Build tracker props based on settings
     const trackerProps: ITrackerContainerProps = {
       nameType: nameType,
-      bordersState: this.state.currentSettings.border,
       settings: this.state.currentSettings,
       handleHover: this._handleHoverChange,
-      boxes: ffrTracker(names, this.state.currentSettings.goal, this.state.currentSettings.showTimer === Toggle.on).boxes!,
+      boxes: ffrTracker(names, this.state.currentSettings.goal, this.state.currentSettings.showTimer === Toggle.on, isModern).boxes!,
     };
     return (
       <div className="app" style={Styles.appContainerStyle} onContextMenu={this._captureRightClick}>
@@ -55,27 +56,19 @@ class App extends React.Component<{}, IAppState> {
     );
   }
 
-  // private _updateBoxes = (settings: ISettingsProps) => {
-  //   const boxProps: IBoxesProps = {
-  //     goal: settings.goal,
-  //     names: settings.showCrystals === Toggle.on ? IconNameType.modern : IconNameType.original
-  //   };
-  //   this._trackerBoxes = new FfrTracker(boxProps);
-  // }
-
   private _handleHoverChange = (caption: string) => {
     this.setState({ settingCaption: caption });
-  }
+  };
 
   private _handleSettingsChange = (settings: ISettingsProps) => {
     this.setState({ currentSettings: settings });
     // this._updateBoxes(settings);
-  }
+  };
 
   /** Prevent context menu popups within our app */
   private _captureRightClick = (event: React.MouseEvent) => {
     event.preventDefault();
-  }
+  };
 }
 
 export default App;

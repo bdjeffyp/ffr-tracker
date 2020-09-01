@@ -38,6 +38,11 @@ export interface IItemNames {
   lefeinian: string;
   shopkeeper: string;
   fairy: string;
+  shards: string;
+  addShard: string;
+  removeShard: string;
+  requiredShards: string;
+  shardsFound: string;
 }
 
 export const OriginalItemNames: IItemNames = {
@@ -78,9 +83,14 @@ export const OriginalItemNames: IItemNames = {
   nerrick: "Nerrick",
   smyth: "Blacksmith",
   lefeinian: "Lefeinian",
-  shopkeeper: "Shopkeeper",
+  shopkeeper: "Shopkeeper with item",
   fairy: "Fairy",
-}
+  shards: "Shards",
+  addShard: "Add a required shard",
+  removeShard: "Remove a required shard",
+  requiredShards: "Total shards required to find",
+  shardsFound: "Number of shards found",
+};
 
 export const ModernItemNames: IItemNames = {
   bridge: "Drawbridge",
@@ -122,4 +132,9 @@ export const ModernItemNames: IItemNames = {
   lefeinian: "Lufenian",
   shopkeeper: OriginalItemNames.shopkeeper,
   fairy: "Faerie",
-}
+  shards: OriginalItemNames.shards,
+  addShard: OriginalItemNames.addShard,
+  removeShard: OriginalItemNames.removeShard,
+  requiredShards: OriginalItemNames.requiredShards,
+  shardsFound: OriginalItemNames.shardsFound,
+};

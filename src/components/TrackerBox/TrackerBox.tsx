@@ -1,16 +1,11 @@
-import * as React from 'react';
-import * as Styles from './TrackerBox.style';
-import { ITrackerBoxProps, Borders, IIconProps, Toggle } from '../../models';
-import { mergeStyles, formatBackgroundPosition, centerObject } from '../../utils';
-import thickBorderImage from '../../images/borderThick.png';
-import thinBorderImage from '../../images/borderThin.png';
-import { Icon } from '../Icon/Icon';
-import { Timer } from './Timer';
-
-interface IExtendedBoxProps {
-  /** Border to render for this box */
-  border: Borders;
-}
+import * as React from "react";
+import retroBorderImage from "../../images/borderRetroThick.png";
+import modernBorderImage from "../../images/borderThick.png";
+import { IIconProps, ITrackerBoxProps, Toggle } from "../../models";
+import { centerObject, formatBackgroundPosition, mergeStyles } from "../../utils";
+import { Icon } from "../Icon/Icon";
+import { Timer } from "./Timer";
+import * as Styles from "./TrackerBox.style";
 
 interface ITrackerBoxState {
   titleImageLocationX: number;
@@ -18,10 +13,10 @@ interface ITrackerBoxState {
   titleWidth: number;
 }
 
-export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxProps, ITrackerBoxState> {
+export class TrackerBox extends React.Component<ITrackerBoxProps, ITrackerBoxState> {
   private _name = "tracker";
 
-  constructor(props: ITrackerBoxProps & IExtendedBoxProps) {
+  constructor(props: ITrackerBoxProps) {
     super(props);
     this.state = {
       titleImageLocationX: 0,
@@ -38,13 +33,13 @@ export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxP
     });
   }
 
-  public componentDidUpdate(prevProps: ITrackerBoxProps & IExtendedBoxProps) {
+  public componentDidUpdate(prevProps: ITrackerBoxProps) {
     if (prevProps !== this.props) {
       this.setState({
         titleImageLocationX: this.props.titleImageLocationX,
         titleImageLocationY: this.props.titleImageLocationY,
         titleWidth: this.props.titleWidth,
-      })
+      });
     }
   }
 
@@ -52,19 +47,13 @@ export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxP
     // Build the extended style information from the props
     let borderImage = "";
     let borderWidth = 1;
-    switch (this.props.border) {
-      case Borders.thick:
-        borderImage = `url(${thickBorderImage}) 28 round`;
-        borderWidth = 28;
-        break;
-      case Borders.thin:
-        borderImage = `url(${thinBorderImage}) 20 round`;
-        borderWidth = 20;
-        break;
-      default:
-        borderImage = "none";
-        borderWidth = 1;
-        break;
+    const isModern = this.props.settings.era === Toggle.on;
+    if (isModern) {
+      borderImage = `url(${modernBorderImage}) 28 round`;
+      borderWidth = 28;
+    } else {
+      borderImage = `url(${retroBorderImage}) 28 round`;
+      borderWidth = 28;
     }
     const currentTrackerBoxStyle: React.CSSProperties = {
       left: this.props.boxPositionX,
@@ -81,9 +70,9 @@ export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxP
       fontSize: this.props.fontSize,
       fontWeight: this.props.fontWeight,
       textAlign: this.props.textAlign as any,
-      cursor: this.props.cursor
-    }
-    const finalStyle = this.props.isTimer ? {...currentTrackerBoxStyle, ...extendedTrackerBoxStyle} : currentTrackerBoxStyle;
+      cursor: this.props.cursor,
+    };
+    const finalStyle = this.props.isTimer ? { ...currentTrackerBoxStyle, ...extendedTrackerBoxStyle } : currentTrackerBoxStyle;
 
     const xImagePosition = formatBackgroundPosition(this.state.titleImageLocationX);
     const yImagePosition = formatBackgroundPosition(this.state.titleImageLocationY);
@@ -92,27 +81,26 @@ export class TrackerBox extends React.Component<ITrackerBoxProps & IExtendedBoxP
       backgroundPosition: xImagePosition + " " + yImagePosition,
       // Mostly centers the title image within the tracker box
       left: centerObject(this.props.boxWidth, this.state.titleWidth),
-    }
+    };
 
     const icons = this.props.icons;
 
     return (
-      <div id={this._name + this.props.id} style={mergeStyles(Styles.trackerBoxSquareStyle, finalStyle)}>
+      <div id={this._name + this.props.id} style={mergeStyles(Styles.trackerBoxSquareStyle(isModern), finalStyle)}>
         {/* TODO: Hide the title in the compact views */}
-        <div id="trackerTitle" style={mergeStyles(Styles.trackerTitleStyle, currentTitleStyle)}></div>
+        <div id="trackerTitle" style={mergeStyles(Styles.trackerTitleStyle(isModern), currentTitleStyle)}></div>
 
-        {icons && icons.map((icon: IIconProps, index: number) => {
-          // Merge missing props
-          const iconProps: IIconProps = {
-            ...icon,
-            settings: this.props.settings,
-            handleHover: this.props.handleHover,
-          };
-          return <Icon key={index} {...iconProps} />
-        })}
-        {this.props.isTimer && (
-          <Timer key={"timer"} handleHover={this.props.handleHover} />
-        )}
+        {icons &&
+          icons.map((icon: IIconProps, index: number) => {
+            // Merge missing props
+            const iconProps: IIconProps = {
+              ...icon,
+              settings: this.props.settings,
+              handleHover: this.props.handleHover,
+            };
+            return <Icon key={index} {...iconProps} />;
+          })}
+        {this.props.isTimer && <Timer key={"timer"} handleHover={this.props.handleHover} />}
       </div>
     );
   }

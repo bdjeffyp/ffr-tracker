@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 export const settingsTabStyle: React.CSSProperties = {
   position: "absolute",
@@ -12,7 +12,7 @@ export const settingsTabStyle: React.CSSProperties = {
   fontFamily: "Oswald,sans-serif",
   fontSize: "17px",
   zIndex: 99998,
-}
+};
 
 export const tabIconStyle: React.CSSProperties = {
   position: "absolute",
@@ -28,11 +28,11 @@ export const tabIconStyle: React.CSSProperties = {
   zIndex: 99999,
   backgroundColor: "#111",
   borderRadius: "25%",
-}
+};
 
 export const popOutTabIconStyle: React.CSSProperties = {
-  left: "40px"
-}
+  left: "40px",
+};
 
 export const captionStyle: React.CSSProperties = {
   position: "absolute",
@@ -43,46 +43,46 @@ export const captionStyle: React.CSSProperties = {
   fontSize: "17px",
   textAlign: "left",
   overflow: "hidden",
-}
+};
 
 export const settingGroupStyle: React.CSSProperties = {
   position: "absolute",
   height: "30px",
   lineHeight: "20px",
   textAlign: "left",
-}
+};
 
 export const goalGroupStyle: React.CSSProperties = {
   top: "40px",
   left: "50px",
-}
+};
 
 export const layoutGroupStyle: React.CSSProperties = {
   top: "40px",
   left: "170px",
-}
+};
 
 export const bordersGroupStyle: React.CSSProperties = {
   top: "40px",
   left: "290px",
-}
+};
 
 export const timerGroupStyle: React.CSSProperties = {
   top: "170px",
   left: "290px",
-}
+};
 
 export const stateGroupStyle: React.CSSProperties = {
   top: "170px",
   left: "50px",
-}
+};
 
 export const iconsGroupStyle: React.CSSProperties = {
   top: "170px",
   left: "170px",
-}
+};
 
 export const mapsGroupStyle: React.CSSProperties = {
   top: "40px",
   left: "410px",
-}
+};

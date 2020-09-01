@@ -30,13 +30,14 @@ export enum SettingsNames {
   layout = "layout",
   border = "border",
   timerMode = "timerMode",
+  crystalOrOrb = "crystalOrOrb",
   iconSet = "iconSet",
 }
 
 /** Defines which set of strings to use for the names of icons */
 export enum IconNameType {
   original,
-  modern
+  modern,
 }
 
 export enum TimerDigits {
@@ -57,15 +58,23 @@ export const BASE_Y_TWEAK = 8;
 export const BASE_X_TWEAK = 8;
 /** Initial timer array */
 export const INITIAL_TIMER = [0, 0, 0, 0, 0, 0, 0, 0];
+/** Off state index in the Icon's stateImageLocations */
+export const OFF_STATE_INDEX = 0;
+/** On state index in the Icon's stateImageLocations */
+export const ON_STATE_INDEX = 1;
 
 ////// Props //////
+export interface ICoordinates {
+  x: number;
+  y: number;
+}
+
 export interface ISettingsProps {
   goal: Goals;
   freeOrbs: Toggle;
   layout: Layouts;
-  border: Borders;
   showTimer: Toggle;
-  showCrystals: Toggle;
+  era: Toggle;
 }
 
 export interface ITitle {
@@ -81,7 +90,7 @@ export interface IIconProps {
   /** Text to display in the settings menu caption; doubles as div id */
   title: string;
   /** Current state of the icon: toggled on or off */
-  state: Toggle;
+  toggleState?: Toggle;
   /** Width of the icon in pixels */
   width: number;
   /** Height of the icon in pixels */
@@ -94,14 +103,8 @@ export interface IIconProps {
   offsetX?: number;
   /** Tweaked y position from the row/col location */
   offsetY?: number;
-  /** x coordinate for the off state icon in the underlying image */
-  offStateImageLocationX: number;
-  /** y coordinate for the off state icon in the underlying image */
-  offStateImageLocationY: number;
-  /** x coordinate for the on state icon in the underlying image */
-  onStateImageLocationX: number;
-  /** y coordinate for the on state icon in the underlying image */
-  onStateImageLocationY: number;
+  /** coordinates for the icon's various states in the underlying image */
+  stateImageLocations: ICoordinates[];
   /** App settings */
   settings: ISettingsProps;
   /** Handle icon hover events */
@@ -140,8 +143,6 @@ export interface ITrackerBoxProps extends ITitle {
 }
 
 export interface ITrackerContainerProps {
-  /** Current state of the box borders: off, thin, or thick */
-  bordersState: Borders;
   /** Setting that describes the collection of names to use for objects */
   nameType: IconNameType;
   /** Tracker boxes to show in this container */

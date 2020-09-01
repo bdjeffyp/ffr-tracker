@@ -1,9 +1,9 @@
-import * as React from 'react';
-import * as Styles from './TrackerBox.style';
-import { mergeStyles } from '../../utils';
-import moment from 'moment';
-import gsap, { Linear, Back } from 'gsap';
-import { TimerDigits } from '../../models';
+import gsap, { Back, Linear } from "gsap";
+import moment from "moment";
+import * as React from "react";
+import { TimerDigits } from "../../models";
+import { mergeStyles } from "../../utils";
+import * as Styles from "./TrackerBox.style";
 
 interface ITimerState {
   isRunning: boolean;
@@ -102,11 +102,13 @@ export class Timer extends React.Component<ITimerProps, ITimerState> {
           return (
             <>
               {digit}
-              {(index === 1 || index === 3 || index === 5) &&
-                <div key={"colon" + index} className="colon" id={"colon" + index} style={colonStyle}>{colon}</div>
-              }
+              {(index === 1 || index === 3 || index === 5) && (
+                <div key={"colon" + index} className="colon" id={"colon" + index} style={colonStyle}>
+                  {colon}
+                </div>
+              )}
             </>
-          )
+          );
         })}
       </div>
     );
@@ -122,7 +124,7 @@ export class Timer extends React.Component<ITimerProps, ITimerState> {
     } else {
       this._pauseTimer();
     }
-  }
+  };
 
   private _resetTimer = () => {
     const speed = 0.5;
@@ -137,23 +139,23 @@ export class Timer extends React.Component<ITimerProps, ITimerState> {
     // Reset the animation
     gsap.to(".digits", speed, {
       y: 0,
-      ease: Back.easeInOut.config(1.4)
+      ease: Back.easeInOut.config(1.4),
     });
     // Restore the digit positions
     this._fadeDigits();
-  }
+  };
 
   private _startTimer = () => {
     this._startTime = moment();
     this._timerUpdate = setInterval(() => this._checkTime(), 10);
-  }
+  };
 
   private _pauseTimer = () => {
     this._duration = this._displayTime;
     if (typeof this._timerUpdate !== "undefined") {
       clearInterval(this._timerUpdate);
     }
-  }
+  };
 
   private _checkTime = () => {
     // Update the time in the display
@@ -199,7 +201,7 @@ export class Timer extends React.Component<ITimerProps, ITimerState> {
     }
 
     this._fadeDigits();
-  }
+  };
 
   private _scrollDigit = (digit: number, value: number) => {
     // Create the selector for animating the digit
@@ -214,15 +216,15 @@ export class Timer extends React.Component<ITimerProps, ITimerState> {
       // Animation for looping back to zero
       // TODO: BUG! The tens digit for seconds shows "6" briefly and then turns into "0". Fix me!!
       if (value === 0) {
-        const position = (digit === TimerDigits.tensMinutes || digit === TimerDigits.tensSeconds) ? -600 : -1000;
+        const position = digit === TimerDigits.tensMinutes || digit === TimerDigits.tensSeconds ? -600 : -1000;
         gsap.to(selector, speed, {
           y: position,
           ease: ease,
           onComplete: () => gsap.set(selector, { y: 0 }),
-        })
+        });
       } else {
         gsap.to(selector, speed, {
-          y: (-100 * value),
+          y: -100 * value,
           ease: ease,
         });
       }
@@ -230,7 +232,7 @@ export class Timer extends React.Component<ITimerProps, ITimerState> {
 
     // Update the digit in the store to the new number
     this._digits[digit] = value;
-  }
+  };
 
   private _fadeDigits = () => {
     let blank = true;
@@ -254,23 +256,29 @@ export class Timer extends React.Component<ITimerProps, ITimerState> {
     // As more numbers appear, shift the timerWrap to keep the numbers centered
     if (this._previousBlankCount !== blankCount) {
       // TODO: Looks like it is adjusted properly but need to test still!!
-      xOffset = blankCount === 5 ? -86.5 :
-        blankCount === 4 ? -66.5 :
-          blankCount === 3 ? -35.5 :
-            blankCount === 2 ? -16.5 :
-              blankCount === 1 ? 14 :
-              0;
+      xOffset =
+        blankCount === 5
+          ? -86.5
+          : blankCount === 4
+          ? -66.5
+          : blankCount === 3
+          ? -35.5
+          : blankCount === 2
+          ? -16.5
+          : blankCount === 1
+          ? 14
+          : 0;
       if (!gsap.isTweening("#timerWrap")) {
         gsap.to("#timerWrap .timerDigit,.colon", speed, {
           x: xOffset,
-          ease: Back.easeOut.config(3)
+          ease: Back.easeOut.config(3),
         });
       }
     }
     this._previousBlankCount = blankCount;
-  }
+  };
 
   private _handleHover = (caption: string) => {
     this.props.handleHover(caption);
-  }
+  };
 }
