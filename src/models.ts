@@ -30,6 +30,7 @@ export enum SettingsNames {
   layout = "layout",
   border = "border",
   timerMode = "timerMode",
+  crystalOrOrb = "crystalOrOrb",
   iconSet = "iconSet",
 }
 
@@ -75,6 +76,7 @@ export interface ISettingsProps {
   border: Borders;
   showTimer: Toggle;
   showCrystals: Toggle;
+  era: Toggle;
 }
 
 export interface ITitle {
