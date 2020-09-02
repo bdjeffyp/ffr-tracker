@@ -1,6 +1,16 @@
 import { Back, Elastic, gsap, Power4 } from "gsap";
 import * as React from "react";
-import { Goals, ISettingsGroup, ISettingsItem, ISettingsMenuProps, ISettingsProps, Layouts, SettingsNames, Toggle } from "../../models";
+import {
+  Goals,
+  ISettingsGroup,
+  ISettingsItem,
+  ISettingsMenuProps,
+  ISettingsProps,
+  Layouts,
+  SettingsNames,
+  ShowNamesSettings,
+  Toggle,
+} from "../../models";
 import { settingsMenu } from "../../properties/settingProperties";
 import { getSavedSettings, mergeStyles } from "../../utils";
 import * as Styles from "./Settings.style";
@@ -12,6 +22,7 @@ export interface ISettingsState {
   currentLayout: Layouts;
   currentShowTimer: Toggle;
   currentEra: Toggle;
+  currentShowNames: ShowNamesSettings;
   caption: string;
 }
 
@@ -123,6 +134,10 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
         break;
       case SettingsNames.iconSet:
         newState.currentEra = event.target.value as Toggle;
+        break;
+      case SettingsNames.showNames:
+        newState.currentShowNames = event.target.value as ShowNamesSettings;
+        break;
     }
     this.setState(newState);
 
@@ -136,6 +151,7 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
       layout: newState.currentLayout,
       showTimer: newState.currentShowTimer,
       era: newState.currentEra,
+      showNames: newState.currentShowNames,
     };
     document.cookie = "settings=" + JSON.stringify(newSettings) + "; expires=Sat, 26 Dec 2025 12:00:00 UTC; path=/";
 
@@ -152,6 +168,7 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
       currentLayout: props.layout,
       currentShowTimer: props.showTimer,
       currentEra: props.era,
+      currentShowNames: props.showNames,
       caption: "",
     };
   };

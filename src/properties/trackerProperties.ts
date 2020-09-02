@@ -11,7 +11,7 @@ export const itemsTitle = (isModern: boolean): ITitle => {
   return {
     titleImageLocationX: 0,
     titleImageLocationY: 0,
-    titleWidth: isModern ? 58 : 65,
+    titleWidth: isModern ? 58 : 69,
   };
 };
 
@@ -19,7 +19,7 @@ export const npcsTitle = (isModern: boolean): ITitle => {
   return {
     titleImageLocationX: 0,
     titleImageLocationY: 20,
-    titleWidth: isModern ? 56 : 64,
+    titleWidth: isModern ? 56 : 67,
   };
 };
 
@@ -27,7 +27,7 @@ export const crystalsTitle = (isModern: boolean): ITitle => {
   return {
     titleImageLocationX: 0,
     titleImageLocationY: 80,
-    titleWidth: isModern ? 92 : 102,
+    titleWidth: isModern ? 92 : 109,
   };
 };
 
@@ -35,7 +35,7 @@ export const orbsTitle = (isModern: boolean): ITitle => {
   return {
     titleImageLocationX: 0,
     titleImageLocationY: 100,
-    titleWidth: isModern ? 52 : 64,
+    titleWidth: isModern ? 52 : 67,
   };
 };
 
@@ -43,7 +43,7 @@ export const shardsTitle = (isModern: boolean): ITitle => {
   return {
     titleImageLocationX: 0,
     titleImageLocationY: 120,
-    titleWidth: isModern ? 74 : 84,
+    titleWidth: isModern ? 74 : 89,
   };
 };
 
@@ -51,7 +51,7 @@ export const timerTitle = (isModern: boolean): ITitle => {
   return {
     titleImageLocationX: 0,
     titleImageLocationY: 60,
-    titleWidth: isModern ? 48 : 54,
+    titleWidth: isModern ? 48 : 57,
   };
 };
 

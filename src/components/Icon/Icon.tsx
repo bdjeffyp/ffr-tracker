@@ -1,5 +1,5 @@
 import * as React from "react";
-import { BASE_X_TWEAK, BASE_Y_TWEAK, IIconProps, OFF_STATE_INDEX, ON_STATE_INDEX, Toggle } from "../../models";
+import { BASE_X_TWEAK, BASE_Y_TWEAK, IIconProps, OFF_STATE_INDEX, ON_STATE_INDEX, ShowNamesSettings, Toggle } from "../../models";
 import { formatBackgroundPosition, mergeStyles } from "../../utils";
 import * as Styles from "./Icon.style";
 
@@ -8,6 +8,7 @@ interface IIconState {
   xImagePosition: string;
   yImagePosition: string;
   isHovering: boolean;
+  showShortName: boolean;
 }
 
 export class Icon extends React.Component<IIconProps, IIconState> {
@@ -28,6 +29,7 @@ export class Icon extends React.Component<IIconProps, IIconState> {
           : this.props.stateImageLocations[ON_STATE_INDEX].y
       ),
       isHovering: false,
+      showShortName: this.props.settings.showNames === ShowNamesSettings.always,
     };
   }
 
@@ -58,6 +60,15 @@ export class Icon extends React.Component<IIconProps, IIconState> {
             : this.props.stateImageLocations[ON_STATE_INDEX].y
         ),
       });
+    }
+    if (prevProps.settings.showNames !== this.props.settings.showNames) {
+      // Update showing short names
+      if (this.props.settings.showNames === ShowNamesSettings.always) {
+        this.setState({ showShortName: true });
+      } else {
+        // Hover will handle itself and Never means off.
+        this.setState({ showShortName: false });
+      }
     }
   }
 
@@ -97,12 +108,23 @@ export class Icon extends React.Component<IIconProps, IIconState> {
         title={this.props.title}
         onMouseEnter={() => this._handleHover(this.props.title)}
         onMouseLeave={() => this._handleHover("")}
-      />
+      >
+        {this.state.showShortName && <span style={Styles.iconNameStyle}>{this.props.shortName}</span>}
+      </div>
     );
   }
 
   private _handleHover = (caption: string) => {
+    // Pass up the hover state to show the caption in the settings menu
     this.props.handleHover(caption);
+    // If we show the icon short name on hover, show it if the caption isn't blank. Otherwise, hide it.
+    if (this.props.settings.showNames === ShowNamesSettings.onHover) {
+      if (caption === "") {
+        this.setState({ showShortName: false });
+      } else {
+        this.setState({ showShortName: true });
+      }
+    }
   };
 
   private _toggleIcon = () => {

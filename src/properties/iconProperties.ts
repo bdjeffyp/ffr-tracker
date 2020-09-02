@@ -507,6 +507,7 @@ const numbersCollection: ICoordinates[] = [
 export const bridgeIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.bridge,
+    shortName: names.bridge,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -522,6 +523,7 @@ export const bridgeIcon = (names: IItemNames): IIconProps => {
 export const luteIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.lute,
+    shortName: names.lute,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -537,6 +539,7 @@ export const luteIcon = (names: IItemNames): IIconProps => {
 export const crownIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.crown,
+    shortName: names.crown,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -552,6 +555,7 @@ export const crownIcon = (names: IItemNames): IIconProps => {
 export const crystalEyeIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.crystal,
+    shortName: names.crystal,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -567,6 +571,7 @@ export const crystalEyeIcon = (names: IItemNames): IIconProps => {
 export const herbIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.herb,
+    shortName: names.herb,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -583,6 +588,7 @@ export const herbIcon = (names: IItemNames): IIconProps => {
 export const shipIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.ship,
+    shortName: names.ship,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -598,6 +604,7 @@ export const shipIcon = (names: IItemNames): IIconProps => {
 export const keyIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.key,
+    shortName: names.key,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -613,6 +620,7 @@ export const keyIcon = (names: IItemNames): IIconProps => {
 export const tntIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.tnt,
+    shortName: names.tnt,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -628,6 +636,7 @@ export const tntIcon = (names: IItemNames): IIconProps => {
 export const rubyIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.ruby,
+    shortName: names.ruby,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -643,6 +652,7 @@ export const rubyIcon = (names: IItemNames): IIconProps => {
 export const rodIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.rod,
+    shortName: names.rod,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -659,6 +669,7 @@ export const rodIcon = (names: IItemNames): IIconProps => {
 export const canalIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.canal,
+    shortName: names.canal,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -674,6 +685,7 @@ export const canalIcon = (names: IItemNames): IIconProps => {
 export const floaterIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.floater,
+    shortName: names.floater,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -689,6 +701,7 @@ export const floaterIcon = (names: IItemNames): IIconProps => {
 export const tailIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.tail,
+    shortName: names.tail,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -704,6 +717,7 @@ export const tailIcon = (names: IItemNames): IIconProps => {
 export const bottleIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.bottle,
+    shortName: names.bottleShortName,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -719,6 +733,7 @@ export const bottleIcon = (names: IItemNames): IIconProps => {
 export const oxyaleIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.oxyale,
+    shortName: names.oxyale,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -735,6 +750,7 @@ export const oxyaleIcon = (names: IItemNames): IIconProps => {
 export const canoeIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.canoe,
+    shortName: names.canoe,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -750,6 +766,7 @@ export const canoeIcon = (names: IItemNames): IIconProps => {
 export const slabIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.slab,
+    shortName: names.slabShortName,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -765,6 +782,7 @@ export const slabIcon = (names: IItemNames): IIconProps => {
 export const chimeIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.chime,
+    shortName: names.chime,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -780,6 +798,7 @@ export const chimeIcon = (names: IItemNames): IIconProps => {
 export const cubeIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.cube,
+    shortName: names.cube,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -795,6 +814,7 @@ export const cubeIcon = (names: IItemNames): IIconProps => {
 export const adamantIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.adamant,
+    shortName: names.adamant,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -811,6 +831,7 @@ export const adamantIcon = (names: IItemNames): IIconProps => {
 export const earthOrb = (names: IItemNames, isModern: boolean): IIconProps => {
   return {
     title: names.earthOrb,
+    shortName: names.earthShortName,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -827,6 +848,7 @@ export const earthOrb = (names: IItemNames, isModern: boolean): IIconProps => {
 export const fireOrb = (names: IItemNames, isModern: boolean): IIconProps => {
   return {
     title: names.fireOrb,
+    shortName: names.fireShortName,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -843,6 +865,7 @@ export const fireOrb = (names: IItemNames, isModern: boolean): IIconProps => {
 export const waterOrb = (names: IItemNames, isModern: boolean): IIconProps => {
   return {
     title: names.waterOrb,
+    shortName: names.waterShortName,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -859,6 +882,7 @@ export const waterOrb = (names: IItemNames, isModern: boolean): IIconProps => {
 export const airOrb = (names: IItemNames, isModern: boolean): IIconProps => {
   return {
     title: names.airOrb,
+    shortName: names.airShortName,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -876,6 +900,7 @@ export const airOrb = (names: IItemNames, isModern: boolean): IIconProps => {
 export const kingIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.king,
+    shortName: names.kingShortName,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -891,6 +916,7 @@ export const kingIcon = (names: IItemNames): IIconProps => {
 export const saraIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.sara,
+    shortName: names.saraShortName,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -906,6 +932,7 @@ export const saraIcon = (names: IItemNames): IIconProps => {
 export const bikkeIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.bikke,
+    shortName: names.bikkeShortName,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -921,6 +948,7 @@ export const bikkeIcon = (names: IItemNames): IIconProps => {
 export const sardaIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.sarda,
+    shortName: names.sarda,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -936,6 +964,7 @@ export const sardaIcon = (names: IItemNames): IIconProps => {
 export const sagesIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.sages,
+    shortName: names.sagesShortName,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -951,6 +980,7 @@ export const sagesIcon = (names: IItemNames): IIconProps => {
 export const robotIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.robot,
+    shortName: names.robotShortName,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -967,6 +997,7 @@ export const robotIcon = (names: IItemNames): IIconProps => {
 export const astosIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.astos,
+    shortName: names.astos,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -982,6 +1013,7 @@ export const astosIcon = (names: IItemNames): IIconProps => {
 export const matoyaIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.matoya,
+    shortName: names.matoya,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -997,6 +1029,7 @@ export const matoyaIcon = (names: IItemNames): IIconProps => {
 export const elfIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.elf,
+    shortName: names.elf,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -1012,6 +1045,7 @@ export const elfIcon = (names: IItemNames): IIconProps => {
 export const nerrickIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.nerrick,
+    shortName: names.nerrick,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -1027,6 +1061,7 @@ export const nerrickIcon = (names: IItemNames): IIconProps => {
 export const smythIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.smyth,
+    shortName: names.smyth,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -1042,6 +1077,7 @@ export const smythIcon = (names: IItemNames): IIconProps => {
 export const lefeinianIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.lefeinian,
+    shortName: names.lefeinian,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -1058,6 +1094,7 @@ export const lefeinianIcon = (names: IItemNames): IIconProps => {
 export const shopkeeperIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.shopkeeper,
+    shortName: names.shopkeeperShortName,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -1074,6 +1111,7 @@ export const shopkeeperIcon = (names: IItemNames): IIconProps => {
 export const fairyIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.fairy,
+    shortName: names.fairy,
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
@@ -1097,6 +1135,7 @@ export const fairyIcon = (names: IItemNames): IIconProps => {
 export const shardIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.shards,
+    shortName: names.shards,
     width: shardWidthHeight,
     height: shardWidthHeight,
     row: 0,
@@ -1112,6 +1151,7 @@ export const shardIcon = (names: IItemNames): IIconProps => {
 export const shardsFoundIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.shardsFound,
+    shortName: names.shardsFound,
     width: standardWidthHeight,
     height: textHeight,
     row: 1,
@@ -1131,6 +1171,7 @@ export const shardsFoundIcon = (names: IItemNames): IIconProps => {
 export const slashSymbolIcon = (row: number, column: number): IIconProps => {
   return {
     title: "",
+    shortName: "",
     width: slashSymbolWidth,
     height: textHeight,
     row: row,
@@ -1146,6 +1187,7 @@ export const slashSymbolIcon = (row: number, column: number): IIconProps => {
 export const requiredShardsIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.requiredShards,
+    shortName: names.requiredShards,
     width: standardWidthHeight,
     height: textHeight,
     row: 1,
@@ -1161,6 +1203,7 @@ export const requiredShardsIcon = (names: IItemNames): IIconProps => {
 export const addShardIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.addShard,
+    shortName: names.addShard,
     width: standardWidthHeight,
     height: textHeight,
     row: 2,
@@ -1176,6 +1219,7 @@ export const addShardIcon = (names: IItemNames): IIconProps => {
 export const removeShardIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.removeShard,
+    shortName: names.removeShard,
     width: standardWidthHeight,
     height: textHeight,
     row: 2,

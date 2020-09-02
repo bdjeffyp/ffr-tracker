@@ -1,5 +1,5 @@
 import { ISettingsState } from "../components/Settings/Settings";
-import { Goals, ISettingsGroup, ISettingsItem, Layouts, SettingsNames, Toggle } from "../models";
+import { Goals, ISettingsGroup, ISettingsItem, Layouts, SettingsNames, ShowNamesSettings, Toggle } from "../models";
 
 ////// Goals section //////
 const regularGoal = (state: ISettingsState): ISettingsItem => {
@@ -17,7 +17,7 @@ const regularGoal = (state: ISettingsState): ISettingsItem => {
 
 const shardHuntGoal = (state: ISettingsState): ISettingsItem => {
   const isModern = state.currentEra === Toggle.on;
-  const crystals = isModern ? "CRYSTALS" : "ORBS";
+  // const crystals = isModern ? "CRYSTALS" : "ORBS";
   const disabled = true; //state.currentFreeOrbs === Toggle.on;
   let caption = "Find a required number of crystal shards - COMING SOON";
   // if (disabled) {
@@ -161,10 +161,54 @@ const eraSettings = (state: ISettingsState): ISettingsGroup => {
   };
 };
 
+////// Show icon names setting //////
+const alwaysShowNames = (state: ISettingsState): ISettingsItem => {
+  return {
+    name: "Always",
+    caption: "Display names of icons at all times",
+    isRadio: true,
+    group: SettingsNames.showNames,
+    value: ShowNamesSettings.always,
+    currentValue: state.currentShowNames,
+  };
+};
+
+const onHoverShowNames = (state: ISettingsState): ISettingsItem => {
+  return {
+    name: "On Hover",
+    caption: "Display icon's name when mouse hovers over it",
+    isRadio: true,
+    group: SettingsNames.showNames,
+    value: ShowNamesSettings.onHover,
+    currentValue: state.currentShowNames,
+  };
+};
+
+const neverShowNames = (state: ISettingsState): ISettingsItem => {
+  return {
+    name: "Never",
+    caption: "Icon names are only displayed in setting menu caption",
+    isRadio: true,
+    group: SettingsNames.showNames,
+    value: ShowNamesSettings.never,
+    currentValue: state.currentShowNames,
+  };
+};
+
+const showNamesSetting = (state: ISettingsState): ISettingsGroup => {
+  return {
+    title: "SHOW ICON NAMES",
+    xPosition: 270,
+    yPosition: 40,
+    settings: [alwaysShowNames(state), onHoverShowNames(state), neverShowNames(state)],
+  };
+};
+
 ////// Settings menu collection //////
 export const settingsMenu = (state: ISettingsState): ISettingsGroup[] => [
   goalsSettings(state),
   layoutSettings(state),
   timerSettings(state),
   eraSettings(state),
+  showNamesSetting(state),
 ];
