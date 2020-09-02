@@ -106,6 +106,8 @@ export interface ITitle {
 export interface IIconProps {
   /** Text to display in the settings menu caption; doubles as div id */
   title: string;
+  /** Short name to display over the icon */
+  shortName: string;
   /** Current state of the icon: toggled on or off */
   toggleState?: Toggle;
   /** Width of the icon in pixels */

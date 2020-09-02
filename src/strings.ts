@@ -13,23 +13,34 @@ export interface IItemNames {
   floater: string;
   tail: string;
   bottle: string;
+  bottleShortName: string;
   oxyale: string;
   canoe: string;
   slab: string;
+  slabShortName: string;
   chime: string;
   cube: string;
   adamant: string;
   earthOrb: string;
+  earthShortName: string;
   fireOrb: string;
+  fireShortName: string;
   waterOrb: string;
+  waterShortName: string;
   airOrb: string;
+  airShortName: string;
   shard: string;
   king: string;
+  kingShortName: string;
   sara: string;
+  saraShortName: string;
   bikke: string;
+  bikkeShortName: string;
   sarda: string;
   sages: string;
+  sagesShortName: string;
   robot: string;
+  robotShortName: string;
   astos: string;
   matoya: string;
   elf: string;
@@ -37,6 +48,7 @@ export interface IItemNames {
   smyth: string;
   lefeinian: string;
   shopkeeper: string;
+  shopkeeperShortName: string;
   fairy: string;
   shards: string;
   addShard: string;
@@ -60,23 +72,34 @@ export const OriginalItemNames: IItemNames = {
   floater: "Floater",
   tail: "Tail",
   bottle: "Bottle",
+  bottleShortName: "Bottle",
   oxyale: "Oxyale",
   canoe: "Canoe",
   slab: "Slab",
+  slabShortName: "Slab",
   chime: "Chime",
   cube: "Cube",
   adamant: "Adamant",
   earthOrb: "Earth Orb",
+  earthShortName: "Earth",
   fireOrb: "Fire Orb",
+  fireShortName: "Fire",
   waterOrb: "Water Orb",
+  waterShortName: "Water",
   airOrb: "Air Orb",
+  airShortName: "Air",
   shard: "Shard",
   king: "King of Corneria",
+  kingShortName: "King",
   sara: "Princess Sara",
+  saraShortName: "Princess",
   bikke: "Bikke the Pirate",
+  bikkeShortName: "Bikke",
   sarda: "Sarda",
   sages: "Circle of Sages",
+  sagesShortName: "Sages",
   robot: "Waterfall Robot",
+  robotShortName: "Robot",
   astos: "Astos",
   matoya: "Matoya",
   elf: "Elf Prince",
@@ -84,6 +107,7 @@ export const OriginalItemNames: IItemNames = {
   smyth: "Blacksmith",
   lefeinian: "Lefeinian",
   shopkeeper: "Shopkeeper with item",
+  shopkeeperShortName: "Shop Item",
   fairy: "Fairy",
   shards: "Shards",
   addShard: "Add a required shard",
@@ -107,23 +131,34 @@ export const ModernItemNames: IItemNames = {
   floater: "Levistone",
   tail: "Rat's Tail",
   bottle: "Bottled Faerie",
+  bottleShortName: OriginalItemNames.bottleShortName,
   oxyale: OriginalItemNames.oxyale,
   canoe: OriginalItemNames.canoe,
   slab: "Rosetta Stone",
+  slabShortName: "Rosetta",
   chime: OriginalItemNames.chime,
   cube: "Warp Cube",
   adamant: "Adamantite",
   earthOrb: "Earth Crystal",
+  earthShortName: OriginalItemNames.earthShortName,
   fireOrb: "Fire Crystal",
+  fireShortName: OriginalItemNames.fireShortName,
   waterOrb: "Water Crystal",
+  waterShortName: OriginalItemNames.waterShortName,
   airOrb: "Air Crystal",
+  airShortName: OriginalItemNames.airShortName,
   shard: OriginalItemNames.shard,
   king: "King of Cornelia",
+  kingShortName: OriginalItemNames.kingShortName,
   sara: "Princess Sarah",
+  saraShortName: OriginalItemNames.saraShortName,
   bikke: OriginalItemNames.bikke,
+  bikkeShortName: OriginalItemNames.bikkeShortName,
   sarda: OriginalItemNames.sarda,
   sages: OriginalItemNames.sages,
+  sagesShortName: OriginalItemNames.sagesShortName,
   robot: OriginalItemNames.robot,
+  robotShortName: OriginalItemNames.robotShortName,
   astos: OriginalItemNames.astos,
   matoya: OriginalItemNames.matoya,
   elf: "Elven Prince",
@@ -131,6 +166,7 @@ export const ModernItemNames: IItemNames = {
   smyth: "Smyth",
   lefeinian: "Lufenian",
   shopkeeper: OriginalItemNames.shopkeeper,
+  shopkeeperShortName: OriginalItemNames.shopkeeperShortName,
   fairy: "Faerie",
   shards: OriginalItemNames.shards,
   addShard: OriginalItemNames.addShard,

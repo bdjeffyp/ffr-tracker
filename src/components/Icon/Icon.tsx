@@ -97,7 +97,9 @@ export class Icon extends React.Component<IIconProps, IIconState> {
         title={this.props.title}
         onMouseEnter={() => this._handleHover(this.props.title)}
         onMouseLeave={() => this._handleHover("")}
-      />
+      >
+        <span style={Styles.iconNameStyle}>{this.props.shortName}</span>
+      </div>
     );
   }
 
