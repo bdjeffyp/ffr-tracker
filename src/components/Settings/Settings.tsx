@@ -134,8 +134,10 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
         break;
       case SettingsNames.iconSet:
         newState.currentEra = event.target.value as Toggle;
+        break;
       case SettingsNames.showNames:
         newState.currentShowNames = event.target.value as ShowNamesSettings;
+        break;
     }
     this.setState(newState);
 
