@@ -34,6 +34,22 @@ export const popOutTabIconStyle: React.CSSProperties = {
   left: "40px",
 };
 
+export const bugReportTabIconStyle: React.CSSProperties = {
+  left: "645px",
+};
+
+export const githubTabIconStyle: React.CSSProperties = {
+  left: "610px",
+};
+
+export const githubImageStyle: React.CSSProperties = {
+  transform: "translate(0px, 3px)",
+};
+
+export const linkStyle: React.CSSProperties = {
+  textDecorationLine: "none",
+};
+
 export const captionStyle: React.CSSProperties = {
   position: "absolute",
   left: "80px",
