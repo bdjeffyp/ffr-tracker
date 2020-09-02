@@ -1,5 +1,6 @@
 import { Back, Elastic, gsap, Power4 } from "gsap";
 import * as React from "react";
+import githubIcon from "../../images/GitHub-Mark-Light-32px.png";
 import {
   Goals,
   ISettingsGroup,
@@ -44,9 +45,11 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
   }
 
   public render() {
-    // Caption strings for the settings menu toggle and popout buttons
+    // Caption strings for the settings menu buttons
     const toggleMenuCaption = "Toggle Settings Menu";
     const popoutMenuCaption = "Open tracker in new window";
+    const bugReportMenuCaption = "Submit a bug/feature request";
+    const githubLinkMenuCaption = "Go to the tracker's GitHub page";
 
     // Get the caption from the hovered object in the tracker boxes.
     let caption = this.props.caption;
@@ -78,6 +81,31 @@ export class Settings extends React.Component<ISettingsMenuProps, ISettingsState
         </div>
         {/* Caption */}
         <div style={Styles.captionStyle}>{caption}</div>
+        {/* Buttons for bug reporting and GitHub repository */}
+        {this.state.panelOpen && (
+          <div
+            style={mergeStyles(Styles.tabIconStyle, Styles.bugReportTabIconStyle)}
+            title={bugReportMenuCaption}
+            onMouseEnter={() => this._handleHover(bugReportMenuCaption)}
+            onMouseLeave={() => this._handleHover("")}
+          >
+            <a href="https://github.com/bdjeffyp/ffr-tracker/issues/new" target="_blank" rel="noopener noreferrer" style={Styles.linkStyle}>
+              &#128030;
+            </a>
+          </div>
+        )}
+        {this.state.panelOpen && (
+          <div
+            style={mergeStyles(Styles.tabIconStyle, Styles.githubTabIconStyle)}
+            title={githubLinkMenuCaption}
+            onMouseEnter={() => this._handleHover(githubLinkMenuCaption)}
+            onMouseLeave={() => this._handleHover("")}
+          >
+            <a href="https://github.com/bdjeffyp/ffr-tracker" target="_blank" rel="noopener noreferrer" style={Styles.linkStyle}>
+              <img style={Styles.githubImageStyle} src={githubIcon} alt="GitHub logo" />
+            </a>
+          </div>
+        )}
 
         {/* Render settings options based on the imported properties */}
         {this._settings &&
