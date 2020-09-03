@@ -30,5 +30,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # project
+/original-tracker
 /src/images/working
 /.vscode
