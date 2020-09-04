@@ -108,8 +108,10 @@ export interface IIconProps {
   title: string;
   /** Short name to display over the icon */
   shortName: string;
-  /** Current state of the icon: toggled on or off */
+  /** Current state of the icon: toggled on or off. This will override presence of activeState. */
   toggleState?: Toggle;
+  /** Current state of the icon: number refers to index in stateImageLocations */
+  activeState?: number;
   /** Width of the icon in pixels */
   width: number;
   /** Height of the icon in pixels */

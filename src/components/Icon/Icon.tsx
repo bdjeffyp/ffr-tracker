@@ -18,15 +18,16 @@ export class Icon extends React.Component<IIconProps, IIconState> {
     super(props);
     this.state = {
       toggleState: this.props.toggleState,
+      // Whether using toggleState or activeState, will default to 0 indexed icon.
       xImagePosition: formatBackgroundPosition(
-        this.props.toggleState === Toggle.off
-          ? this.props.stateImageLocations[OFF_STATE_INDEX].x
-          : this.props.stateImageLocations[ON_STATE_INDEX].x
+        this.props.toggleState === Toggle.on
+          ? this.props.stateImageLocations[ON_STATE_INDEX].x
+          : this.props.stateImageLocations[OFF_STATE_INDEX].x
       ),
       yImagePosition: formatBackgroundPosition(
-        this.props.toggleState === Toggle.off
-          ? this.props.stateImageLocations[OFF_STATE_INDEX].y
-          : this.props.stateImageLocations[ON_STATE_INDEX].y
+        this.props.toggleState === Toggle.on
+          ? this.props.stateImageLocations[ON_STATE_INDEX].y
+          : this.props.stateImageLocations[OFF_STATE_INDEX].y
       ),
       isHovering: false,
       showShortName: this.props.settings.showNames === ShowNamesSettings.always,
@@ -35,31 +36,41 @@ export class Icon extends React.Component<IIconProps, IIconState> {
 
   public componentDidUpdate(prevProps: IIconProps) {
     // If any of the icon's props updated, update the state
-    // TODO: Need to update how we do this since we are having more states than just two and toggleState isn't guaranteed
-    // TODO(con't): Perhaps check for toggleState, or other state tracking methods that exist in the future.
-    if (
-      prevProps.stateImageLocations[OFF_STATE_INDEX].x !== this.props.stateImageLocations[OFF_STATE_INDEX].x ||
-      prevProps.stateImageLocations[ON_STATE_INDEX].x !== this.props.stateImageLocations[ON_STATE_INDEX].x
-    ) {
-      this.setState({
-        xImagePosition: formatBackgroundPosition(
-          this.props.toggleState === Toggle.off
-            ? this.props.stateImageLocations[OFF_STATE_INDEX].x
-            : this.props.stateImageLocations[ON_STATE_INDEX].x
-        ),
-      });
-    }
-    if (
-      prevProps.stateImageLocations[OFF_STATE_INDEX].y !== this.props.stateImageLocations[OFF_STATE_INDEX].y ||
-      prevProps.stateImageLocations[ON_STATE_INDEX].y !== this.props.stateImageLocations[ON_STATE_INDEX].y
-    ) {
-      this.setState({
-        yImagePosition: formatBackgroundPosition(
-          this.props.toggleState === Toggle.off
-            ? this.props.stateImageLocations[OFF_STATE_INDEX].y
-            : this.props.stateImageLocations[ON_STATE_INDEX].y
-        ),
-      });
+    if (this.props.toggleState) {
+      // This is a toggling icon so a simple binary check
+      if (
+        prevProps.stateImageLocations[OFF_STATE_INDEX].x !== this.props.stateImageLocations[OFF_STATE_INDEX].x ||
+        prevProps.stateImageLocations[ON_STATE_INDEX].x !== this.props.stateImageLocations[ON_STATE_INDEX].x
+      ) {
+        this.setState({
+          xImagePosition: formatBackgroundPosition(
+            this.props.toggleState === Toggle.on
+              ? this.props.stateImageLocations[ON_STATE_INDEX].x
+              : this.props.stateImageLocations[OFF_STATE_INDEX].x
+          ),
+        });
+      }
+      if (
+        prevProps.stateImageLocations[OFF_STATE_INDEX].y !== this.props.stateImageLocations[OFF_STATE_INDEX].y ||
+        prevProps.stateImageLocations[ON_STATE_INDEX].y !== this.props.stateImageLocations[ON_STATE_INDEX].y
+      ) {
+        this.setState({
+          yImagePosition: formatBackgroundPosition(
+            this.props.toggleState === Toggle.on
+              ? this.props.stateImageLocations[ON_STATE_INDEX].y
+              : this.props.stateImageLocations[OFF_STATE_INDEX].y
+          ),
+        });
+      }
+    } else if (this.props.activeState) {
+      // Non-binary state icon toggling
+      if (prevProps.activeState !== this.props.activeState) {
+        // The active state changed, so get the next image location
+        this.setState({
+          xImagePosition: formatBackgroundPosition(this.props.stateImageLocations[this.props.activeState].x),
+          yImagePosition: formatBackgroundPosition(this.props.stateImageLocations[this.props.activeState].y),
+        });
+      }
     }
     if (prevProps.settings.showNames !== this.props.settings.showNames) {
       // Update showing short names
@@ -104,7 +115,7 @@ export class Icon extends React.Component<IIconProps, IIconState> {
       <div
         id={this._name + this.props.title}
         style={mergeStyles(Styles.iconStyle(isModern), currentIconStyle)}
-        onClick={this._toggleIcon}
+        onClick={this._handleClick}
         title={this.props.title}
         onMouseEnter={() => this._handleHover(this.props.title)}
         onMouseLeave={() => this._handleHover("")}
@@ -127,6 +138,21 @@ export class Icon extends React.Component<IIconProps, IIconState> {
     }
   };
 
+  /**
+   * Determine which action to take on an icon based on the presence of toggleState, activeState, or neither!
+   */
+  private _handleClick = (event: React.MouseEvent) => {
+    if (this.props.toggleState) {
+      // Always check for toggleState first, since that is the priority action
+      this._toggleIcon();
+    } else if (this.props.activeState) {
+      this._cycleIcon(event);
+    }
+  }
+
+  /**
+   * Perform a simple toggle action on icons with toggleState.
+   */
   private _toggleIcon = () => {
     const newState = this.state.toggleState === Toggle.off ? Toggle.on : Toggle.off;
     // TODO: Need to update how we do this since we are having more states than just two and toggleState isn't guaranteed
@@ -139,4 +165,11 @@ export class Icon extends React.Component<IIconProps, IIconState> {
     );
     this.setState({ toggleState: newState, xImagePosition: xImagePosition, yImagePosition: yImagePosition });
   };
+
+  /**
+   * Cycle through the possible states based on the type of click received.
+   * Left-clicks advance the state while right-clicks rewind the state.
+   * If the stateImageLocation length or 0 is exceeded, this will wrap back around the the opposite.
+   */
+  private _cycleIcon = (event: React.MouseEvent) => {}
 }

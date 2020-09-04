@@ -137,10 +137,13 @@ const orbIconsProps = (names: IItemNames, goal: Goals, isModern: boolean): IIcon
     case Goals.shardHunt:
       // TODO: Change to use the shard icons once that is created
       return [
-        Icons.earthOrb(names, isModern),
-        Icons.fireOrb(names, isModern),
-        Icons.waterOrb(names, isModern),
-        Icons.airOrb(names, isModern),
+        Icons.shardIcon(names),
+        Icons.shardsFoundIcon(names),
+        Icons.slashSymbolIcon(1, 1),
+        Icons.requiredShardsIcon(names),
+        Icons.addShardIcon(names),
+        Icons.slashSymbolIcon(2, 1),
+        Icons.removeShardIcon(names),
       ];
   }
 };

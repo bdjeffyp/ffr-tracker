@@ -1136,6 +1136,7 @@ export const shardIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.shards,
     shortName: names.shards,
+    activeState: 0,
     width: shardWidthHeight,
     height: shardWidthHeight,
     row: 0,
