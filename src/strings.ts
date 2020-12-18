@@ -46,6 +46,7 @@ export interface IItemNames {
   elf: string;
   nerrick: string;
   smyth: string;
+  drUnne: string;
   lefeinian: string;
   shopkeeper: string;
   shopkeeperShortName: string;
@@ -105,6 +106,7 @@ export const OriginalItemNames: IItemNames = {
   elf: "Elf Prince",
   nerrick: "Nerrick",
   smyth: "Blacksmith",
+  drUnne: "Dr. Unne",
   lefeinian: "Lefeinian",
   shopkeeper: "Shopkeeper with item",
   shopkeeperShortName: "Shop Item",
@@ -164,6 +166,7 @@ export const ModernItemNames: IItemNames = {
   elf: "Elven Prince",
   nerrick: OriginalItemNames.nerrick,
   smyth: "Smyth",
+  drUnne: OriginalItemNames.drUnne,
   lefeinian: "Lufenian",
   shopkeeper: OriginalItemNames.shopkeeper,
   shopkeeperShortName: OriginalItemNames.shopkeeperShortName,

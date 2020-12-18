@@ -299,6 +299,14 @@ const smythOn: ICoordinates = {
   x: 256,
   y: 128,
 };
+const drUnneOff: ICoordinates = {
+  x: 448,
+  y: 192,
+};
+const drUnneOn: ICoordinates = {
+  x: 448,
+  y: 128,
+};
 const lefeinianOff: ICoordinates = {
   x: 320,
   y: 192,
@@ -1074,6 +1082,22 @@ export const smythIcon = (names: IItemNames): IIconProps => {
   };
 };
 
+export const drUnneIcon = (names: IItemNames): IIconProps => {
+  return {
+    title: names.drUnne,
+    shortName: names.drUnne,
+    toggleState: Toggle.off,
+    width: standardWidthHeight,
+    height: standardWidthHeight,
+    row: 1,
+    column: 5,
+    stateImageLocations: [drUnneOff, drUnneOn],
+    // empty props
+    settings: {} as ISettingsProps,
+    handleHover: () => {},
+  };
+};
+
 export const lefeinianIcon = (names: IItemNames): IIconProps => {
   return {
     title: names.lefeinian,
@@ -1082,7 +1106,7 @@ export const lefeinianIcon = (names: IItemNames): IIconProps => {
     width: standardWidthHeight,
     height: standardWidthHeight,
     row: 1,
-    column: 5,
+    column: 6,
     stateImageLocations: [lefeinianOff, lefeinianOn],
     // empty props
     settings: {} as ISettingsProps,
@@ -1099,8 +1123,7 @@ export const shopkeeperIcon = (names: IItemNames): IIconProps => {
     width: standardWidthHeight,
     height: standardWidthHeight,
     row: 0,
-    column: 6,
-    offsetX: 68,
+    column: 7,
     stateImageLocations: [shopkeeperOff, shopkeeperOn],
     // empty props
     settings: {} as ISettingsProps,
@@ -1116,8 +1139,7 @@ export const fairyIcon = (names: IItemNames): IIconProps => {
     width: standardWidthHeight,
     height: standardWidthHeight,
     row: 1,
-    column: 6,
-    offsetX: 68,
+    column: 7,
     stateImageLocations: [fairyOff, fairyOn],
     // empty props
     settings: {} as ISettingsProps,

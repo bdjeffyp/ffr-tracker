@@ -186,6 +186,7 @@ export const npcsTrackerBox = (names: IItemNames, timerVisible: boolean, isModer
       Icons.elfIcon(names),
       Icons.nerrickIcon(names),
       Icons.smythIcon(names),
+      Icons.drUnneIcon(names),
       Icons.lefeinianIcon(names),
       Icons.fairyIcon(names),
     ],
