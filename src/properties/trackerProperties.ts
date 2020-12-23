@@ -180,6 +180,7 @@ export const npcsTrackerBox = (names: IItemNames, timerVisible: boolean, isModer
       Icons.sardaIcon(names),
       Icons.sagesIcon(names),
       Icons.robotIcon(names),
+      Icons.titanIcon(names),
       Icons.shopkeeperIcon(names),
       Icons.astosIcon(names),
       Icons.matoyaIcon(names),
