@@ -315,6 +315,14 @@ const lefeinianOn: ICoordinates = {
   x: 320,
   y: 128,
 };
+const titanOff: ICoordinates = {
+  x: 448,
+  y: 64,
+};
+const titanOn: ICoordinates = {
+  x: 448,
+  y: 0,
+};
 const shopkeeperOff: ICoordinates = {
   x: 384,
   y: 64,
@@ -960,8 +968,8 @@ export const sardaIcon = (names: IItemNames): IIconProps => {
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
-    row: 0,
-    column: 3,
+    row: 1,
+    column: 0,
     stateImageLocations: [sardaOff, sardaOn],
     // empty props
     settings: {} as ISettingsProps,
@@ -976,8 +984,8 @@ export const sagesIcon = (names: IItemNames): IIconProps => {
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
-    row: 0,
-    column: 4,
+    row: 1,
+    column: 1,
     stateImageLocations: [sagesOff, sagesOn],
     // empty props
     settings: {} as ISettingsProps,
@@ -992,8 +1000,8 @@ export const robotIcon = (names: IItemNames): IIconProps => {
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
-    row: 0,
-    column: 5,
+    row: 1,
+    column: 2,
     stateImageLocations: [robotOff, robotOn],
     // empty props
     settings: {} as ISettingsProps,
@@ -1009,8 +1017,8 @@ export const astosIcon = (names: IItemNames): IIconProps => {
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
-    row: 1,
-    column: 0,
+    row: 0,
+    column: 3,
     stateImageLocations: [astosOff, astosOn],
     // empty props
     settings: {} as ISettingsProps,
@@ -1025,8 +1033,8 @@ export const matoyaIcon = (names: IItemNames): IIconProps => {
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
-    row: 1,
-    column: 1,
+    row: 0,
+    column: 4,
     stateImageLocations: [matoyaOff, matoyaOn],
     // empty props
     settings: {} as ISettingsProps,
@@ -1041,8 +1049,8 @@ export const elfIcon = (names: IItemNames): IIconProps => {
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
-    row: 1,
-    column: 2,
+    row: 0,
+    column: 5,
     stateImageLocations: [elfOff, elfOn],
     // empty props
     settings: {} as ISettingsProps,
@@ -1057,8 +1065,8 @@ export const nerrickIcon = (names: IItemNames): IIconProps => {
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
-    row: 1,
-    column: 3,
+    row: 0,
+    column: 6,
     stateImageLocations: [nerrickOff, nerrickOn],
     // empty props
     settings: {} as ISettingsProps,
@@ -1074,7 +1082,7 @@ export const smythIcon = (names: IItemNames): IIconProps => {
     width: standardWidthHeight,
     height: standardWidthHeight,
     row: 1,
-    column: 4,
+    column: 7,
     stateImageLocations: [smythOff, smythOn],
     // empty props
     settings: {} as ISettingsProps,
@@ -1114,6 +1122,22 @@ export const lefeinianIcon = (names: IItemNames): IIconProps => {
   };
 };
 
+export const titanIcon = (names: IItemNames): IIconProps => {
+  return {
+    title: names.titan,
+    shortName: names.titan,
+    toggleState: Toggle.off,
+    width: standardWidthHeight,
+    height: standardWidthHeight,
+    row: 0,
+    column: 7,
+    stateImageLocations: [titanOff, titanOn],
+    // empty props
+    settings: {} as ISettingsProps,
+    handleHover: () => {},
+  };
+};
+
 ////// Shopkeeper and fairy //////
 export const shopkeeperIcon = (names: IItemNames): IIconProps => {
   return {
@@ -1122,8 +1146,8 @@ export const shopkeeperIcon = (names: IItemNames): IIconProps => {
     toggleState: Toggle.off,
     width: standardWidthHeight,
     height: standardWidthHeight,
-    row: 0,
-    column: 7,
+    row: 1,
+    column: 3,
     stateImageLocations: [shopkeeperOff, shopkeeperOn],
     // empty props
     settings: {} as ISettingsProps,
@@ -1139,7 +1163,7 @@ export const fairyIcon = (names: IItemNames): IIconProps => {
     width: standardWidthHeight,
     height: standardWidthHeight,
     row: 1,
-    column: 7,
+    column: 4,
     stateImageLocations: [fairyOff, fairyOn],
     // empty props
     settings: {} as ISettingsProps,

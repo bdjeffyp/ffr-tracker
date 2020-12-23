@@ -48,6 +48,7 @@ export interface IItemNames {
   smyth: string;
   drUnne: string;
   lefeinian: string;
+  titan: string;
   shopkeeper: string;
   shopkeeperShortName: string;
   fairy: string;
@@ -108,6 +109,7 @@ export const OriginalItemNames: IItemNames = {
   smyth: "Blacksmith",
   drUnne: "Dr. Unne",
   lefeinian: "Lefeinian",
+  titan: "Titan",
   shopkeeper: "Shopkeeper with item",
   shopkeeperShortName: "Shop Item",
   fairy: "Fairy",
@@ -168,6 +170,7 @@ export const ModernItemNames: IItemNames = {
   smyth: "Smyth",
   drUnne: OriginalItemNames.drUnne,
   lefeinian: "Lufenian",
+  titan: OriginalItemNames.titan,
   shopkeeper: OriginalItemNames.shopkeeper,
   shopkeeperShortName: OriginalItemNames.shopkeeperShortName,
   fairy: "Faerie",
